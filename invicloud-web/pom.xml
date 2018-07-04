@@ -14,12 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.vision</groupId>
-            <artifactId>invicloud-administrator-facade</artifactId>
-            <version>${invicloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.vision</groupId>
-            <artifactId>invicloud-administrator-service</artifactId>
+            <artifactId>invicloud-support</artifactId>
             <version>${invicloud.version}</version>
         </dependency>
 
@@ -150,6 +145,10 @@
             <artifactId>druid</artifactId>
             <version>1.1.10</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>2.3.2</version>
+        </dependency>
     </dependencies>
 </project>

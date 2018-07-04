@@ -6,7 +6,6 @@
          version="3.0">
 
     <!-- Web容器加载顺序 ServletContext:servletContext接口是Servlet中最大的一个接口,呈现了web应用的Servlet视图. / context-param /listener /filter/servlet -->
-    <display-name>morning-cms-webapp</display-name>
 
     <!-- 1.指定Spring的配置文件 -->
     <!-- 否则Spring会默认从WEB-INF下寻找配置文件,contextConfigLocation属性是Spring内部固定的 -->

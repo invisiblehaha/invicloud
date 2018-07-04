@@ -11,8 +11,10 @@
 
     <description>Spring MVC Configuration</description>
 
+    <!-- 允许MVC注解驱动开发 -->
     <mvc:annotation-driven enable-matrix-variables="true" />
 
+    <!-- 允许访问静态文件-->
     <mvc:default-servlet-handler/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -20,22 +22,11 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-
+    <!-- MVC只处理controller-->
     <context:component-scan base-package="cn.vision.invicloud.web.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!-- AOP式方法级权限检查  -->
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
-        <property name="proxyTargetClass" value="true" />
-    </bean>
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <prop key="org.apache.shiro.authz.UnauthorizedException">common/403</prop>
-                <prop key="java.lang.Throwable">common/500</prop>
-            </props>
-        </property>
-    </bean>
-
+    <!-- 使用CGLib实现动态代理，jdk的动态代理必须实现接口 -->
+    <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
 </beans>

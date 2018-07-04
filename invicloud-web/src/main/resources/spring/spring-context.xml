@@ -10,14 +10,17 @@
 
     <description>spring Configuration</description>
 
+    <!-- 加载配置文件-->
     <context:property-placeholder  ignore-resource-not-found="true" location="classpath*:properties/*.properties" />
 
+    <!-- 在spring里加载除了controller的Bean-->
     <context:component-scan base-package="cn.vision.invicloud">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <import resource="classpath:spring/applicationContext-mybatis.xml" />
 
-    <import resource="classpath:spring/applicationContext-shiro.xml" />
+    <import resource="classpath:spring/applicationContext-kaptcha.xml"/>
+
 
 </beans>

@@ -6,10 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="invicloud-administrator-facade" />
-        <module name="invicloud-administrator-service" />
+        <module name="invicloud-common" />
+        <module name="invicloud-support" />
         <module name="invicloud-web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="invicloud-administrator" target="1.8" />
+      <module name="invicloud-administrator-facade" target="1.8" />
+      <module name="invicloud-administrator-service" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
