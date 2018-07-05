@@ -179,7 +179,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -320,7 +320,7 @@
       <option name="presentableId" value="Default" />
       <updated>1530780521036</updated>
       <workItem from="1530780527606" duration="6610000" />
-      <workItem from="1530790436396" duration="2276000" />
+      <workItem from="1530790436396" duration="2873000" />
     </task>
     <task id="LOCAL-00001" summary="face++人脸识别API的使用">
       <created>1530782550563</created>
@@ -347,10 +347,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8886000" />
+    <option name="totallyTimeSpent" value="9483000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
