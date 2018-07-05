@@ -12,7 +12,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="invicloud-administrator" target="1.8" />
       <module name="invicloud-administrator-facade" target="1.8" />
       <module name="invicloud-administrator-service" target="1.8" />
     </bytecodeTargetLevel>

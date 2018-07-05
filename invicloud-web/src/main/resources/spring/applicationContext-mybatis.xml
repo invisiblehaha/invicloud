@@ -69,7 +69,7 @@
 
     <!-- 扫描interface,加入IOC容器 -->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.vision.invicloud.support.*.mapper" />
+        <property name="basePackage" value="cn.vision.invicloud.support.mapper" />
     </bean>
 
     <!-- 开启事务 -->
@@ -81,19 +81,16 @@
     <!-- 开启注解事务管理器 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
-    <!-- 多事务语义 -->
+    <!-- REQUIRED：支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。
+         SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行。-->
     <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
             <tx:method name="count*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />
             <tx:method name="list*" propagation="SUPPORTS" read-only="true" />
             <tx:method name="*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="save*" propagation="REQUIRED" />
             <tx:method name="insert*" propagation="REQUIRED" />
-            <tx:method name="create*" propagation="REQUIRED" />
             <tx:method name="update*" propagation="REQUIRED" />
-            <tx:method name="remove*" propagation="REQUIRED" />
             <tx:method name="delete*" propagation="REQUIRED" />
         </tx:attributes>
     </tx:advice>

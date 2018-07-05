@@ -22,5 +22,8 @@
 
     <import resource="classpath:spring/applicationContext-kaptcha.xml"/>
 
+    <import resource="classpath:spring/applicationContext-ehcache.xml"/>
+
+    <import resource="classpath:spring/applicationContext-shiro.xml"/>
 
 </beans>

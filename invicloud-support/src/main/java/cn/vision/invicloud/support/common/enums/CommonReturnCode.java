@@ -1,33 +1,36 @@
 package cn.vision.invicloud.support.common.enums;
 
-
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.Serializable;
-import java.util.Map;
 
 /**
  * @Author: Hattori
- * @Date: 2018/7/4 4:31
+ * @Date: 2018/7/5 2:09
  * @Description:
  */
-public enum LoginReturnCode implements Serializable {
-    USER_NOT_EXIST(10000, "该账号不存在!"),
-    WRONG_PASSWORD(10001, "您输入的密码不正确!"),
-    REGISTER_CODE_ERROR(10002, "验证码错误!"),
-    USER_LOCK(10003, "该账号已被冻结!");
+public enum CommonReturnCode implements Serializable {
+
+    FAILED(0, "failed"),
+    SUCCESS(1, "success"),
+    UNKNOWN_ERROR(-1, "未知错误"),
+    OK(200, "请求成功"),
+    BAD_REQUEST(400, "请求参数出错"),
+    UNAUTHORIZED(401, "您未登录或者登录已超时,请先登录!"),
+    FORBIDDEN(403, "没有权限"),
+    NOT_FOUND(404, "找不到页面");
 
     /**
-     * 状态码
+     * 返回状态码
      */
     private Integer code;
 
     /**
-     * 消息
+     * 返回消息
      */
     private String message;
 
-    private LoginReturnCode(Integer code, String message) {
+    private CommonReturnCode(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
@@ -47,5 +50,4 @@ public enum LoginReturnCode implements Serializable {
         System.out.println(object.toString());
         return object.toString();
     }
-
 }

@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="invicloud-web:Web exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a7bb04ac-b34c-48ab-8a16-ed7bd631c4e1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/invicloud-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invicloud-web/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-common/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-common/target/classes/cn/vision/invicloud/common/plugins/MpGenerator$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-common/target/classes/cn/vision/invicloud/common/plugins/MpGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-support/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/CommonReturnCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/StatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-web/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/common/security/UserRealm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/common/utils/LoginUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/config/ehcache-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-ehcache.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-shiro.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/view/login/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/invicloud_web_Web_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/invicloud_web_Web_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/861a4daf-a630-4641-8c0a-7e853d5b1185.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/861a4daf-a630-4641-8c0a-7e853d5b1185.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-facade/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-facade/src/main/java/cn/vision/invicloud/administrator/entity/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-facade/src/main/java/cn/vision/invicloud/administrator/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-facade/src/main/java/cn/vision/invicloud/administrator/entity/UserRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/cn/vision/invicloud/administrator/mapper/RoleMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-administrator/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-web/invicloud-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/invicloud-web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-common/src/main/java/cn/vision/invicloud/common/support/PageInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-support/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-support/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/LoginReturnCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/LoginReturnCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-web/invicloud-web.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/invicloud-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud-web/src/main/resources/config/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/config/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-web/src/main/resources/properties/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/properties/jdbc.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-mybatis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-mybatis.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/spring-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/spring-context.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/invicloud-web/src/main/resources/springmvc/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/src/main/resources/springmvc/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/base.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/base.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invicloud.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invicloud-web/web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product.xls" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -83,38 +97,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Category.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/entity/Category.java">
+      <file leaf-file-name="LoginReturnCode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/LoginReturnCode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoryServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/CategoryServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="497">
+              <caret line="41" selection-start-line="41" selection-end-line="48" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,47 +109,71 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="StatusEnum.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/StatusEnum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4009">
-              <caret line="211" column="20" selection-start-line="211" selection-start-column="20" selection-end-line="211" selection-end-column="20" />
+            <state relative-caret-position="460">
+              <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="misc.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="encodings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="dataSources.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/dataSources.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/invicloud-support/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="641">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/invicloud-common/pom.xml">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/invicloud-common/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+            <state relative-caret-position="138">
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/LogServiceImpl.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/invicloud-support/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state relative-caret-position="138">
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomerServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/CustomerServiceImpl.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/invicloud-web/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="138">
+              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -174,9 +185,10 @@
       <list>
         <option value="Jsp File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Tag Library Descriptor" />
         <option value="Enum" />
+        <option value="spring-beans.schema" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -198,30 +210,49 @@
         <option value="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-facade/src/main/java/cn/vision/invicloud/administrator/entity/UserRole.java" />
         <option value="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-facade/src/main/java/cn/vision/invicloud/administrator/service/IRoleService.java" />
         <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/sprint-context.xml" />
-        <option value="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/base.jsp" />
-        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/properties/jdbc.properties" />
         <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/config/mybatis-config.xml" />
         <option value="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/service/impl/OrganizationServiceImpl.java" />
         <option value="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/cn/vision/invicloud/administrator/mapper/RoleMapper.java" />
         <option value="$PROJECT_DIR$/invicloud-common/src/main/java/cn/vision/invicloud/common/plugins/PageInfo.java" />
         <option value="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/pom.xml" />
         <option value="$PROJECT_DIR$/invicloud-common/src/main/java/cn/vision/invicloud/common/support/PageInfo.java" />
-        <option value="$PROJECT_DIR$/invicloud-common/pom.xml" />
         <option value="$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-facade/pom.xml" />
         <option value="$PROJECT_DIR$/invicloud-administrator/pom.xml" />
-        <option value="$PROJECT_DIR$/invicloud-support/pom.xml" />
         <option value="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/entity/Role.java" />
         <option value="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/entity/RoleMenu.java" />
         <option value="$PROJECT_DIR$/invicloud-common/src/main/java/cn/vision/invicloud/common/plugins/MpGenerator.java" />
-        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/spring-context.xml" />
-        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/springmvc/spring-mvc.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-mybatis.xml" />
-        <option value="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/invicloud-web/pom.xml" />
         <option value="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/LoginReturnCide.java" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-ehcache.xml" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/config/ehcache-config.xml" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/spring-context.xml" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/common/security/userRealm.java" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/common/utils/LoginUtils.java" />
+        <option value="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/IUserService.java" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-mybatis.xml" />
+        <option value="$PROJECT_DIR$/invicloud-support/src/test/Maintest.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.java" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/log4j.xml" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/view/login/login.jsp" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/log4j2.xml" />
         <option value="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-shiro.xml" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/properties/jdbc.properties" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/common/security/UserRealm.java" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/base.jsp" />
         <option value="$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/invicloud-common/pom.xml" />
+        <option value="$PROJECT_DIR$/invicloud-web/pom.xml" />
+        <option value="$PROJECT_DIR$/invicloud-web/src/main/resources/springmvc/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/invicloud-support/pom.xml" />
+        <option value="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/StatusEnum.java" />
+        <option value="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/LoginReturnCode.java" />
+        <option value="$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/CommonReturnCode.java" />
+        <option value="$PROJECT_DIR$/invicloud-web/.gitignore" />
+        <option value="$PROJECT_DIR$/invicloud-support/.gitignore" />
+        <option value="$PROJECT_DIR$/invicloud-common/.gitignore" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -231,7 +262,19 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:/house/apache-maven-3.5.2" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
@@ -243,21 +286,21 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="invicloud" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="invicloud-common" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="invicloud" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+          <item name="invicloud-common" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="invicloud-support" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="invicloud-web" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="invicloud-support" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+          <item name="invicloud-web" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
         </path>
       </expand>
       <select />
@@ -267,17 +310,17 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1937" />
-    <option name="height" value="1057" />
+    <option name="x" value="-15" />
+    <option name="y" value="-15" />
+    <option name="width" value="1670" />
+    <option name="height" value="890" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -290,37 +333,73 @@
               <item name="invicloud" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="invicloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="invicloud" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="invicloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="invicloud" type="462c0819:PsiDirectoryNode" />
+              <item name="invicloud-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="invicloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="invicloud" type="462c0819:PsiDirectoryNode" />
+              <item name="invicloud-support" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="invicloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="invicloud" type="462c0819:PsiDirectoryNode" />
+              <item name="invicloud-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="invicloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="invicloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+            <path>
+              <item name="invicloud" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="maven&#9;ACTION&#9;ActivateMavenProjectsToolWindow" />
+    <property name="SearchEverywhereHistoryKey" value="jackson&#9;FILE&#9;jar://C:/house/apache-maven-3.5.2/repo/com/fasterxml/jackson/core/jackson-annotations/2.9.6/jackson-annotations-2.9.6.jar!/META-INF/maven/com.fasterxml.jackson.core/jackson-annotations&#10;dispatchSe&#9;FILE&#9;jar://C:/Users/HATTORI/.m2/repository/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class&#10;maven&#9;ACTION&#9;ActivateMavenProjectsToolWindow" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/crm/Morning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestSpringBootDemo" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="cn.vision.invicloud.common.support" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\2018暑假实训\项目源码\invicloud\invicloud-web" />
+      <recent name="E:\2018暑假实训\项目源码\invicloud\invicloud-support" />
+      <recent name="E:\2018SummerTraining\invicloud\invicloud-web\src\main\webapp" />
       <recent name="E:\2018暑假实训\项目源码\invicloud\invicloud-web\src\main\resources\config" />
       <recent name="E:\2018暑假实训\项目源码\invicloud\invicloud-web\src\main\resources\spring" />
-      <recent name="E:\2018暑假实训\项目源码\invicloud\invicloud-administrator" />
-      <recent name="E:\2018暑假实训\项目源码\invicloud\invicloud-administrator\invicloud-administrator-service\src\main\java" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -335,7 +414,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Unnamed">
     <configuration name="MpGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.vision.invicloud.common.plugins.MpGenerator" />
       <module name="invicloud-common" />
@@ -343,6 +422,17 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.vision.invicloud.common.plugins.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="UserRealm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.vision.invicloud.web.common.security.UserRealm" />
+      <module name="invicloud-web" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.vision.invicloud.web.common.security.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -388,11 +478,93 @@
       <properties />
       <listeners />
     </configuration>
+    <configuration name="Unnamed" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.43" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="invicloud-web:Web exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_invicloud" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="56224" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="invicloud-web:Web exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Tomcat Server.Unnamed" />
+      <item itemvalue="Application.MpGenerator" />
+      <item itemvalue="Application.UserRealm" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UserRealm" />
         <item itemvalue="Application.MpGenerator" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SpringBeansView">
+    <option name="showImplicitBeans" value="false" />
+    <option name="showGraph" value="false" />
+    <option name="beanDetailsProportion" value="0.66504854" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -408,51 +580,67 @@
       <workItem from="1530634727049" duration="192000" />
       <workItem from="1530634945936" duration="11235000" />
       <workItem from="1530651212748" duration="125000" />
-      <workItem from="1530671559738" duration="424000" />
+      <workItem from="1530720497047" duration="13413000" />
+      <workItem from="1530753185794" duration="12741000" />
+      <workItem from="1530770633112" duration="18147000" />
+      <workItem from="1530793395053" duration="783000" />
+      <workItem from="1530794308897" duration="1594000" />
+      <workItem from="1530816044764" duration="5834000" />
+      <workItem from="1530822010905" duration="457000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18979000" />
+    <option name="totallyTimeSpent" value="71524000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="8" visible="true" weight="0.3297587" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.3281471" />
-      <window_info anchor="bottom" id="Spring" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Tool Output" order="17" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Application Servers" order="0" weight="0.32956153" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.20842217" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2613941" />
-      <window_info id="Web" order="6" side_tool="true" />
-      <window_info anchor="right" id="Database" order="5" weight="0.32995737" />
+      <window_info anchor="right" id="Database" order="5" weight="0.3297587" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="16" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.32827735" />
+      <window_info anchor="bottom" id="TODO" order="8" weight="0.32956153" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Version Control" order="15" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.2524377" />
+      <window_info anchor="bottom" id="Spring" order="10" weight="0.32956153" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49894738" visible="true" weight="0.27985075" />
+      <window_info id="Web" order="6" sideWeight="0.5010526" side_tool="true" weight="0.26742628" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Tool Output" order="16" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Database Console" order="13" weight="0.32900432" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32900432" />
-      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Database Console" order="14" weight="0.32900432" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.32719395" />
+      <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="15" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.32936078" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,237 +649,330 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/InternalResourceViewResolver.class</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/UrlBasedViewResolver.class</url>
+          <line>211</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class</url>
+          <line>699</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class</url>
+          <line>675</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/AbstractView.class</url>
+          <line>142</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/InternalResourceView.class</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/InternalResourceView.class</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="21" />
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>state</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getRequestDispatcher(request, dispatcherPath)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>prepareForRendering(request, response)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(HttpServletRequest)(!this.exposeContextBeansAsAttributes &amp;&amp; this.exposedContextBeanNames == null ? originalRequest : new ContextExposingHttpServletRequest(originalRequest, this.getWebApplicationContext(), this.exposedContextBeanNames))</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>mv.getModelInternal()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.getServletName()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>view.checkResource(locale)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.getViewClass()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getRequestUri(request)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/service/impl/UserRoleServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/service/impl/UserLoginLogServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/provider/DubboProviders.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/mapper/UserMapper.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/mapper/OrganizationMapper.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/mapper/UserRoleMapper.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/mapper/UserLoginLogMapper.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/administrator/service/impl/OrganizationServiceImpl.java" />
-    <entry file="uml://MAVEN/cn.vision:invicloud:1.0-SNAPSHOT">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2.jar!/org/apache/commons/logging/Log.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/View.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE.jar!/org/springframework/beans/BeanUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE.jar!/org/springframework/beans/factory/support/SimpleInstantiationStrategy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="339" selection-start-line="339" selection-end-line="339" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/AbstractCachingViewResolver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar!/javax/servlet/http/HttpServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="205" column="115" selection-start-line="205" selection-start-column="115" selection-end-line="205" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="402" selection-start-line="402" selection-end-line="402" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/ModelAndView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar!/javax/servlet/RequestDispatcher.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/InternalResourceViewResolver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/UrlBasedViewResolver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2926">
+          <caret line="211" selection-start-line="211" selection-end-line="211" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/AbstractView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2254">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/view/InternalResourceView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15065">
+          <caret line="706" column="35" selection-start-line="706" selection-start-column="35" selection-end-line="706" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-266" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/invicloud_web_Web_exploded/WEB-INF/classes/cn/vision/invicloud/support/service/impl/UserServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
         <state>
-          <ID>MAVEN</ID>
-          <OriginalElement>cn.vision:invicloud:1.0-SNAPSHOT</OriginalElement>
-          <nodes>
-            <node x="0.0" y="0.0">cn.vision:invicloud:1.0-SNAPSHOT</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="-107.0" y="-178.0" />
-          <SelectedNodes>
-            <node>cn.vision:invicloud:1.0-SNAPSHOT</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>All</VISIBILITY>
+          <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/java/cn/vision/invicloud/administrator/mapper/RoleMapper.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/src/main/java/cn/vision/invicloud/administrator/entity/RoleMenu.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/src/main/java/cn/vision/invicloud/administrator/entity/Role.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-service/src/main/resources/mybatis/RoleMapper.xml" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/invicloud-administrator-facade/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/src/main/java/cn/vision/invicloud/administrator/mapper/RoleMapper.java" />
-    <entry file="file://$PROJECT_DIR$/invicloud-administrator/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/invicloud-common/src/main/java/cn/vision/invicloud/common/support/PageInfo.java">
+    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="305">
+          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/entity/Role.java">
+    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/mapper/CategoryMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="35" selection-start-column="28" selection-end-column="35" />
+        <state relative-caret-position="276">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/entity/RoleMenu.java">
+    <entry file="file://$PROJECT_DIR$/out/artifacts/invicloud_web_Web_exploded/WEB-INF/classes/cn/vision/invicloud/support/service/impl/UserRoleServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/invicloud_web_Web_exploded/WEB-INF/classes/cn/vision/invicloud/support/service/impl/RoleServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/authc/credential/HashedCredentialsMatcher.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="404">
+          <caret line="131" column="26" lean-forward="true" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-common/src/main/java/cn/vision/invicloud/common/plugins/MpGenerator.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.7.RELEASE/spring-web-4.3.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="138" column="42" lean-forward="true" selection-start-line="138" selection-start-column="42" selection-end-line="138" selection-end-column="42" />
+        <state relative-caret-position="276">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/config/mybatis-config.xml">
+    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/common/security/UserRealm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+        <state relative-caret-position="360">
+          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/properties/jdbc.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
-          <caret line="1" column="118" lean-forward="true" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="118" />
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/spring/spring-context.xml">
+    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/view/login/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-kaptcha.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-mybatis.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="150" column="26" selection-start-line="150" selection-start-column="26" selection-end-line="150" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/IUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/SecurityUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/springmvc/spring-mvc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="-73">
+          <caret line="16" column="6" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/base.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="299">
+          <caret line="13" column="71" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/view/login/login.jsp.tld" />
-    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="145" column="22" selection-start-line="145" selection-start-column="22" selection-end-line="145" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/LoginReturnCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/ICategoryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/ICustomerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/ILogService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/IMenuService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/IOrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/IProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/entity/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/LogServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/CustomerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/CategoryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-common/src/main/java/cn/vision/invicloud/common/support/PageInfo.java" />
     <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/java/cn/vision/invicloud/web/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="1127">
+          <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.7.RELEASE/spring-web-4.3.7.RELEASE.jar!/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/springmvc/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/CommonReturnCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="943">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -700,28 +981,99 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4009">
+        <state relative-caret-position="4853">
           <caret line="211" column="20" selection-start-line="211" selection-start-column="20" selection-end-line="211" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-support/pom.xml">
+    <entry file="file://$PROJECT_DIR$/invicloud-web/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="4324">
+          <caret line="188" column="21" selection-start-line="188" selection-start-column="21" selection-end-line="188" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-common/invicloud-common.iml">
+    <entry file="file://$PROJECT_DIR$/invicloud-common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-web/src/main/resources/spring/applicationContext-shiro.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/LoginReturnCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="41" selection-start-line="41" selection-end-line="48" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-support/src/main/java/cn/vision/invicloud/support/common/enums/StatusEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-web/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-common/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/invicloud_web_Web_exploded.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/dataSources.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/invicloud-common/pom.xml">
+    <entry file="file://$PROJECT_DIR$/invicloud-support/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        <state relative-caret-position="641">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invicloud-support/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -744,7 +1096,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring</last-edited>
+          <last-edited>Web (invicloud-web)|Web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -780,12 +1132,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>invicloud-common</last-edited>
+          <last-edited>Web|invicloud-web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
