@@ -44,7 +44,7 @@ CREATE TABLE `crm_customer`  (
   `customer_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '顾客ID',
   `customer_token` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '人脸标识',
   `real_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '真实姓名',
-  `sex` tinyint(1) NULL DEFAULT 0 COMMENT '性别 0=保密/1=男/2=女',
+  `sex` tinyint(1) NULL DEFAULT 1 COMMENT '性别 1=男/2=女',
   `age` tinyint(3) NULL DEFAULT 0 COMMENT '年龄',
   `pic_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '顾客图片',
   `status` tinyint(1) NULL DEFAULT 1 COMMENT '状态 0=冻结/1=正常',
