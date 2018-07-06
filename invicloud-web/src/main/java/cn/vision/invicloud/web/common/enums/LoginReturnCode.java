@@ -1,17 +1,16 @@
-package cn.vision.invicloud.support.common.enums;
+package cn.vision.invicloud.web.common.enums;
 
 
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.Serializable;
-import java.util.Map;
 
 /**
  * @Author: Hattori
  * @Date: 2018/7/4 4:31
  * @Description:
  */
-public enum LoginReturnCode implements Serializable {
+public enum LoginReturnCode implements IReturnCode {
     USER_NOT_EXIST(10000, "该账号不存在!"),
     WRONG_PASSWORD(10001, "您输入的密码不正确!"),
     REGISTER_CODE_ERROR(10002, "验证码错误!"),
@@ -31,21 +30,13 @@ public enum LoginReturnCode implements Serializable {
         this.code = code;
         this.message = message;
     }
-
+    @Override
     public Integer getCode() {
         return code;
     }
-
+    @Override
     public String getMessage() {
         return message;
-    }
-    @Override
-    public String toString() {
-        JSONObject object = new JSONObject();
-        object.put("code",code);
-        object.put("message",message);
-        System.out.println(object.toString());
-        return object.toString();
     }
 
 }

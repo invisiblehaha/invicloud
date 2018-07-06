@@ -1,4 +1,4 @@
-package cn.vision.invicloud.support.common.enums;
+package cn.vision.invicloud.web.common.enums;
 
 /**
  * @Author: Hattori

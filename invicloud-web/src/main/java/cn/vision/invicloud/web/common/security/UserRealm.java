@@ -1,21 +1,16 @@
 package cn.vision.invicloud.web.common.security;
 
-import cn.vision.invicloud.support.common.enums.StatusEnum;
+import cn.vision.invicloud.web.common.enums.StatusEnum;
 import cn.vision.invicloud.support.entity.User;
 import cn.vision.invicloud.support.service.IRoleMenuService;
 import cn.vision.invicloud.support.service.IUserRoleService;
 import cn.vision.invicloud.support.service.IUserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Set;
 
 /**
  * @Author: Hattori

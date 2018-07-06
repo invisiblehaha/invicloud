@@ -1,0 +1,13 @@
+$(function(){
+    $('#btn_submit').click(function(){
+        $.ajax({
+            type:'post',
+            url:baselocation+'/login',
+            data:$("#loginForm").serialize(),
+            dataType:'json',
+            success:function(data){
+                alert("请求成功");
+            }
+        });
+    });
+});

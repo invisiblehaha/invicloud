@@ -1,4 +1,4 @@
-package cn.vision.invicloud.support.common.enums;
+package cn.vision.invicloud.web.common.enums;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @Date: 2018/7/5 2:09
  * @Description:
  */
-public enum CommonReturnCode implements Serializable {
+public enum CommonReturnCode implements IReturnCode {
 
     FAILED(0, "failed"),
     SUCCESS(1, "success"),
@@ -35,19 +35,12 @@ public enum CommonReturnCode implements Serializable {
         this.message = message;
     }
 
+    @Override
     public Integer getCode() {
         return code;
     }
-
+    @Override
     public String getMessage() {
         return message;
-    }
-    @Override
-    public String toString() {
-        JSONObject object = new JSONObject();
-        object.put("code",code);
-        object.put("message",message);
-        System.out.println(object.toString());
-        return object.toString();
     }
 }

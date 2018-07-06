@@ -12,17 +12,15 @@
     <title>invicloud登陆页面</title>
 </head>
 
-<body>
-
-<html>
-
 <head>
     <title>invicloud登陆页面</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript">baselocation="${ctx}"</script>
 </head>
 
 <body>
-<form action="${ctx}\login" method="post">
+<form id="loginForm">
 
     <div>
         <label for="loginName">Enter name: </label>
@@ -35,17 +33,13 @@
     <div>
         <label for="registerCode">Enter registercode: </label>
         <input type="text" name="registerCode" id="registerCode" required>
-        <img src="${ctx}\captcha-image.jpg" alt="registerCode"/>
+        <img src="${ctx}\captcha-image.jpg" alt="registerCode" onclick="refreshImg()"/>
     </div>
     <div>
-        <input type="submit" value="Subscribe!">
+        <Button type="button" id="btn_submit">"Submit!"</Button>
     </div>
 </form>
 
 </body>
-
-</html>
-
-</body>
-
+<script type="text/javascript" src="${ctxsta}/js/login.js"></script>
 </html>

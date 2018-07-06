@@ -1,8 +1,8 @@
 package cn.vision.invicloud.web.controller;
 
-import cn.vision.invicloud.support.common.enums.CommonReturnCode;
-import cn.vision.invicloud.support.common.enums.LoginReturnCode;
-import cn.vision.invicloud.support.service.IUserService;
+import cn.vision.invicloud.web.common.WebResult;
+import cn.vision.invicloud.web.common.enums.CommonReturnCode;
+import cn.vision.invicloud.web.common.enums.LoginReturnCode;
 import cn.vision.invicloud.web.common.utils.LoginUtils;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
@@ -17,13 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
-import javax.jws.WebParam;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
-import java.util.Date;
 
 
 /**
@@ -66,25 +63,25 @@ public class LoginController{
                         @RequestParam("loginPassword") String loginPassword, @RequestParam("registerCode") String registerCode) {
         //TODO:把Httpsession改成session，那样就不用Httpsession了.
         if (!LoginUtils.validate(registerCode,request.getSession())) {
-            return LoginReturnCode.REGISTER_CODE_ERROR;
+            return new WebResult(LoginReturnCode.REGISTER_CODE_ERROR);
         }
         Subject currentUser = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(loginName, loginPassword);
         try{
             currentUser.login(token);
-            return CommonReturnCode.SUCCESS;
+            return new WebResult(CommonReturnCode.SUCCESS);
         } catch (UnknownAccountException e) {
             logger.error(LoginReturnCode.USER_NOT_EXIST.getMessage(), e);
-            return LoginReturnCode.USER_NOT_EXIST;
+            return new WebResult(LoginReturnCode.USER_NOT_EXIST);
         } catch (IncorrectCredentialsException e) {
             logger.error(LoginReturnCode.WRONG_PASSWORD.getMessage(), e);
-            return LoginReturnCode.WRONG_PASSWORD;
+            return new WebResult(LoginReturnCode.WRONG_PASSWORD);
         } catch (ExcessiveAttemptsException e) {
             logger.error(LoginReturnCode.USER_LOCK.getMessage(), e);
-            return LoginReturnCode.USER_LOCK;
+            return new WebResult(LoginReturnCode.USER_LOCK);
         }catch (RuntimeException e) {
             logger.error(CommonReturnCode.UNKNOWN_ERROR.getMessage(), e);
-            return CommonReturnCode.UNKNOWN_ERROR;
+            return new WebResult(CommonReturnCode.UNKNOWN_ERROR);
         }
     }
 
