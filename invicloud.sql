@@ -49,7 +49,7 @@ CREATE TABLE `crm_customer`  (
   `pic_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '顾客图片',
   `status` tinyint(1) NULL DEFAULT 1 COMMENT '状态 0=冻结/1=正常',
   `telephone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号码',
-  `register_time` datetime(0) NULL DEFAULT NULL COMMENT '注册时间',
+  `regeist_time` datetime(0) NULL DEFAULT NULL COMMENT '注册时间',
   `rank` tinyint(4) NULL DEFAULT NULL COMMENT '会员级别',
   PRIMARY KEY (`customer_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
