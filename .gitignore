@@ -2,3 +2,6 @@
 .idea/workspace.xml
 .idea/inspectionProfiles/Project_Default.xml
 .idea/vcs.xml
+.idea/*.*
+cn/vision/invicloud/web/python/.idea/*.*
+*.iml
