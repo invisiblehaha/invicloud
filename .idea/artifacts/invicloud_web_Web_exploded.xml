@@ -61,7 +61,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.1" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.10" />
           <element id="library" level="project" name="Maven: com.github.penggle:kaptcha:2.3.2" />

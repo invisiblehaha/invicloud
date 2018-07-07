@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Hattori
- * @since 2018-07-04
+ * @since 2018-07-07
  */
 @TableName("crm_user_role")
 public class UserRole extends Model<UserRole> {
@@ -35,20 +35,10 @@ public class UserRole extends Model<UserRole> {
     @TableField("create_time")
     private Date createTime;
     /**
-     * 创建者ID
-     */
-    @TableField("create_by")
-    private Integer createBy;
-    /**
      * 更新时间
      */
     @TableField("update_time")
     private Date updateTime;
-    /**
-     * 更新者ID
-     */
-    @TableField("update_by")
-    private Integer updateBy;
 
 
     public Integer getRoleId() {
@@ -75,28 +65,12 @@ public class UserRole extends Model<UserRole> {
         this.createTime = createTime;
     }
 
-    public Integer getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(Integer createBy) {
-        this.createBy = createBy;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(Integer updateBy) {
-        this.updateBy = updateBy;
     }
 
     @Override
@@ -110,9 +84,7 @@ public class UserRole extends Model<UserRole> {
         ", roleId=" + roleId +
         ", userId=" + userId +
         ", createTime=" + createTime +
-        ", createBy=" + createBy +
         ", updateTime=" + updateTime +
-        ", updateBy=" + updateBy +
         "}";
     }
 }

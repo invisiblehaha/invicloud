@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Hattori
- * @since 2018-07-04
+ * @since 2018-07-07
  */
 @TableName("crm_order_product")
 public class OrderProduct extends Model<OrderProduct> {

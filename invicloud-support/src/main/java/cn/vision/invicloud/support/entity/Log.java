@@ -14,7 +14,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Hattori
- * @since 2018-07-04
+ * @since 2018-07-07
  */
 @TableName("crm_log")
 public class Log extends Model<Log> {

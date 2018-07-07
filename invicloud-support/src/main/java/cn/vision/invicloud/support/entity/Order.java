@@ -15,7 +15,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Hattori
- * @since 2018-07-04
+ * @since 2018-07-07
  */
 @TableName("crm_order")
 public class Order extends Model<Order> {

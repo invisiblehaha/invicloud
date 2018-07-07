@@ -1,49 +1,33 @@
-package cn.vision.invicloud.support.entity;
+package cn.vision.invicloud.support.pojo.dto;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
 /**
- * <p>
- * 目录表
- * </p>
- *
- * @author Hattori
- * @since 2018-07-07
+ * @Author: Hattori
+ * @Date: 2018/7/7 3:35
+ * @Description:
  */
-@TableName("crm_menu")
-public class Menu extends Model<Menu> {
-
+public class MenuDTO  implements Serializable {
     private static final long serialVersionUID = 1L;
-
     /**
      * 权限ID
      */
-    @TableId(value = "menu_id", type = IdType.AUTO)
     private Integer menuId;
     /**
      * 父目录ID
      */
-    @TableField("parent_id")
     private Integer parentId;
     /**
      * 权限类型 0=菜单/1=功能/2=操作
      */
-    @TableField("menu_type")
     private Integer menuType;
     /**
      * 目录标识
      */
-    @TableField("menu_sign")
     private String menuSign;
     /**
      * 目录名称
      */
-    @TableField("menu_name")
     private String menuName;
     /**
      * 排序码
@@ -159,25 +143,4 @@ public class Menu extends Model<Menu> {
         this.remarks = remarks;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.menuId;
-    }
-
-    @Override
-    public String toString() {
-        return "Menu{" +
-        ", menuId=" + menuId +
-        ", parentId=" + parentId +
-        ", menuType=" + menuType +
-        ", menuSign=" + menuSign +
-        ", menuName=" + menuName +
-        ", sort=" + sort +
-        ", href=" + href +
-        ", icon=" + icon +
-        ", status=" + status +
-        ", permission=" + permission +
-        ", remarks=" + remarks +
-        "}";
-    }
 }

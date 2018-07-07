@@ -14,7 +14,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Hattori
- * @since 2018-07-04
+ * @since 2018-07-07
  */
 @TableName("crm_category")
 public class Category extends Model<Category> {
@@ -37,10 +37,6 @@ public class Category extends Model<Category> {
     @TableField("category_name")
     private String categoryName;
     /**
-     * 排序
-     */
-    private Integer sort;
-    /**
      * 目录类型 2=二级目录/1=一级目录/0=总目录
      */
     private Integer type;
@@ -58,20 +54,10 @@ public class Category extends Model<Category> {
     @TableField("create_time")
     private Date createTime;
     /**
-     * 创建者
-     */
-    @TableField("create_by")
-    private Integer createBy;
-    /**
      * 更新时间
      */
     @TableField("update_time")
     private Date updateTime;
-    /**
-     * 更新者
-     */
-    @TableField("update_by")
-    private Integer updateBy;
 
 
     public Integer getCategoryId() {
@@ -96,14 +82,6 @@ public class Category extends Model<Category> {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
     }
 
     public Integer getType() {
@@ -138,28 +116,12 @@ public class Category extends Model<Category> {
         this.createTime = createTime;
     }
 
-    public Integer getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(Integer createBy) {
-        this.createBy = createBy;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(Integer updateBy) {
-        this.updateBy = updateBy;
     }
 
     @Override
@@ -173,14 +135,11 @@ public class Category extends Model<Category> {
         ", categoryId=" + categoryId +
         ", parentId=" + parentId +
         ", categoryName=" + categoryName +
-        ", sort=" + sort +
         ", type=" + type +
         ", status=" + status +
         ", remarks=" + remarks +
         ", createTime=" + createTime +
-        ", createBy=" + createBy +
         ", updateTime=" + updateTime +
-        ", updateBy=" + updateBy +
         "}";
     }
 }

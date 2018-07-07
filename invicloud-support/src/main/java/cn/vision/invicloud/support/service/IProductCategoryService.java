@@ -1,7 +1,10 @@
 package cn.vision.invicloud.support.service;
 
+import cn.vision.invicloud.support.entity.Product;
 import cn.vision.invicloud.support.entity.ProductCategory;
 import com.baomidou.mybatisplus.service.IService;
+
+import java.util.List;
 
 /**
  * <p>

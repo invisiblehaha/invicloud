@@ -70,8 +70,8 @@ public class MpGenerator {
         });
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("HattoriW");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/invicloud?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&useSSL=false");
+        dsc.setPassword("root");
+        dsc.setUrl("jdbc:mysql://localhost:3306/invicloud?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&useSSL=false");
         mpg.setDataSource(dsc);
 
         // 策略配置

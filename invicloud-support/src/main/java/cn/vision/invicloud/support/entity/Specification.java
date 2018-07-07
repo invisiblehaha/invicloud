@@ -15,7 +15,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Hattori
- * @since 2018-07-04
+ * @since 2018-07-07
  */
 @TableName("crm_specification")
 public class Specification extends Model<Specification> {
@@ -42,11 +42,6 @@ public class Specification extends Model<Specification> {
      */
     @TableField("create_time")
     private Date createTime;
-    /**
-     * 创建者
-     */
-    @TableField("create_by")
-    private String createBy;
 
 
     public Integer getSpecificationId() {
@@ -81,14 +76,6 @@ public class Specification extends Model<Specification> {
         this.createTime = createTime;
     }
 
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
     @Override
     protected Serializable pkVal() {
         return this.specificationId;
@@ -101,7 +88,6 @@ public class Specification extends Model<Specification> {
         ", categoryId=" + categoryId +
         ", specificationName=" + specificationName +
         ", createTime=" + createTime +
-        ", createBy=" + createBy +
         "}";
     }
 }

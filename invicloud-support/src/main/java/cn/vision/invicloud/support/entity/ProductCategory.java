@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Hattori
- * @since 2018-07-04
+ * @since 2018-07-07
  */
 @TableName("crm_product_category")
 public class ProductCategory extends Model<ProductCategory> {
@@ -34,11 +34,6 @@ public class ProductCategory extends Model<ProductCategory> {
      */
     @TableField("create_time")
     private Date createTime;
-    /**
-     * 创建者
-     */
-    @TableField("create_by")
-    private Integer createBy;
 
 
     public Integer getProductId() {
@@ -65,14 +60,6 @@ public class ProductCategory extends Model<ProductCategory> {
         this.createTime = createTime;
     }
 
-    public Integer getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(Integer createBy) {
-        this.createBy = createBy;
-    }
-
     @Override
     protected Serializable pkVal() {
         return null;
@@ -84,7 +71,6 @@ public class ProductCategory extends Model<ProductCategory> {
         ", productId=" + productId +
         ", categoryId=" + categoryId +
         ", createTime=" + createTime +
-        ", createBy=" + createBy +
         "}";
     }
 }

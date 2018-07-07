@@ -1,4 +1,4 @@
-package cn.vision.invicloud.web.controller;
+package cn.vision.invicloud.web.controller.system;
 
 import cn.vision.invicloud.web.common.WebResult;
 import cn.vision.invicloud.web.common.enums.CommonReturnCode;

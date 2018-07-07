@@ -14,7 +14,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Hattori
- * @since 2018-07-04
+ * @since 2018-07-07
  */
 @TableName("crm_user")
 public class User extends Model<User> {
@@ -72,20 +72,10 @@ public class User extends Model<User> {
     @TableField("create_time")
     private Date createTime;
     /**
-     * 创建者ID
-     */
-    @TableField("create_by")
-    private Integer createBy;
-    /**
      * 更新时间
      */
     @TableField("update_time")
     private Date updateTime;
-    /**
-     * 更新者ID
-     */
-    @TableField("update_by")
-    private Integer updateBy;
 
 
     public Integer getUserId() {
@@ -176,28 +166,12 @@ public class User extends Model<User> {
         this.createTime = createTime;
     }
 
-    public Integer getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(Integer createBy) {
-        this.createBy = createBy;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(Integer updateBy) {
-        this.updateBy = updateBy;
     }
 
     @Override
@@ -219,9 +193,7 @@ public class User extends Model<User> {
         ", status=" + status +
         ", telephone=" + telephone +
         ", createTime=" + createTime +
-        ", createBy=" + createBy +
         ", updateTime=" + updateTime +
-        ", updateBy=" + updateBy +
         "}";
     }
 }
