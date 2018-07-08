@@ -1,5 +1,7 @@
 package cn.vision.invicloud.support.service.impl;
 
+import cn.vision.invicloud.support.common.BasePageDTO;
+import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Log;
 import cn.vision.invicloud.support.mapper.LogMapper;
 import cn.vision.invicloud.support.service.ILogService;
@@ -7,6 +9,8 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -23,7 +27,11 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, Log> implements ILogS
     private LogMapper logMapper;
 
     @Override
-    public Page<Log> listByPage(Page<Log> page, String search) {
-        return page.setRecords(logMapper.selectPageBySearch(page,search));
+    public BasePageDTO<Log> listByPage(PageInfo pageInfo, String search) {
+        Page<Log> page = new Page<>(pageInfo.getCurrent(), pageInfo.getLimit());
+        List<Log> adverts = logMapper.listByPage(pageInfo, search, page);
+        pageInfo.setTotal((int)page.getTotal());
+        return new BasePageDTO<Log>(pageInfo, adverts);
     }
+
 }

@@ -27,7 +27,7 @@ public class Log extends Model<Log> {
     @TableId(value = "log_id", type = IdType.AUTO)
     private Long logId;
     /**
-     * 管理员ID
+     * 用户ID
      */
     @TableField("user_id")
     private Integer userId;

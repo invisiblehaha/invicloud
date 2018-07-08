@@ -17,4 +17,21 @@
         <result column="remarks" property="remarks" />
     </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        menu_id AS menuId, parent_id AS parentId, menu_type AS menuType, menu_sign AS menuSign, menu_name AS menuName, sort, href, icon, status, permission, remarks
+    </sql>
+
+    <!-- 根据目录类型查询目录列表 -->
+    <select id="listByType" resultType="cn.vision.invicloud.support.entity.Menu">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_menu
+        WHERE
+        menu_type = #{menuType}
+        ORDER BY
+        sort ASC
+    </select>
+
 </mapper>

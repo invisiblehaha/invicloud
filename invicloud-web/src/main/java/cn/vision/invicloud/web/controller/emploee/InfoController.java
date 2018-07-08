@@ -2,13 +2,12 @@ package cn.vision.invicloud.web.controller.emploee;
 
 import cn.vision.invicloud.support.entity.Role;
 import cn.vision.invicloud.support.entity.User;
+import cn.vision.invicloud.support.pojo.vo.UserVO;
 import cn.vision.invicloud.support.service.IUserRoleService;
 import cn.vision.invicloud.support.service.IUserService;
 import cn.vision.invicloud.web.common.WebResult;
 import cn.vision.invicloud.web.common.enums.CommonReturnCode;
-import cn.vision.invicloud.web.common.enums.StatusEnum;
 import cn.vision.invicloud.web.common.utils.LoginUtils;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +21,7 @@ import java.util.List;
  * @Description:
  */
 @Controller
-@RequestMapping(value = "/administrator/info")
+@RequestMapping(value = "/user/info")
 public class InfoController {
 
     @Autowired
@@ -31,31 +30,32 @@ public class InfoController {
     private IUserRoleService userRoleService;
 
     /**
-     * GET 个人信息页面
+     * GET 用户个人信息
      * @return
      */
     @GetMapping(value = "/view")
     public String getInfoPage(Model model) {
-        // 个人信息
-        User user = userService.getById(LoginUtils.getUserId());
-        model.addAttribute("user", user);
 
-        // 角色
-        List<Role> roles = userRoleService.listByUserId(LoginUtils.getUserId(),StatusEnum.NORMAL.getStatus());
+        // 用户信息
+        UserVO userVO = userService.getById(LoginUtils.getUserId());
+        model.addAttribute("user", userVO);
+
+        // 用户权限
+        List<Role> roles = userRoleService.listByUserId(LoginUtils.getUserId());
         model.addAttribute("roles", roles);
 
         return "";
     }
 
     /**
-     * PUT 更新个人信息
+     * PUT 更新用户信息
      * @return
      */
     @PutMapping(value = "/edit")
     @ResponseBody
     public Object updateUser(User user) {
-        if (user != null) {
-            user.setUserId(LoginUtils.getUserId());
+        if (LoginUtils.getUser() != null) {
+            user.setUserId(LoginUtils.getUser().getUserId());
             int count = userService.updateByUserId(user);
             return new WebResult(CommonReturnCode.SUCCESS);
         } else {
@@ -64,18 +64,21 @@ public class InfoController {
     }
 
     /**
-     * POST 修改管理员密码
+     * POST 修改用户密码
      * @return
      */
     @PutMapping(value = "/edit/psw")
     @ResponseBody
     public Object updatePwd(@RequestParam("nowPassword") String nowPassword,@RequestParam("newPassword") String newPassword) {
-        User user= LoginUtils.getUser();
+        //希望传进来的没问题
+        User user = LoginUtils.getUser();
         if (user != null) {
-            Integer count = userService.updatePassword(user.getUserName(),nowPassword, newPassword);
-            return new WebResult(CommonReturnCode.SUCCESS);
-        } else {
-            return new WebResult(CommonReturnCode.UNAUTHORIZED);
+                Integer count = userService.updatePsw(nowPassword, newPassword, user.getUserId(),
+                        user.getUserName());
+                if(count!=-1)
+                return new WebResult(CommonReturnCode.SUCCESS);
         }
+            return new WebResult(CommonReturnCode.UNAUTHORIZED);
+
     }
 }

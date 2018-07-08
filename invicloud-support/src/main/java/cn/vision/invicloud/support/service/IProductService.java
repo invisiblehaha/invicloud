@@ -1,6 +1,7 @@
 package cn.vision.invicloud.support.service;
 
 import cn.vision.invicloud.support.entity.Product;
+import cn.vision.invicloud.support.pojo.vo.ProductVO;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
@@ -14,9 +15,9 @@ import com.baomidou.mybatisplus.service.IService;
 public interface IProductService extends IService<Product> {
 
     /**
-     * 根据商品序号查找商品
-     * @param productId 商品序号
+     * 根据商品编号和状态查找商品
+     * @param productId 商品Id
      * @return
      */
-    Product getById(Long productId);
+    ProductVO getById(Integer productId);
 }

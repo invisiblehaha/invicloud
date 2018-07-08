@@ -16,4 +16,9 @@
         <result column="rank" property="rank" />
     </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        customer_id AS cusmoterId, customer_token AS customerToken, real_name AS realName, sex, age, pic_img AS picImg, status, telephone, regeist_time AS regeistTime, rank
+    </sql>
+
 </mapper>

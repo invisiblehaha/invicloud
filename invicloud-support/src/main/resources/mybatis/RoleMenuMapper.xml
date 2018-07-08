@@ -7,9 +7,79 @@
         <result column="role_id" property="roleId" />
         <result column="menu_id" property="menuId" />
         <result column="create_time" property="createTime" />
-        <result column="create_by" property="createBy" />
-        <result column="update_time" property="updateTime" />
-        <result column="update_by" property="updateBy" />
     </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        role_id AS roleId, menu_id AS menuId, create_time AS createTime
+    </sql>
+
+    <!-- 插入角色目录表记录 -->
+    <insert id="insertRoleMenus" parameterType="java.util.List">
+        INSERT INTO crm_role_menu(
+        role_id,
+        menu_id,
+        create_time
+        )VALUES
+        <foreach collection="roleMenus" item="roleMenu" separator=",">
+            (
+            #{roleMenu.roleId},
+            #{roleMenu.menuId},
+            #{roleMenu.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 根据角色ID列表查找权限列表 -->
+    <select id="listByRoleIds" resultType="cn.vision.invicloud.support.pojo.dto.RoleMenuDTO">
+        SELECT
+        r.menu_id AS menuId,
+        m.permission
+        FROM
+        crm_role_menu r
+        LEFT JOIN
+        crm_menu m
+        ON
+        r.menu_id = m.menu_id
+        WHERE
+        r.role_id IN
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </select>
+
+    <!-- 根据角色ID/目录类型查找权限列表 -->
+    <select id="listByRoleIdsAndType" resultType="cn.vision.invicloud.support.pojo.dto.RoleMenuDTO">
+        SELECT
+        m.menu_id AS menuId,
+        parent_id AS parentId,
+        menu_name AS menuName,
+        permission,
+        href,
+        icon
+        FROM
+        crm_menu m
+        LEFT JOIN crm_role_menu r ON r.menu_id = m.menu_id
+        AND menu_type = #{menuType}
+        AND r.role_id IN
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+        ORDER BY
+        sort ASC
+    </select>
+
+    <!-- 根据目录状态查询目录列表 -->
+    <select id="listRoleMenus" resultType="cn.vision.invicloud.support.pojo.dto.RoleMenuDTO">
+        SELECT
+            menu_id AS menuId,
+            parent_id AS parentId,
+            menu_type AS menuType,
+            menu_name AS menuName,
+            permission
+        FROM
+            crm_menu
+        ORDER BY
+            sort ASC
+    </select>
 </mapper>

@@ -3,8 +3,12 @@ package cn.vision.invicloud.support.service.impl;
 import cn.vision.invicloud.support.entity.OrderProduct;
 import cn.vision.invicloud.support.mapper.OrderProductMapper;
 import cn.vision.invicloud.support.service.IOrderProductService;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +21,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderProductServiceImpl extends ServiceImpl<OrderProductMapper, OrderProduct> implements IOrderProductService {
 
+    @Autowired
+    private OrderProductMapper orderProductMapper;
+
+    @Override
+    public List<OrderProduct> listByOrderId(Long orderId) {
+        OrderProduct orderProduct = new OrderProduct();
+        orderProduct.setOrderId(orderId);
+        return orderProductMapper.selectList(new EntityWrapper<OrderProduct>(orderProduct));
+    }
 }

@@ -1,25 +1,39 @@
 package cn.vision.invicloud.support.mapper;
 
+import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.User;
+import cn.vision.invicloud.support.pojo.vo.UserVO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
 /**
  * <p>
- * 管理员表 Mapper 接口
+ * 用户表 Mapper 接口
  * </p>
  *
  * @author Hattori
  * @since 2018-07-04
  */
 public interface UserMapper extends BaseMapper<User> {
+
     /**
-     * 查询 : 根据state状态查询用户列表，分页显示
-     *
-     * @param page 翻页对象，可以作为 xml 参数直接使用，传递参数 Page 即自动分页
+     * 根据用户ID查找用户信息
+     * @param userId 用户ID
      * @return
      */
-    List<User> selectUserList(Pagination page);
+    UserVO getById(@Param("userId") Integer userId);
+
+
+    /**
+     * 根据分页信息/搜索内容查找用户列表
+     * @param pageInfo 分页信息
+     * @param search 搜索内容
+     * @param rowBounds 分页实体
+     * @return
+     */
+    List<UserVO> listByPage(@Param("pageInfo") PageInfo pageInfo, @Param("search") String search, RowBounds rowBounds);
+
 }

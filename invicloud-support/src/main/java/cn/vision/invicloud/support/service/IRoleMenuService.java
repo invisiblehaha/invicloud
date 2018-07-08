@@ -1,9 +1,9 @@
 package cn.vision.invicloud.support.service;
 
-import cn.vision.invicloud.support.entity.Menu;
 import cn.vision.invicloud.support.entity.Role;
 import cn.vision.invicloud.support.entity.RoleMenu;
-import cn.vision.invicloud.support.pojo.vo.MenuVO;
+import cn.vision.invicloud.support.pojo.dto.RoleMenuDTO;
+import cn.vision.invicloud.support.pojo.vo.RoleMenuVO;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
@@ -18,18 +18,31 @@ import java.util.Set;
  * @since 2018-07-04
  */
 public interface IRoleMenuService extends IService<RoleMenu> {
-    /**
-     * 更新角色信息以及角色权限
-     * @param role 角色信息
-     * @param menuIds 用户授权目录ID
-     * @return
-     */
-    Integer updateRole(Role role, Integer[] menuIds);
 
     /**
-     * 根据角色ID查找权限列表
-     * @param roleId 角色ID
-     * @return List<RoleMenu>
+     * 根据角色ID列表查找权限列表
+     * @param roleIds 角色ID列表
+     * @return Set<String>
      */
-    List<MenuVO> listByRoleId(Integer roleId);
+    Set<String> getByRolesId(Set<String> roleIds);
+
+    /**
+     * 根据用户ID查找系统目录
+     * @param userId 用户ID
+     * @return List<RoleMenuVO>
+     */
+    List<RoleMenuVO> listByUserId(Integer userId);
+
+    /**
+     * 根据目录状态查找系统目录
+     * @return List<RoleMenuDTO>
+     */
+    List<RoleMenuDTO> listRoleMenus();
+
+    /**
+     * 根据角色ID查找目录及其是否选中
+     * @param roleId 角色ID
+     * @return List<RoleMenuVO>
+     */
+    List<RoleMenuVO> listCheckedMenus(Integer roleId);
 }

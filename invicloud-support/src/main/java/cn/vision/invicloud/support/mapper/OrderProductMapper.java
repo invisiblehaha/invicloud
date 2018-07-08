@@ -2,6 +2,9 @@ package cn.vision.invicloud.support.mapper;
 
 import cn.vision.invicloud.support.entity.OrderProduct;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,4 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @since 2018-07-04
  */
 public interface OrderProductMapper extends BaseMapper<OrderProduct> {
-
 }

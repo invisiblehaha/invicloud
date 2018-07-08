@@ -13,9 +13,25 @@
         <result column="pic_img" property="picImg" />
         <result column="remarks" property="remarks" />
         <result column="create_time" property="createTime" />
-        <result column="create_by" property="createBy" />
         <result column="update_time" property="updateTime" />
-        <result column="update_by" property="updateBy" />
     </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        product_id AS productId, product_name AS productName, product_price AS productPrice,product_introduce AS productIntroduce,stock,status,pic_img AS picImg,remarks, create_time AS createTime, update_time AS updateTime
+    </sql>
+
+    <!-- 根据商品Id查找商品 -->
+    <select id="getById" resultType="cn.vision.invicloud.support.pojo.vo.ProductVO">
+        SELECT
+            p.product_id AS productId,
+            product_name AS productName,
+            product_price AS productPrice,
+            product_introduce AS productIntroduce,
+            stock,
+            pic_img AS picImg,
+            remarks
+        FROM
+            crm_product
+    </select>
 </mapper>

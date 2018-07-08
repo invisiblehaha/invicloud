@@ -1,14 +1,14 @@
 package cn.vision.invicloud.support.service;
 
+import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.User;
-import com.baomidou.mybatisplus.plugins.Page;
+import cn.vision.invicloud.support.pojo.dto.UserPageDTO;
+import cn.vision.invicloud.support.pojo.vo.UserVO;
 import com.baomidou.mybatisplus.service.IService;
-
-import java.util.List;
 
 /**
  * <p>
- * 管理员表 服务类
+ * 用户表 服务类
  * </p>
  *
  * @author Hattori
@@ -17,33 +17,34 @@ import java.util.List;
 public interface IUserService extends IService<User> {
 
     /**
-     * 创建用户并授予权限
-     * @param user 管理员信息
+     * 创建用户以及插入角色记录
+     * @param user 用户信息
      * @param roleIds 角色记录ID
      * @return
      */
-    Integer insertUser(User user, Integer[] roleIds);
+    Integer insertUser(User user, String[] roleIds);
 
     /**
      * 根据用户账号查找用户
-     * @param loginName 用户
+     * @param loginName 用户账号
      * @return
      */
     User getByLoginName(String loginName);
 
     /**
-     * 根据用户ID查找用户
+     * 根据用户ID查找用户信息
      * @param userId 用户ID
      * @return
      */
-    User getById(Integer userId);
+    UserVO getById(Integer userId);
 
     /**
      * 根据分页信息/搜索内容查找用户列表
-     * @param page 分页信息
+     * @param pageInfo 分页信息
+     * @param search 搜索内容
      * @return
      */
-    Page<User> selectUserPage(Page<User> page);
+    UserPageDTO listByPage(PageInfo pageInfo, String search);
 
     /**
      * 更新用户信息
@@ -53,16 +54,26 @@ public interface IUserService extends IService<User> {
     Integer updateByUserId(User user);
 
     /**
+     * 更新用户信息
+     * @param user 用户信息
+     * @param roleIds 角色记录ID
+     * @return
+     */
+    Integer updateUser(User user, String[] roleIds);
+
+    /**
      * 更新用户密码
      * @param nowPassword 密码
      * @param newPassword 新密码
-     * @param loginName 用户账号
+     * @param userId 用户ID
+     * @param userName 用户昵称
      * @return
      */
-    Integer updatePassword(String loginName,String nowPassword, String newPassword);
+    Integer updatePsw(String nowPassword, String newPassword, Integer userId, String userName);
+
 
     /**
-     * 根据用户ID删除用户
+     * 根据用户ID删除用户,同时删除角色记录、登录日志
      * @param userId 用户ID
      * @return
      */

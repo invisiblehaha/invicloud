@@ -1,7 +1,19 @@
 package cn.vision.invicloud.web.controller.emploee;
 
+import cn.vision.invicloud.support.common.BasePageDTO;
+import cn.vision.invicloud.support.common.PageInfo;
+import cn.vision.invicloud.support.entity.*;
+import cn.vision.invicloud.support.pojo.dto.RoleMenuDTO;
+import cn.vision.invicloud.support.pojo.dto.UserPageDTO;
+import cn.vision.invicloud.support.pojo.vo.RoleMenuVO;
+import cn.vision.invicloud.support.service.IRoleMenuService;
+import cn.vision.invicloud.support.service.IRoleService;
+import cn.vision.invicloud.support.service.IUserRoleService;
+import cn.vision.invicloud.web.common.WebPageResult;
+import cn.vision.invicloud.web.common.WebResult;
+import cn.vision.invicloud.web.common.enums.CommonReturnCode;
+import cn.vision.invicloud.web.common.utils.LoginUtils;
 import com.alibaba.fastjson.JSON;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +25,11 @@ import java.util.List;
  * @Author: Hattori
  * @Date: 2018/7/7 4:13
  * @Description:
- */@Controller
-@RequestMapping(value = "/administrator/role")
-@Api(value = "角色管理", description = "角色管理")
-public class RoleController{
+ */
+
+@Controller
+@RequestMapping(value = "/user/role")
+public class RoleController {
 
     @Autowired
     private IRoleService roleService;
@@ -30,11 +43,9 @@ public class RoleController{
      * @param model
      * @return
      */
-    @ApiOperation(value = "角色列表页面", notes = "角色列表页面")
-    @RequiresPermissions("administrator:role:view")
     @GetMapping(value = "/view")
     public String getRolePage(Model model) {
-        return "/modules/role/admin_role_list";
+        return "";
     }
 
     /**
@@ -43,64 +54,37 @@ public class RoleController{
      * @param search
      * @return
      */
-    @ApiOperation(value = "获取角色列表", notes = "根据分页信息/搜索内容获取角色列表")
-    @RequiresPermissions("administrator:role:view")
     @GetMapping(value = "/")
     @ResponseBody
     public Object listRole(PageInfo pageInfo, @RequestParam(required = false, value = "search") String search) {
         BasePageDTO<Role> basePageDTO = roleService.listByPage(pageInfo, search);
-        return new CmsPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());
+        return new WebPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());
     }
 
     /**
-     * GET 角色分类下管理员列表页面
+     * GET 角色分类下用户列表页面
      * @param roleId
      * @return
      */
-    @ApiOperation(value = "角色分类下管理员列表页面", notes = "角色分类下管理员列表页面")
-    @RequiresPermissions("administrator:role:view")
     @GetMapping(value = "/{roleId}/list")
     public String list(Model model, @PathVariable("roleId") Long roleId) {
         model.addAttribute("roleId", roleId);
-        return "/modules/role/admin_user_role";
+        return "";
     }
 
     /**
-     * GET 角色分类下管理员列表
+     * GET 角色分类下用户列表
      * @return
      */
-    @ApiOperation(value = "角色分类下管理员列表", notes = "根据分页信息/搜索内容查询角色分类下管理员列表")
-    @RequiresPermissions("administrator:list:view")
     @GetMapping(value = "/{roleId}/lists")
     @ResponseBody
-    public Object listLogs(@PathVariable("roleId") Long roleId, PageInfo pageInfo,
+    public Object listLogs(@PathVariable("roleId") Integer roleId, PageInfo pageInfo,
                            @RequestParam(required = false, value = "search") String search) {
-        AuthorizingUser authorizingUser = SingletonLoginUtils.getUser();
 
-        if (authorizingUser != null) {
-            // 用户日志
+        if (LoginUtils.getUser() != null) {
             UserPageDTO userPageDTO = userRoleService.listByRoleId(roleId, pageInfo, search);
-            return new CmsPageResult(userPageDTO.getUserVOs(),
+            return new WebPageResult(userPageDTO.getUserVOs(),
                     userPageDTO.getPageInfo().getTotal());
-        } else {
-            return new WebResult(CommonReturnCode.UNAUTHORIZED);
-        }
-    }
-
-    /**
-     * PUT 启用/冻结角色
-     * @param roleId 角色ID
-     * @return
-     */
-    @ApiOperation(value = "启用/冻结角色", notes = "根据url角色ID启动/冻结角色")
-    @RequiresPermissions("administrator:role:audit")
-    @PutMapping(value = "/{roleId}/audit")
-    @ResponseBody
-    public Object audit(@PathVariable("roleId") Long roleId) {
-        AuthorizingUser authorizingUser = SingletonLoginUtils.getUser();
-        if (authorizingUser != null) {
-            Integer count = roleService.updateStatus(roleId);
-            return new WebResult(CommonReturnCode.SUCCESS, count);
         } else {
             return new WebResult(CommonReturnCode.UNAUTHORIZED);
         }
@@ -111,15 +95,12 @@ public class RoleController{
      * @param roleId 角色ID
      * @return
      */
-    @ApiOperation(value = "删除角色", notes = "根据url角色ID删除角色")
-    @RequiresPermissions("administrator:role:delete")
     @DeleteMapping(value = "/{roleId}")
     @ResponseBody
-    public Object delete(@PathVariable("roleId") Long roleId) {
-        AuthorizingUser authorizingUser = SingletonLoginUtils.getUser();
-        if (authorizingUser != null) {
+    public Object delete(@PathVariable("roleId") Integer roleId) {
+        if (LoginUtils.getUser() != null) {
             Integer count = roleService.deleteByRoleId(roleId);
-            return new WebResult(CommonReturnCode.SUCCESS, count);
+            return new WebResult(CommonReturnCode.SUCCESS);
         } else {
             return new WebResult(CommonReturnCode.UNAUTHORIZED);
         }
@@ -129,32 +110,27 @@ public class RoleController{
      * GET 创建角色页面
      * @return
      */
-    @ApiOperation(value = "创建角色页面", notes = "创建角色页面")
-    @RequiresPermissions("administrator:role:create")
     @GetMapping(value = "/create")
     public String getInsertPage(Model model) {
-        List<RoleMenuDTO> menus = roleMenuService.listRoleMenus(StatusEnum.SHOW.getStatus());
+        List<RoleMenuDTO> menus = roleMenuService.listRoleMenus();
         model.addAttribute("menus", JSON.toJSON(menus));
-        return "/modules/role/admin_role_create";
+        return "";
     }
 
     /**
      * POST 创建角色
      * @return
      */
-    @ApiOperation(value = "创建角色", notes = "创建角色")
-    @RequiresPermissions("administrator:role:create")
     @PostMapping(value = "")
     @ResponseBody
     public Object insert(Role role, @RequestParam(required = false, value = "menuIds") String menuId) {
 
         String[] menuIds = menuId.split(",");
 
-        AuthorizingUser authorizingUser = SingletonLoginUtils.getUser();
-        if (authorizingUser != null) {
-            // 创建角色及插入角色目录记录
-            Integer count = roleService.insertRole(role, menuIds, authorizingUser.getUserName());
-            return new WebResult(CommonReturnCode.SUCCESS, count);
+        User user = LoginUtils.getUser();
+        if (user != null) {
+            Integer count = roleService.insertRole(role, menuIds);
+            return new WebResult(CommonReturnCode.SUCCESS);
         } else {
             return new WebResult(CommonReturnCode.UNAUTHORIZED);
         }
@@ -164,39 +140,36 @@ public class RoleController{
      * GET 更新角色页面
      * @return
      */
-    @ApiOperation(value = "更新角色页面", notes = "更新角色页面")
-    @RequiresPermissions("administrator:role:edit")
     @GetMapping(value = "/{roleId}/edit")
-    public String getUpdatePage(Model model, @PathVariable("roleId") Long roleId) {
+    public String getUpdatePage(Model model, @PathVariable("roleId") Integer roleId) {
         // 目录是否选中
-        List<RoleMenuVO> menus = roleMenuService.listCheckedMenus(roleId, StatusEnum.SHOW.getStatus());
+        List<RoleMenuVO> menus = roleMenuService.listCheckedMenus(roleId);
         model.addAttribute("menus", JSON.toJSON(menus));
 
         // 角色信息
         Role role = roleService.selectById(roleId);
         model.addAttribute("role", role);
 
-        return "/modules/role/admin_role_update";
+        return "";
     }
 
     /**
      * PUT 更新角色信息
      * @return
      */
-    @ApiOperation(value = "更新角色信息", notes = "根据url角色ID来指定更新对象,并根据传过来的角色信息来更新角色信息")
-    @RequiresPermissions("administrator:role:edit")
     @PutMapping(value = "/{roleId}")
     @ResponseBody
     public Object update(Role role, @PathVariable("roleId") Long roleId,
                          @RequestParam(required = false, value = "menuIds") String menuId) {
         String[] menuIds = menuId.split(",");
 
-        AuthorizingUser authorizingUser = SingletonLoginUtils.getUser();
-        if (authorizingUser != null) {
+        User user = LoginUtils.getUser();
+        if (user != null) {
             // 更新用户及角色记录
-            Integer count = roleService.updateRole(role, menuIds, authorizingUser.getUserName());
-            return new WebResult(CommonReturnCode.SUCCESS, count);
+            Integer count = roleService.updateRole(role, menuIds);
+            return new WebResult(CommonReturnCode.SUCCESS);
         } else {
             return new WebResult(CommonReturnCode.UNAUTHORIZED);
         }
     }
+}

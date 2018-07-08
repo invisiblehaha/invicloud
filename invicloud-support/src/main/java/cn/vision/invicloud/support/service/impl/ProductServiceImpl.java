@@ -2,8 +2,10 @@ package cn.vision.invicloud.support.service.impl;
 
 import cn.vision.invicloud.support.entity.Product;
 import cn.vision.invicloud.support.mapper.ProductMapper;
+import cn.vision.invicloud.support.pojo.vo.ProductVO;
 import cn.vision.invicloud.support.service.IProductService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +19,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements IProductService {
 
+    @Autowired
+    private ProductMapper productMapper;
+
+
+    @Override
+    public ProductVO getById(Integer productId) {
+        return productMapper.getById(productId);
+    }
 }

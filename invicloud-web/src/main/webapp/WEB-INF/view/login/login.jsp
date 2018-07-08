@@ -33,10 +33,10 @@
     <div>
         <label for="registerCode">Enter registercode: </label>
         <input type="text" name="registerCode" id="registerCode" required>
-        <img src="${ctx}\captcha-image.jpg" alt="registerCode" onclick="refreshImg()"/>
+        <img id="registerPic" src="${ctx}\captcha-image.jpg" alt="registerCode"/>
     </div>
     <div>
-        <Button type="button" id="btn_submit">"Submit!"</Button>
+        <Button type="button" id="btn_submit">Submit!</Button>
     </div>
 </form>
 

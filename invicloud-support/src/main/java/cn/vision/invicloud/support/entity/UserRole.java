@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 管理员角色关联表
+ * 用户角色关联表
  * </p>
  *
  * @author Hattori
@@ -25,7 +25,7 @@ public class UserRole extends Model<UserRole> {
     @TableField("role_id")
     private Integer roleId;
     /**
-     * 管理员ID
+     * 用户ID
      */
     @TableField("user_id")
     private Integer userId;

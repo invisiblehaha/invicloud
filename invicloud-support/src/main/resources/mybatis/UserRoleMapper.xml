@@ -7,9 +7,73 @@
         <result column="role_id" property="roleId" />
         <result column="user_id" property="userId" />
         <result column="create_time" property="createTime" />
-        <result column="create_by" property="createBy" />
         <result column="update_time" property="updateTime" />
-        <result column="update_by" property="updateBy" />
     </resultMap>
 
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        role_id AS roleId, user_id AS userId, create_time AS createTime, update_time AS updateTime
+    </sql>
+
+    <!-- 插入用户角色记录 -->
+    <insert id="insertUserRoles" parameterType="java.util.List">
+        InSERT INTO crm_user_role(
+        role_id,
+        user_id
+        )VALUES
+        <foreach collection="userRoles" item="userRole" separator=",">
+            (
+            #{userRole.roleId},
+            #{userRole.userId}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 根据用户ID查找角色ID列表 -->
+    <select id="listByUserId" resultType="cn.vision.invicloud.support.entity.Role">
+        SELECT
+        r.role_id AS roleId,
+        role_name AS roleName,
+        role_sign AS roleSign,
+        is_system AS isSystem
+        FROM
+        crm_user_role u
+        LEFT JOIN crm_role r ON u.role_id = r.role_id
+        <where>
+            1=1
+            <if test="userId != null">
+                AND user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据角色ID查找用户列表 -->
+    <select id="listByRoleId" resultType="cn.vision.invicloud.support.pojo.vo.UserVO">
+        SELECT
+        r.user_id AS userId,
+        login_name AS loginName,
+        login_password AS loginPassword,
+        salt, user_name AS userName,
+        sex,
+        age,
+        pic_img AS picImg,
+        status,
+        telephone
+        FROM
+        crm_user_role r
+        LEFT JOIN crm_user u ON r.user_id = u.user_id
+        <where>
+            role_id = #{roleId}
+            <if test="search != null">
+                AND (
+                user_name LIKE '%' #{search} '%'
+                OR telephone LIKE '%' #{search} '%'
+                )
+            </if>
+            <if test="pageInfo.sort != null">
+                ORDER BY ${pageInfo.sort} ${pageInfo.order}
+            </if>
+        </where>
+    </select>
 </mapper>

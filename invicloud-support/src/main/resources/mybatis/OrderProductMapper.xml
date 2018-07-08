@@ -10,4 +10,8 @@
         <result column="pay_amount" property="payAmount" />
     </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        order_id AS orderId, product_id AS productId, buy_amount AS buyAmount, product_amount AS productAmount
+    </sql>
 </mapper>

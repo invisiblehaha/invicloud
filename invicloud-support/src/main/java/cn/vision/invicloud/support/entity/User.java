@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 管理员表
+ * 用户表
  * </p>
  *
  * @author Hattori

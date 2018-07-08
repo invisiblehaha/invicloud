@@ -7,7 +7,33 @@
         <result column="product_id" property="productId" />
         <result column="category_id" property="categoryId" />
         <result column="create_time" property="createTime" />
-        <result column="create_by" property="createBy" />
     </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        product_id AS productId, category_id AS categoryId, create_time AS createTime
+    </sql>
+
+    <!-- 根据类目ID列表、分类、排序查找商品列表及标签（分类查找） -->
+    <select id="listByPage" resultType="cn.vision.invicloud.support.pojo.vo.ProductVO">
+        SELECT
+        p.product_id AS productId,
+        product_name AS productName,
+        product_price AS productPrice,
+        product_introduce AS productIntroduce,
+        stock,
+        pic_img AS picImg,
+        remarks
+        FROM
+        crm_product_category c
+        LEFT JOIN crm_product p ON c.product_id = p.product_id
+        WHERE
+        c.category_id IN
+        <foreach collection="categoryIds" item="categoryId" open="(" close=")" separator=",">
+            #{categoryId}
+        </foreach>
+        ORDER BY
+        ${pageInfo.sort} ${pageInfo.order}
+    </select>
 
 </mapper>
