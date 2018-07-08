@@ -17,19 +17,22 @@ public class RegisterServlet extends HttpServlet {
         String password=request.getParameter("password");
         String phone=request.getParameter("phone");
         String imgString=request.getParameter("img");
-        byte[] buff=Base64ToByteArr(imgString);
-        System.out.println(username);
-        /*try {
-            FaceUtil.checkFace(buff);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        byte[] buff=Base64ToByteArr(imgString);//byte64的图片转化到byte[]形式
+        //System.out.println(username);
+
         try{
+
+
             String detectResult = InterfaceOfAllAPIs.detect(buff);
-            System.out.println(detectResult);
-            String addResult = InterfaceOfAllAPIs.addOneFaceIntoFaceSet(detectResult,"FS_1");//add the face data into faceset "FS_1"
-            String searchResult = InterfaceOfAllAPIs.searchForUserId(buff,"FS_1");//return the best suit userid
+            /*String addResult = InterfaceOfAllAPIs.addOneFaceIntoFaceSet(detectResult,"FS_1");//add the face data into faceset "FS_1"
+            String bindResult = InterfaceOfAllAPIs.setUserIdForFaceToken(detectResult,"person_5");//将userid与detect的facetoken绑定*/
+
+
+           String searchResult = InterfaceOfAllAPIs.searchForUserId(buff,"FS_1");//return the best suit userid
             System.out.println(searchResult);
+
+            String faceSetMessage = InterfaceOfAllAPIs.getDetailsOfFaceSet("FS_1");
+            System.out.println(faceSetMessage);
         }
         catch (Exception e)
         {
