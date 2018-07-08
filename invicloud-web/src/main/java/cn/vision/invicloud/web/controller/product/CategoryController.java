@@ -29,7 +29,7 @@ public class CategoryController {
      */
     @GetMapping(value = "/view")
     public String getAdvertPage(Model model) {
-        return "/view/category/product_category_list";
+        return "/product/product_category_list";
     }
 
     /**

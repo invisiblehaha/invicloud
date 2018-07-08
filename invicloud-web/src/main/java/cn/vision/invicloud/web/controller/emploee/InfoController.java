@@ -21,7 +21,7 @@ import java.util.List;
  * @Description:
  */
 @Controller
-@RequestMapping(value = "/user/info")
+@RequestMapping(value = "/user/profile")
 public class InfoController {
 
     @Autowired

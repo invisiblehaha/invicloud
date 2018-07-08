@@ -59,7 +59,7 @@
             category_id AS categoryId,
             parent_id AS parentId,
             status,
-            NAME
+            category_name AS categoryName
         FROM
             crm_category
         WHERE
@@ -83,10 +83,7 @@
         parent_id = #{parentId}
         <if test="search != null">
             AND (
-            name LIKE '%' #{search} '%'
-            OR page_title LIKE '%' #{search} '%'
-            OR page_description LIKE '%' #{search} '%'
-            OR page_keyword LIKE '%' #{search} '%'
+            category_name LIKE '%' #{search} '%'
             OR remarks LIKE '%' #{search} '%'
             )
         </if>

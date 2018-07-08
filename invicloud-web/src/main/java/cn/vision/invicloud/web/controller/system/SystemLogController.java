@@ -33,7 +33,7 @@ public class SystemLogController {
      */
     @GetMapping(value = "/view")
     public String list(Model model) {
-        return "";
+        return "/system/log";
     }
 
     /**
