@@ -1,70 +1,95 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Hatto
+  User: 32072
   Date: 2018/7/9
-  Time: 1:01
+  Time: 15:59
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=utf-8" language="java"  %>
+
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
 <%@ include file="/WEB-INF/base.jsp" %>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>日志</title>
     <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
 </head>
-
 <body>
+
+
+
 <table id="table"></table>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
 <script src="${ctxsta}/bootstrap/js/popper.js"></script>
 <!-- Bootstrap table -->
 <script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
 <script src="${ctxsta}/bootstrap-table/dist/bootstrap-table.js"></script>
 <script src="${ctxsta}/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
-<!-- 自定义js -->
+
 <script>
     baselocation="${ctx}";
     var $table = $('#table');
     $(function () {
         $table.bootstrapTable({
-            url: baselocation + '/system/log/',
+            url: baselocation + '/order/order/',
             height: '650',
-            striped: true,
             search: true,
-            showRefresh: true,
-            showColumns: true,
+            striped: true,
             minimumCountColumns: 2,
+            showRefresh: true,
+//            showColumns: true,
+            uniqueId: "orderId",
             clickToSelect: true,
             detailView: true,
             detailFormatter: 'detailFormatter',
             pagination: true,
             paginationLoop: false,
             sidePagination: 'server',
-            pageSize: '20',
+            pageSize: 20,
             silentSort: false,
             smartDisplay: false,
             escape: true,
             searchOnEnterKey: true,
-            idField: 'logId',
+            idField: 'orderId',
             maintainSelected: true,
-            sortName: 'logId',
+            sortName: 'orderId',
             sortOrder: 'desc',
-            columns: [
-                {field: 'logId', title: '编号', sortable: true, align: 'center', halign: 'center'},
-                {field: 'userId', title: '操作用户', align: 'center', halign: 'center'},
-                {field: 'createTime', title: '操作时间', formatter: "timeFormatter", halign: 'center'},
-                {field: 'spendTime', title: '耗时', align: 'center', sortable: true, halign: 'center'},
-                {field: 'url', title: '请求路径', halign: 'center'},
-                {field: 'method', title: '请求类型', align: 'center', halign: 'center'},
-                {field: 'userAgent', title: '用户标识', halign: 'center'},
-                {field: 'userIp', title: 'IP地址', align: 'center', halign: 'center'}
+            columns: [{
+                field: 'orderId',
+                title: '订单编号',
+                halign: 'center',
+                align: 'center',
+                sortable: 'true'
+            }, {
+                field: 'customerId',
+                title: '客户编号',
+                halign: 'center',
+                align: 'center',
+                sortable: 'true'
+            }, {
+                field: 'payType',
+                title: '付款类型',
+                halign: 'center',
+                align: 'center',
+                sortable: 'false'
+            }, {
+                field: 'buyAmount',
+                title: '购买数量',
+                halign: 'center',
+                align: 'center',
+                sortable: 'true'
+            }, {
+                field: 'payAmount',
+                title: '购买金额',
+                halign: 'center',
+                align: 'center',
+                sortable: 'true'
+            }
             ]
         });
     });
-
     function detailFormatter(index, row) {
         var html = [];
         $.each(row, function (key, value) {
