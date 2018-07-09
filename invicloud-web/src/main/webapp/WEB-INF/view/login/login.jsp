@@ -10,6 +10,10 @@
 <html>
 <head>
     <title>invicloud登陆页面</title>
+</head>
+
+<head>
+    <title>invicloud登陆页面</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript">baselocation="${ctx}"</script>

@@ -1,9 +1,13 @@
 package cn.vision.invicloud.support.mapper;
 
+import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Product;
 import cn.vision.invicloud.support.pojo.vo.ProductVO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
+
+import java.util.List;
 
 /**
  * <p>
@@ -21,4 +25,7 @@ public interface ProductMapper extends BaseMapper<Product> {
      * @return
      */
     ProductVO getById(@Param("productNumber") Integer productId);
+
+    List<Product> list(@Param("pageInfo") PageInfo pageInfo,
+                       @Param("search") String search, RowBounds rowBounds);
 }

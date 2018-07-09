@@ -1,26 +1,28 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hatto
-  Date: 2018/7/8
-  Time: 8:30
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
 <%@ include file="/WEB-INF/base.jsp" %>
+<%
+    //{pageContext.request.ContextPath}
+    String path = request.getContextPath();
+    // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+    // 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
+    // pageContext.setAttribute("basePath", basePath);
+%>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="<%=basePath%>static/bootstrap-table/dist/bootstrap-table.min.css"/>
 </head>
-<body>
 
+<body>
 <table id="table"
        data-toggle="table"
        data-height="600"
        data-search="true"
        data-show-refresh="true"
        data-show-toggle="true"
-       data-show-export="true"
+       <%--data-show-export="true"--%>
        data-show-pagination-switch="true"
        data-show-columns="true"
        data-detail-view="true"
@@ -41,10 +43,10 @@
             data-sortable="true">分类名称
         </th>
         <th data-field="remarks" data-halign="center" data-align="center"
-            data-sortable="false">备注
+            data-sortable="true">备注
         </th>
         <th data-field="updateTime" data-halign="center" data-align="center"
-            data-sortable="true">修改时间
+            data-sortable="false">更新时间
         </th>
     </tr>
     </thead>
@@ -52,19 +54,14 @@
 
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-
 <!-- Bootstrap table -->
-<script src="${ctxsta}/bootstrap-table/dist/bootstrap-table.js"></script>
-<script src="${ctxsta}/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
-<script src="${ctxsta}/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
-<script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
-
+<script src="<%=basePath%>static/bootstrap-table/dist/bootstrap-table.js"></script>
+<script src="<%=basePath%>static/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+<script src="<%=basePath%>static/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+<script src="<%=basePath%>static/bootstrap/js/bootstrap.js"></script>
 <!-- 自定义js -->
 <script>
     baselocation=${ctx};
-    function detailFormatter(index, row, $detail) {
-        InitSubTable(index, row, $detail);
-    }
     InitSubTable = function (index, row, $detail) {
         var parentid = row.categoryId;
         var cur_table = $detail.html('<table></table>').find('table');
@@ -95,13 +92,12 @@
                 title: '备注',
                 halign: 'center',
                 align: 'center',
-                sortable: 'false'
+                sortable: 'true'
             }, {
                 field: 'updateTime',
-                title: '修改时间',
+                title: '更新时间',
                 halign: 'center',
                 align: 'center',
-                sortable: 'true'
             },],
             onExpandRow: function (index, row, $Subdetail) {
                 oInit.InitSubTable(index, row, $Subdetail);
