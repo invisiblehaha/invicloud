@@ -13,13 +13,13 @@
 <html>
 <head>
     <title>Title</title>
-    <a href="<%=basePath%>product/category/view">商品分类</a>
-    <a href="<%=basePath%>product/product/view">商品</a>
-    <a href="<%=basePath%>system/log/view">日志</a>
-    <a href="<%=basePath%>order/order/view">订单</a>
-    <a href="<%=basePath%>customer/customer/view">顾客</a>
+
 </head>
 <body>
-
+<a href="<%=basePath%>product/category/view">商品分类</a>
+<a href="<%=basePath%>product/product/view">商品</a>
+<a href="<%=basePath%>system/log/view">日志</a>
+<a href="<%=basePath%>order/order/view">订单</a>
+<a href="<%=basePath%>customer/customer/view">顾客</a>
 </body>
 </html>

@@ -8,7 +8,7 @@ $(function(){
             success : function(data) {
                 console.info(data);
                 if (data.code === 1) {
-                    window.location.href = baselocation + '/product/category/view';
+                    window.location.href = baselocation + '/index';
                 }
                 else alert('没输对吧，这里的具体错误实现过下写');
             }

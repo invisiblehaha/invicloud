@@ -35,6 +35,7 @@
         <property name="filterChainDefinitions">
             <!-- 路径基于HttpServletRequest.getContextPath() -->
             <value>
+                /resources/** = anon
                 /static/** = anon
                 /login = anon
                 /captcha-image.jpg = anon

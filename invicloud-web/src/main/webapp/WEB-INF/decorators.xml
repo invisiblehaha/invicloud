@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/">
+    <!-- 指定装饰器页面和需要被装饰的页面 -->
+    <decorator name="main" page="/WEB-INF/view/common/decorator.jsp">
+        <pattern>/*</pattern>
+        <pattern>/**/*</pattern>
+    </decorator>
+
+    <!-- 指定不需要被装饰的页面 -->
+    <excludes>
+        <pattern>/login</pattern>
+    </excludes>
+</decorators>
