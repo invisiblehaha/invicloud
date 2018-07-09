@@ -24,14 +24,14 @@ public interface CustomerMapper extends BaseMapper<Customer> {
      * @param customerToken 人脸标识
      * @return
      */
-    CustomerVO getByCustomerToken(String customerToken);
+    CustomerVO getByCustomerToken(@Param("customerToken")String customerToken);
 
     /**
      * 根据用户ID查找用户显示信息
      * @param customerId 用户ID
      * @return
      */
-    CustomerVO getById(Integer customerId);
+    CustomerVO getById(@Param("customerId")Integer customerId);
 
 
     /**
