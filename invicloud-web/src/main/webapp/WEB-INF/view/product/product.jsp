@@ -13,6 +13,7 @@
 <html>
 <head>
     <title>所有商品</title>
+
     <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
 </head>
@@ -72,6 +73,7 @@
         });
         return html.join('');
     }
+
 
 
     function timeFormatter(stamp) {

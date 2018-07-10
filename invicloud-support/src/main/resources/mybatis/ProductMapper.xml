@@ -34,4 +34,22 @@
         FROM
             crm_product
     </select>
+
+    <!-- 根据分页信息/搜索内容查找日志记录列表 -->
+    <select id="list" resultType="cn.vision.invicloud.support.entity.Product">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_product
+        WHERE
+        1=1
+        <if test="search != null">
+            AND (
+            product_name LIKE '%' #{search} '%'
+            )
+        </if>
+        <if test="pageInfo.sort != null">
+            ORDER BY ${pageInfo.sort} ${pageInfo.order}
+        </if>
+    </select>
 </mapper>
