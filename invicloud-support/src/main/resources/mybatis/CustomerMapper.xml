@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.vision.invicloud.support.mapper.CustomerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.vision.invicloud.support.entity.Customer">
+        <id column="customer_id" property="customerId" />
+        <result column="customer_token" property="customerToken" />
+        <result column="real_name" property="realName" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
+        <result column="pic_img" property="picImg" />
+        <result column="status" property="status" />
+        <result column="telephone" property="telephone" />
+        <result column="regeist_time" property="regeistTime" />
+        <result column="rank" property="rank" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        customer_id AS cusmoterId, customer_token AS customerToken, real_name AS realName, sex, age, pic_img AS picImg, status, telephone, regeist_time AS regeistTime, rank
+    </sql>
+    <select id="getByCustomerToken" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_customer
+        WHERE
+        customer_token=#{customerToken}
+    </select>
+
+
+    <select id="getById" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_customer
+        WHERE
+        customer_id=#{customerId}
+    </select>
+
+
+    <select id="listByPage" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_customer
+        <if test="rank != null">
+            WHERE rank=#{rank}
+        </if>
+        <if test="pageInfo.sort != null">
+            ORDER BY ${pageInfo.sort} ${pageInfo.order}
+        </if>
+    </select>
+
+
+</mapper>
