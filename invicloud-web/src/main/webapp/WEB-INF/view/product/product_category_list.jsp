@@ -12,7 +12,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="stylesheet" href="<%=basePath%>static/bootstrap-table/dist/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
 </head>
 
 <body>
@@ -22,7 +23,6 @@
        data-search="true"
        data-show-refresh="true"
        data-show-toggle="true"
-       <%--data-show-export="true"--%>
        data-show-pagination-switch="true"
        data-show-columns="true"
        data-detail-view="true"
@@ -45,8 +45,8 @@
         <th data-field="remarks" data-halign="center" data-align="center"
             data-sortable="true">备注
         </th>
-        <th data-field="updateTime" data-halign="center" data-align="center"
-            data-sortable="false">更新时间
+        <th data-field="updateTime" data-formatter="timeFormatter" data-halign="center" data-align="center"
+            data-sortable="true">修改时间
         </th>
     </tr>
     </thead>
@@ -54,14 +54,20 @@
 
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+
+<script src="${ctxsta}/bootstrap/js/popper.js"></script>
 <!-- Bootstrap table -->
-<script src="<%=basePath%>static/bootstrap-table/dist/bootstrap-table.js"></script>
-<script src="<%=basePath%>static/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
-<script src="<%=basePath%>static/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
-<script src="<%=basePath%>static/bootstrap/js/bootstrap.js"></script>
+<script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
+<script src="${ctxsta}/bootstrap-table/dist/bootstrap-table.js"></script>
+<script src="${ctxsta}/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+
 <!-- 自定义js -->
 <script>
-    baselocation=${ctx};
+    baselocation='${ctx}';
+    function detailFormatter(index, row, $detail) {
+        InitSubTable(index, row, $detail);
+    }
     InitSubTable = function (index, row, $detail) {
         var parentid = row.categoryId;
         var cur_table = $detail.html('<table></table>').find('table');
@@ -98,6 +104,8 @@
                 title: '更新时间',
                 halign: 'center',
                 align: 'center',
+                sortable: 'true',
+                formatter: 'timeFormatter'
             },],
             onExpandRow: function (index, row, $Subdetail) {
                 oInit.InitSubTable(index, row, $Subdetail);
@@ -105,6 +113,16 @@
         });
     };
 
+    function timeFormatter(stamp) {
+        var date = new Date(stamp);
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        var h = date.getHours();
+        var mi = date.getMinutes();
+        m = m > 9 ? m : '0' + m;
+        return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
+    }
 </script>
 </body>
 </html>

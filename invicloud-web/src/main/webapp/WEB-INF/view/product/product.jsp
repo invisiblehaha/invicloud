@@ -13,8 +13,9 @@
 <html>
 <head>
     <title>所有商品</title>
-    <link rel="stylesheet" href="<%=basePath%>static/bootstrap-table/dist/bootstrap-table.min.css"/>
 
+    <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
 </head>
 
 <body>
@@ -73,9 +74,18 @@
         return html.join('');
     }
 
-//    function timeFormatter(value) {
-//        return new Date(value).Format("yyyy-MM-dd HH:mm:ss");
-//    }
+
+
+    function timeFormatter(stamp) {
+        var date = new Date(stamp);
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        var h = date.getHours();
+        var mi = date.getMinutes();
+        m = m > 9 ? m : '0' + m;
+        return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
+    }
 </script>
 </body>
 </html>
