@@ -17,7 +17,6 @@
 <body>
 
 
-
 <table id="table"></table>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
@@ -97,6 +96,7 @@
         });
         return html.join('');
     }
+
 
     function timeFormatter(stamp) {
         var date = new Date(stamp);

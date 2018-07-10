@@ -1,13 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hatto
-  Date: 2018/7/9
-  Time: 1:01
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html; charset=utf-8" language="java"  %>
 <%@ include file="/WEB-INF/base.jsp" %>
-<!DOCTYPE HTML>
+<%
+    //{pageContext.request.ContextPath}
+    String path = request.getContextPath();
+    // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+    // 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
+    // pageContext.setAttribute("basePath", basePath);
+%>
 <html>
 <head>
     <title>日志</title>
@@ -16,6 +17,7 @@
 </head>
 
 <body>
+  
 <table id="table"></table>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
@@ -35,7 +37,7 @@
             striped: true,
             search: true,
             showRefresh: true,
-            showColumns: true,
+     //       showColumns: true,
             minimumCountColumns: 2,
             clickToSelect: true,
             detailView: true,
@@ -55,7 +57,7 @@
             columns: [
                 {field: 'logId', title: '编号', sortable: true, align: 'center', halign: 'center'},
                 {field: 'userId', title: '操作用户', align: 'center', halign: 'center'},
-                {field: 'createTime', title: '操作时间', formatter: "timeFormatter", halign: 'center'},
+                {field: 'createTime', title: '操作时间', align: 'center', halign: 'center'},
                 {field: 'spendTime', title: '耗时', align: 'center', sortable: true, halign: 'center'},
                 {field: 'url', title: '请求路径', halign: 'center'},
                 {field: 'method', title: '请求类型', align: 'center', halign: 'center'},
@@ -72,6 +74,7 @@
         });
         return html.join('');
     }
+
 
     function timeFormatter(stamp) {
         var date = new Date(stamp);

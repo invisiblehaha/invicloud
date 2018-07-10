@@ -13,7 +13,6 @@
 <html>
 <head>
     <title>Title</title>
-
 </head>
 <body>
 <a href="<%=basePath%>product/category/view">商品分类</a>
