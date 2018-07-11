@@ -74,4 +74,21 @@
             </if>
         </where>
     </select>
+
+<!--更新用户信息，根据userId-->
+    <update id="updateById" parameterType="cn.vision.invicloud.support.entity.User">
+        UPDATE crm_user
+        <set>
+            <if test="loginName!=null">login_name=#{loginName},</if>
+            <if test="userName!=null">user_name=#{userName},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="age!=null">age=#{age},</if>
+            <if test="telephone!=null">telephone=#{telephone}</if>
+        </set>
+        WHERE
+        user_id = #{userId}
+    </update>
+
+
+
 </mapper>

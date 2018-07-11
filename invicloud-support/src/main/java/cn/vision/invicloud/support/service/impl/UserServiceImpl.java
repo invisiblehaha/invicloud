@@ -85,7 +85,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public Integer updateByUserId(User user) {
         user.setUpdateTime(new Date());
-        return userMapper.updateById(user);
+        return userMapper.updateById(user.getUserId(),user.getLoginName(),user.getUserName(),user.getSex(),user.getAge(),user.getTelephone());
     }
 
     @Override

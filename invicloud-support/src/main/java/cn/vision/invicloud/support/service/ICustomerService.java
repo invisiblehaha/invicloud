@@ -5,6 +5,7 @@ import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Customer;
 import cn.vision.invicloud.support.pojo.vo.CustomerVO;
 import com.baomidou.mybatisplus.service.IService;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -28,21 +29,23 @@ public interface ICustomerService extends IService<Customer> {
      * @param token 人脸标识
      * @return
      */
-    CustomerVO getByCustomerToken(String token);
+    CustomerVO getByCustomerToken(@Param("customerToken") String token);
 
     /**
      * 根据顾客ID获取顾客显示信息
      * @param customerId 顾客ID
      * @return
      */
-    CustomerVO getById(Integer customerId);
+    CustomerVO getById(@Param("customerId") Integer customerId);
 
     /**
      * 根据顾客等级(可)分页显示顾客
      * @param pageInfo
-     * @param rank
+     * @param noble
      * @return
      */
 
-    BasePageDTO<CustomerVO> listByPage(PageInfo pageInfo, Integer rank);
+    BasePageDTO<CustomerVO> listByPage(@Param("pageInfo") PageInfo pageInfo, @Param("noble") Integer noble);
+
+    BasePageDTO<CustomerVO> listByPage2(@Param("pageInfo") PageInfo pageInfo, @Param("search") String search);
 }

@@ -29,15 +29,16 @@ body{
     height: 100vh;
     position: relative;
     overflow: hidden;
-    color: #000;
     text-align: center;
 }
-.logo{
+.logo1 h1{
     width:240px;
-    height:120px;
+    height:100px;
     align-content: center;
-    margin-top: 70px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
+    color: white;
+    align-self: center;
+    font-size: 5em;
 }
 
 ul {
@@ -69,6 +70,13 @@ p{
     line-height:3;
     font-size: 20px;
     font-weight: lighter;
+}
+.out-container{
+    width:400px;
+    align-self: center;
+    height: 500px;
+    margin-top: -100px;
+    /*margin-top: -100px;*/
 }
 .container {
     width:370px;
@@ -257,10 +265,16 @@ p{
 .button_blue
 {
     display:inline-block;
-    height:41px;border-radius:4px;
-    background: rgba(66, 174, 216, 0.78);border:none;cursor:pointer;
-    border-bottom:3px solid rgba(66, 174, 216, 0.92);*border-bottom:none;
-    color:#fff;
+    height:35px;
+    width: 200px;
+    border-radius:5px;
+    background: rgba(174, 174, 255, 0.78);
+    border:none;
+    cursor:pointer;
+    /*border-bottom:3px solid */
+    /*rgba(66, 174, 216, 0.92);*/
+    /*border-bottom:none;*/
+    color:#000;
     font-size:16px;padding:0 10px;*width:140px;
     text-align:center;outline:none;font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
 }

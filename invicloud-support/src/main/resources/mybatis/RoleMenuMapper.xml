@@ -60,7 +60,7 @@
         FROM
         crm_menu m
         LEFT JOIN crm_role_menu r ON r.menu_id = m.menu_id
-        AND menu_type = #{menuType}
+        WHERE menu_type = #{menuType}
         AND r.role_id IN
         <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
             #{roleId}

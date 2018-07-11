@@ -21,7 +21,9 @@
 
 <body>
 <div class="two">
-<div class="container">
+    <div class="out-container">
+    <div class="logo1"><h1 style="color: #ddf; font-size: 4em">InvisiCLOUD</h1></div>
+    <div class="container">
 
     <div class="web_qr_login" id="web_qr_login" style="display: block;">
 
@@ -72,7 +74,7 @@
 
 </table>
                         <div style="margin-top: 10px;">
-                            <Button type="button" id="btn_submit" >登录</Button>
+                            <Button type="button" id="btn_submit" class="button_blue" >登录</Button>
                         </div>
 </form>
    </div>
@@ -80,6 +82,7 @@
 </div>
 </div>
 </div>
+    </div>
 </div>
 </body>
 <script type="text/javascript" src="${ctxsta}/js/login.js"></script>

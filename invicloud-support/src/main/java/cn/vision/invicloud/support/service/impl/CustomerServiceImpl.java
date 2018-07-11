@@ -43,9 +43,17 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     }
 
     @Override
-    public BasePageDTO<CustomerVO> listByPage(PageInfo pageInfo, Integer rank) {
+    public BasePageDTO<CustomerVO> listByPage(PageInfo pageInfo, Integer noble) {
         Page<CustomerVO> page = new Page<>(pageInfo.getCurrent(), pageInfo.getLimit());
-        List<CustomerVO> adverts = customerMapper.listByPage(pageInfo, rank, page);
+        List<CustomerVO> adverts = customerMapper.listByPage(pageInfo, noble, page);
+        pageInfo.setTotal((int)page.getTotal());
+        return new BasePageDTO<CustomerVO>(pageInfo, adverts);
+    }
+
+    @Override
+    public BasePageDTO<CustomerVO> listByPage2(PageInfo pageInfo, String search) {
+        Page<CustomerVO> page = new Page<>(pageInfo.getCurrent(), pageInfo.getLimit());
+        List<CustomerVO> adverts = customerMapper.listByPage2(pageInfo, search, page);
         pageInfo.setTotal((int)page.getTotal());
         return new BasePageDTO<CustomerVO>(pageInfo, adverts);
     }

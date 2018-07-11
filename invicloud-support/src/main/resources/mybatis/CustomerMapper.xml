@@ -52,6 +52,23 @@
             ORDER BY ${pageInfo.sort} ${pageInfo.order}
         </if>
     </select>
-
+    <!-- 根据分页信息/搜索内容查找商品列表 -->
+    <select id="listByPage2" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
+        SELECT
+        customer_id AS cusmoterId, customer_token AS customerToken, real_name AS realName, sex, age, pic_img AS picImg, status, telephone, regeist_time AS regeistTime, noble
+        FROM
+        crm_customer
+        <where>
+            1=1
+            <if test="search != null">
+                AND (
+                real_name LIKE '%' #{search} '%'
+                )
+            </if>
+            <if test="pageInfo.sort != null">
+                ORDER BY ${pageInfo.sort} ${pageInfo.order}
+            </if>
+        </where>
+    </select>
 
 </mapper>

@@ -1,12 +1,16 @@
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" import="java.util.*" language="java" %>
+<%@ include file="/WEB-INF/base.jsp" %>
 <%
     //{pageContext.request.ContextPath}
     String path = request.getContextPath();
     // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
+    String basePath2 = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path;
     // 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
     // pageContext.setAttribute("basePath", basePath);
 %>
@@ -37,9 +41,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <%--<!-- Google Font -->--%>
+    <%--<link rel="stylesheet"--%>
+          <%--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">--%>
     <decorator:head></decorator:head>
 </head>
 <!--
@@ -62,6 +66,8 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
+
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -69,11 +75,11 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="../index.jsp" class="logo">
+        <a href="/index" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><b>I</b>CL</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><b>Invici</b>CLOUD</span>
         </a>
 
         <!-- Header Navbar -->
@@ -85,100 +91,6 @@ desired effect
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <%--<li class="dropdown messages-menu">--%>
-                    <%--<!-- Menu toggle button -->--%>
-                    <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--%>
-                    <%--<i class="fa fa-envelope-o"></i>--%>
-                    <%--<span class="label label-success">4</span>--%>
-                    <%--</a>--%>
-                    <%--<ul class="dropdown-menu">--%>
-                    <%--<li class="header">You have 4 messages</li>--%>
-                    <%--<li>--%>
-                    <%--<!-- inner menu: contains the messages -->--%>
-                    <%--<ul class="menu">--%>
-                    <%--<li><!-- start message -->--%>
-                    <%--<a href="#">--%>
-                    <%--<div class="pull-left">--%>
-                    <%--<!-- User Image -->--%>
-                    <%--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">--%>
-                    <%--</div>--%>
-                    <%--<!-- Message title and timestamp -->--%>
-                    <%--<h4>--%>
-                    <%--Support Team--%>
-                    <%--<small><i class="fa fa-clock-o"></i> 5 mins</small>--%>
-                    <%--</h4>--%>
-                    <%--<!-- The message -->--%>
-                    <%--<p>Why not buy a new awesome theme?</p>--%>
-                    <%--</a>--%>
-                    <%--</li>--%>
-                    <%--<!-- end message -->--%>
-                    <%--</ul>--%>
-                    <%--<!-- /.menu -->--%>
-                    <%--</li>--%>
-                    <%--<li class="footer"><a href="#">See All Messages</a></li>--%>
-                    <%--</ul>--%>
-                    <%--</li>--%>
-                    <%--<!-- Notifications Menu -->--%>
-                    <%--<li class="dropdown notifications-menu">--%>
-                    <%--<!-- Menu toggle button -->--%>
-                    <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--%>
-                    <%--<i class="fa fa-bell-o"></i>--%>
-                    <%--<span class="label label-warning">10</span>--%>
-                    <%--</a>--%>
-                    <%--<ul class="dropdown-menu">--%>
-                    <%--<li class="header">You have 10 notifications</li>--%>
-                    <%--<li>--%>
-                    <%--<!-- Inner Menu: contains the notifications -->--%>
-                    <%--<ul class="menu">--%>
-                    <%--<li><!-- start notification -->--%>
-                    <%--<a href="#">--%>
-                    <%--<i class="fa fa-users text-aqua"></i> 5 new members joined today--%>
-                    <%--</a>--%>
-                    <%--</li>--%>
-                    <%--<!-- end notification -->--%>
-                    <%--</ul>--%>
-                    <%--</li>--%>
-                    <%--<li class="footer"><a href="#">View all</a></li>--%>
-                    <%--</ul>--%>
-                    <%--</li>--%>
-                    <%--<!-- Tasks Menu -->--%>
-                    <%--<li class="dropdown tasks-menu">--%>
-                    <%--<!-- Menu Toggle Button -->--%>
-                    <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--%>
-                    <%--<i class="fa fa-flag-o"></i>--%>
-                    <%--<span class="label label-danger">9</span>--%>
-                    <%--</a>--%>
-                    <%--<ul class="dropdown-menu">--%>
-                    <%--<li class="header">You have 9 tasks</li>--%>
-                    <%--<li>--%>
-                    <%--<!-- Inner menu: contains the tasks -->--%>
-                    <%--<ul class="menu">--%>
-                    <%--<li><!-- Task item -->--%>
-                    <%--<a href="#">--%>
-                    <%--<!-- Task title and progress text -->--%>
-                    <%--<h3>--%>
-                    <%--Design some buttons--%>
-                    <%--<small class="pull-right">20%</small>--%>
-                    <%--</h3>--%>
-                    <%--<!-- The progress bar -->--%>
-                    <%--<div class="progress xs">--%>
-                    <%--<!-- Change the css width attribute to simulate progress -->--%>
-                    <%--<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"--%>
-                    <%--aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">--%>
-                    <%--<span class="sr-only">20% Complete</span>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
-                    <%--</a>--%>
-                    <%--</li>--%>
-                    <%--<!-- end task item -->--%>
-                    <%--</ul>--%>
-                    <%--</li>--%>
-                    <%--<li class="footer">--%>
-                    <%--<a href="#">View all tasks</a>--%>
-                    <%--</li>--%>
-                    <%--</ul>--%>
-                    <%--</li>--%>
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
@@ -186,7 +98,7 @@ desired effect
                             <!-- The user image in the navbar-->
                             <img src="<%=basePath%>resources/dist/img/user-160.png" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">user name</span>
+                            <span class="hidden-xs">${user.loginName}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -194,14 +106,16 @@ desired effect
                                 <img src="<%=basePath%>resources/dist/img/user-160.png" class="img-circle" alt="User Image">
 
                                 <p>
-                                    name - role
-                                    <small>introduction</small>
+                                    ${user.userName} - status:${user.status}
+                                        <small>年龄：${user.age}</small>
+                                        <small>联系方式:${user.telephone}</small>
+
                                 </p>
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -226,7 +140,7 @@ desired effect
                     <img src="<%=basePath%>resources/dist/img/user-160.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>user name</p>
+                    <p>${user.loginName}</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -236,54 +150,31 @@ desired effect
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">HEADER</li>
+
                 <!-- Optionally, you can add icons to the links -->
-
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>客户管理</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
+                <c:forEach items="${menus}" var="menu">
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-link"></i> <span>${menu.menuName}</span>
+                            <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
               </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">会员管理</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>系统管理</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">员工管理</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>库存管理</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">分类管理</a></li>
-                        <li><a href="#">商品管理</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>交易管理</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">订单管理</a></li>
-                        <li><a href="#">Link in level 2</a></li>
-                    </ul>
-                </li>
+                        </a>
+                        <ul class="treeview-menu">
+                            <c:forEach items="${menu.childMenus}" var="item">
+                            <li><a href="<%=basePath2%>${item.href}">${item.menuName}</a></li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                </c:forEach>
 
 
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>识别客户</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+
+
+
+
+
+                <%--<li class="active"><a href="#"><i class="fa fa-link"></i> <span>识别客户</span></a></li>--%>
+
             </ul>
 
             <!-- /.sidebar-menu -->
@@ -294,25 +185,8 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Page Header
-                <small>Optional description</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
-        </section>
+        <decorator:body/>
 
-        <!-- Main content -->
-        <section class="content container-fluid">
-            <decorator:body/>
-            <!--------------------------
-              | Your Page Content Here |
-              -------------------------->
-        </section>
-        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
@@ -404,18 +278,8 @@ desired effect
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 3 -->
-<script src="<%=basePath%>resources/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="<%=basePath%>resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<%=basePath%>resources/dist/js/adminlte.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 </body>
 </html>

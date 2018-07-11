@@ -77,3 +77,10 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+invicloud-support/src/main/java/cn/.DS_Store
+invicloud-support/src/main/java/cn/vision/.DS_Store
+invicloud-support/src/main/java/cn/vision/invicloud/.DS_Store
+invicloud-support/src/main/java/cn/vision/invicloud/support/.DS_Store
+.idea/artifacts/invicloud_web_Web_exploded.xml
+invicloud.sql
+*.sql

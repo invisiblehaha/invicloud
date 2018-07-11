@@ -17,7 +17,19 @@
 </head>
 
 <body>
-  
+<section class="content-header">
+    <h1>
+        InvisiCloud
+        <small>系统管理</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>系统管理</a></li>
+        <li class="active">日志管理</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content container-fluid">
 <table id="table"></table>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
@@ -87,5 +99,6 @@
         return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
     }
 </script>
+</section>
 </body>
 </html>
