@@ -35,6 +35,8 @@
         <property name="filterChainDefinitions">
             <!-- 路径基于HttpServletRequest.getContextPath() -->
             <value>
+                /webSocketServer =anon
+                /websocket/** = anon
                 /resources/** = anon
                 /static/** = anon
                 /login = anon
