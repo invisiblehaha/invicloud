@@ -32,8 +32,12 @@ public interface CustomerMapper extends BaseMapper<Customer> {
      * @return
      */
     CustomerVO getById(@Param("customerId")Integer customerId);
-
-
+    /**
+     * 根据用户ID查找用户显示信息
+     * @param customerId 用户ID
+     * @return
+     */
+    Customer getBycustomerId(@Param("customerId")Integer customerId);
     /**
      * 根据顾客等级分页显示信息
      * @param pageInfo 分页信息
@@ -44,4 +48,7 @@ public interface CustomerMapper extends BaseMapper<Customer> {
     List<CustomerVO> listByPage(@Param("pageInfo") PageInfo pageInfo, @Param("noble") Integer noble, RowBounds rowBounds);
 
     List<CustomerVO> listByPage2(@Param("pageInfo") PageInfo pageInfo, @Param("search") String search, RowBounds rowBounds);
+
+    //返回即将被注册的userid
+    Integer getLastestPlusCustomerId();
 }

@@ -2,9 +2,12 @@ package cn.vision.invicloud.support.mapper;
 
 import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Order;
+import cn.vision.invicloud.support.pojo.vo.LevelAnalyVO;
+import cn.vision.invicloud.support.pojo.vo.OrderAnalyVO;
 import cn.vision.invicloud.support.pojo.vo.OrderVO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -31,6 +34,10 @@ public interface OrderMapper extends BaseMapper<Order> {
      * @param pageInfo 分页信息
      * @return
      */
-    List<OrderVO> list(@Param("userId") Integer userId, @Param("pageInfo") PageInfo pageInfo);
+    List<OrderVO> list(@Param("userId") Integer userId, @Param("pageInfo") PageInfo pageInfo,@Param("search") String search, RowBounds rowBounds);
+
+    List<OrderAnalyVO> analylist();
+
+    List<LevelAnalyVO> analylist2();
 
 }

@@ -37,7 +37,7 @@ public interface ICustomerService extends IService<Customer> {
      * @return
      */
     CustomerVO getById(@Param("customerId") Integer customerId);
-
+    Customer getBycustomerId(@Param("customerId") Integer customerId);
     /**
      * 根据顾客等级(可)分页显示顾客
      * @param pageInfo
@@ -48,4 +48,7 @@ public interface ICustomerService extends IService<Customer> {
     BasePageDTO<CustomerVO> listByPage(@Param("pageInfo") PageInfo pageInfo, @Param("noble") Integer noble);
 
     BasePageDTO<CustomerVO> listByPage2(@Param("pageInfo") PageInfo pageInfo, @Param("search") String search);
+
+    //返回返回即将被注册的userid
+    Integer getLastestPlusCustomerId();
 }

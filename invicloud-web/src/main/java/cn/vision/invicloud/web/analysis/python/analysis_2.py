@@ -37,7 +37,7 @@ if __name__ == '__main__':
         print(temp)
         result_df.loc[i] = [customer_id, temp]
         i += 1
-    result_df.to_csv('../result/consumptionLevel.txt')
+    result_df.to_csv('src/main/java/cn/vision/invicloud/web/analysis/result/consumptionLevel.txt')
     print(result_df)
 
 

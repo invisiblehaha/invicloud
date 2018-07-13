@@ -40,6 +40,7 @@
                 /login = anon
                 /captcha-image.jpg = anon
                 /** = authc
+                /register/register/**=anon
             </value>
         </property>
     </bean>

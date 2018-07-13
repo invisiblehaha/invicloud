@@ -9,5 +9,6 @@
     <!-- 指定不需要被装饰的页面 -->
     <excludes>
         <pattern>/login</pattern>
+        <pattern>/register/register/view</pattern>
     </excludes>
 </decorators>

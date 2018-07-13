@@ -32,13 +32,13 @@ public class OrderController {
     }
 
     /**
-     * GET »’º«º«¬º
+     * GET
      * @return
      */
     @GetMapping(value = "/")
     @ResponseBody
     public Object listUser(PageInfo pageInfo, @RequestParam(required = false, value = "search") String search) {
-        BasePageDTO<OrderVO> basePageDTO = OrderService.list(null, pageInfo);
+        BasePageDTO<OrderVO> basePageDTO = OrderService.list(null, pageInfo,search);
         return new WebPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());
     }
 }

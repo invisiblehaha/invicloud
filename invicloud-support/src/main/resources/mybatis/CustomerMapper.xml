@@ -13,12 +13,21 @@
         <result column="status" property="status" />
         <result column="telephone" property="telephone" />
         <result column="regeist_time" property="regeistTime" />
-        <result column="rank" property="rank" />
+        <result column="noble" property="noble" />
     </resultMap>
 
+
+    <select id="getBycustomerId" resultMap="BaseResultMap">
+        SELECT
+          c.customer_id,c.customer_token,c.real_name,c.sex,c.age,c.pic_img,c.status,c.telephone,c.regeist_time,c.noble
+          FROM
+          crm_customer c
+          WHERE
+          customer_id=#{customerId}
+    </select>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        customer_id AS cusmoterId, customer_token AS customerToken, real_name AS realName, sex, age, pic_img AS picImg, status, telephone, regeist_time AS regeistTime, rank
+        customer_id AS cusmoterId, customer_token AS customerToken, real_name AS realName, sex, age, pic_img AS picImg, status, telephone, regeist_time AS regeistTime, noble
     </sql>
     <select id="getByCustomerToken" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
         SELECT
@@ -45,8 +54,8 @@
         <include refid="Base_Column_List" />
         FROM
         crm_customer
-        <if test="rank != null">
-            WHERE rank=#{rank}
+        <if test="noble != null">
+            WHERE noble=#{noble}
         </if>
         <if test="pageInfo.sort != null">
             ORDER BY ${pageInfo.sort} ${pageInfo.order}
@@ -71,4 +80,15 @@
         </where>
     </select>
 
+    <select id="getLastestPlusCustomerId" resultType="java.lang.Integer">
+        SELECT
+        MAX(customer_id)
+        FROM
+        crm_customer
+    </select>
+
+    <insert id="insert" parameterType="cn.vision.invicloud.support.entity.Customer">
+        insert into crm_customer(customer_id,customer_token,real_name,sex,age,pic_img,status,telephone,regeist_time,noble)
+        values(#{customer.customerId},#{customer.customerToken},#{customer.realName},#{customer.sex},#{customer.age},#{customer.picImg},#{customer.status},#{customer.telephone},#{customer.regeistTime},#{customer.noble})
+    </insert>
 </mapper>

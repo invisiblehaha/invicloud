@@ -15,4 +15,5 @@ import java.util.List;
  * @since 2018-07-04
  */
 public interface OrderProductMapper extends BaseMapper<OrderProduct> {
+
 }

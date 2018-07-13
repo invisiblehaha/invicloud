@@ -161,7 +161,7 @@ desired effect
                         </a>
                         <ul class="treeview-menu">
                             <c:forEach items="${menu.childMenus}" var="item">
-                            <li><a href="<%=basePath2%>${item.href}">${item.menuName}</a></li>
+                            <li><a href="${ctx}${item.href}">${item.menuName}</a></li>
                             </c:forEach>
                         </ul>
                     </li>

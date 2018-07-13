@@ -17,7 +17,7 @@ class Data:
         self.customer_id_list = []
 
         if dataset == '1.txt':
-            path = '../data/1.txt'
+            path = 'src/main/java/cn/vision/invicloud/web/analysis/data/1.txt'
             separator = '\t'
 
         print('开始读取数据')
@@ -314,4 +314,4 @@ if __name__ == '__main__':
 
     print(result.iloc[0])
 
-    result.to_csv('../result/recommendationByProductCF.txt')
+    result.to_csv('src/main/java/cn/vision/invicloud/web/analysis/result/recommendationByProductCF.txt')
