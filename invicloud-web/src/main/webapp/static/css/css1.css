@@ -1,7 +1,7 @@
 body{
     margin: 0;
     font-family: "Microsoft Yahei";
-    text-align: center;
+    text-align: right;
     overflow: auto;
     background: url("/static/images/background.png")no-repeat;
     background-size:cover;
@@ -71,12 +71,17 @@ p{
     font-size: 20px;
     font-weight: lighter;
 }
+.outout{
+    width: 870px;
+    height: 100%;
+    margin-top: 25%;
+
+}
 .out-container{
     width:400px;
     align-self: center;
-    height: 500px;
-    margin-top: -100px;
-    /*margin-top: -100px;*/
+    height: 600px;
+
 }
 .container {
     width:370px;
@@ -84,7 +89,8 @@ p{
     background-color: #FFFFFF;
     opacity: 0.6;
     align-self: center;
-   height: 400px;
+   height: 450px;
+    margin-left: 15%;
 }
 
 .header {
@@ -268,7 +274,7 @@ p{
     height:35px;
     width: 200px;
     border-radius:5px;
-    background: rgba(174, 174, 255, 0.78);
+    background: rgba(66, 174, 216, 0.78);
     border:none;
     cursor:pointer;
     /*border-bottom:3px solid */

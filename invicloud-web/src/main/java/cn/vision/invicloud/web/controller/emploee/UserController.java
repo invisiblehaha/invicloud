@@ -42,7 +42,7 @@ public class UserController {
      */
     @GetMapping(value = "/view")
     public String getListPage(Model model) {
-        return "";
+        return "/user/list";
     }
 
     /**

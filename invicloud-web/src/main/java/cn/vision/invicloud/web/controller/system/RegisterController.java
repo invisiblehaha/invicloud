@@ -56,21 +56,25 @@ public class RegisterController {
     @PostMapping(value = "/register")
     @ResponseBody
     public Object register(@RequestParam("userName")String registerName,
-                        @RequestParam("password")String registerPassword,
-                        @RequestParam("sex")Integer sex, //0==保密 1==男 2==女
-                        @RequestParam("birthYear")Integer birthYear,
-                        @RequestParam("phoneNumber")String phoneNumber,
-                        @RequestParam("img")String imgString)
+                           @RequestParam("sex")Integer sex, //0==保密 1==男 2==女
+                           @RequestParam("birthYear")Integer birthYear,
+                           @RequestParam("phoneNumber")String phoneNumber,
+                           @RequestParam("img")String imgString)
     {
         byte[] buff=Base64ToByteArr(imgString);
         String detectToken = InterfaceOfAllAPIs.detect(buff);
 
-        if(InterfaceOfAllAPIs.searchForUserId(buff,"FS_1")!=Key.KEY_FOR_SEARCH_MATCHFAILED_MESSAGE)
-        {
-            return new WebResult(RegisterReturnCode.FACE_REGISTER_TWICE);
-        }//如果是同一张人脸，则不允许重复注册
+//        if(InterfaceOfAllAPIs.searchForUserId(buff,"FS_1")!=Key.KEY_FOR_SEARCH_MATCHFAILED_MESSAGE)
+//        {
+//            return new WebResult(RegisterReturnCode.FACE_REGISTER_TWICE);
+//        }//如果是同一张人脸，则不允许重复注册
 
+        Date GMTtime = new Date();
         Calendar cal = Calendar.getInstance();
+
+        cal.setTime(GMTtime);
+        cal.add(Calendar.HOUR,8);
+        Date now = cal.getTime();
 
         Integer theCustomerId = customerService.getLastestPlusCustomerId()+1;//从数据库中获取最新的id + 1,即预备绑定给用户的id
 
@@ -81,7 +85,7 @@ public class RegisterController {
         customer.setPicImg("picImg");
         customer.setNoble(1);
         customer.setRealName(registerName);
-        customer.setRegeistTime(new Date());
+        customer.setRegeistTime(now);
         customer.setSex(sex);
         customer.setStatus(0);
         customer.setTelephone(phoneNumber);
@@ -95,6 +99,8 @@ public class RegisterController {
 
         try
         {
+            customerService.insertCustomer(customer);
+
             String addLog = InterfaceOfAllAPIs.addOneFaceIntoFaceSet(detectToken,"FS_1");
             String bindLog = InterfaceOfAllAPIs.setUserIdForFaceToken(detectToken,Integer.toString(theCustomerId));
             System.out.println(addLog);
@@ -102,19 +108,10 @@ public class RegisterController {
         catch(Exception e)
         {
             System.out.println("添加到人脸集合出错!");
-            return new WebResult(RegisterReturnCode.ADDTO_FACESET_FAILED);
+            return new WebResult(RegisterReturnCode.INFO_NOT_COMPLETE);
         }
 
-        try
-        {
-            customerService.insertCustomer(customer);
-           /* System.out.println(insertResult);//调试用，如果系统运行正常请删除*/
-        }
-        catch(Exception e)
-        {
-            System.out.println("数据库操作异常！");
-            return new WebResult(RegisterReturnCode.ADDTO_DATABASE_FAILED);
-    }
+
 
 
         return new WebResult(CommonReturnCode.SUCCESS);

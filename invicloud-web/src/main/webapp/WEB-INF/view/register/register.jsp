@@ -28,14 +28,6 @@
         <input type="text" name="userName" id="userName">
     </div>
     <div>
-        <label for="userPassword">Enter your password: </label>
-        <input type="text" name="userPassword" id="userPassword">
-    </div>
-    <div>
-        <label for="userPasswordConfirm">Confirm your password: </label>
-        <input type="text" name="userPasswordConfirm" id="userPasswordConfirm">
-    </div>
-    <div>
         <li>Choose your sex: </li>
         <input type="radio" name="sex" value="0"/>保密
         <input type="radio" name="sex" value="1" checked="checked"/>男
@@ -54,7 +46,7 @@
     </div>
     <div>
         <input id="imgfile" type="file" name="userUploadImg" onchange="changeImg()"/>
-        <img id="imgid" height="200"  src="${pageContext.request.contextPath}/static/images/initial.jpg" alt="userUploadImg"/>
+        <img id="imgid" height="200" src="${pageContext.request.contextPath}/static/images/initial.jpg" alt="userUploadImg"/>
         <br><br><br><br><br><br>
         <button type="button" id="startCamera" onclick="start_Camera();">打开摄像头</button>
         <%--<button type="button" id="endCamera" onclick="end_Camera();">关闭摄像头</button>--%>
@@ -87,7 +79,7 @@
         obj.options[obj.options.length-81].selected = 1;
     };
     function changeImg() {
-        var file=$("#registerForm").find("input")[7].files[0];
+        var file=$("#registerForm").find("input")[5].files[0];
         var reader = new FileReader();
         var imgFile;
         reader.onload=function(e) {
@@ -150,8 +142,6 @@
 
     function checkUser() {
         var userName = document.getElementById("userName").value;
-        var password = document.getElementById("userPassword").value;
-        var passwordConfirm = document.getElementById("userPasswordConfirm").value;
         var phoneNumber = document.getElementById("phoneNumber").value;
 
         var obj=document.getElementById("birthYear");
@@ -161,16 +151,6 @@
         if(userName == "")
         {
             alert("用户名不能为空");
-            return false;
-        }
-        if(password ==""||passwordConfirm=="")
-        {
-            alert("密码不能为空");
-            return false;
-        }
-        if(passwordConfirm!=password)
-        {
-            alert("两次密码输入不一致");
             return false;
         }
         if(phoneNumber =="")
@@ -185,7 +165,6 @@
             var info =
                 {
                     userName:$("#userName").val(),
-                    password:$("#userPassword").val(),
                     sex:$("input[name='sex']:checked").val(),
                     birthYear:valOfYear,
                     phoneNumber:$("#phoneNumber").val(),
@@ -195,14 +174,13 @@
         else
         {
             var info=
-            {
-                userName:$("#userName").val(),
-                password:$("#userPassword").val(),
-                sex:$("input[name='sex']:checked").val(),
-                birthYear:valOfYear,
-                phoneNumber:$("#phoneNumber").val(),
-                img:$("#imgid").attr("src")
-            }
+                {
+                    userName:$("#userName").val(),
+                    sex:$("input[name='sex']:checked").val(),
+                    birthYear:valOfYear,
+                    phoneNumber:$("#phoneNumber").val(),
+                    img:$("#imgid").attr("src")
+                }
         }
         $.ajax({
             url : '${pageContext.request.contextPath}/register/register/register',
