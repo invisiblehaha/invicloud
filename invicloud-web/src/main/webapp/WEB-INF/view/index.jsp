@@ -162,18 +162,6 @@
             </div>
             <input type="hidden" name="customerId" value="501" class="inputSubmit">
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 
 </section>

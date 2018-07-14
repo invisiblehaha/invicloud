@@ -5,6 +5,8 @@ from statsmodels.tsa.stattools import adfuller as ADF
 from statsmodels.graphics.tsaplots import plot_pacf
 from statsmodels.stats.diagnostic import acorr_ljungbox
 from statsmodels.tsa.arima_model import ARIMA
+import datetime
+
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
@@ -12,7 +14,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 if __name__ == '__main__':
     # 参数初始化
-    discfile = 'src/main/java/cn/vision/invicloud/web/analysis/data/order_by_buy_amount.txt'
+    discfile = '../data/order_by_buy_amount.txt'
     forecastnum = 7
     # 读取数据，指定日期列为指标，Pandas自动将“日期”列识别为Datetime格式
     data = pd.read_csv(discfile, index_col=0, sep='\t')
@@ -63,10 +65,20 @@ if __name__ == '__main__':
     # for i in range(7):
     #     data.iloc[size+i, 0] = forecast[i]
     # print(data)
-    df = pd.DataFrame(data=[], columns=['prediction'])
-    df['prediction'] = forecast
-    df = df['prediction'].astype('int')
-    # print(df)
-    df.to_csv('src/main/java/cn/vision/invicloud/web/analysis/result/buy_amount_prediction.txt')
+    size = len(data)
+    # data.loc[size] = 1234
+    # print(data.iloc[size-1, :].name)
+    strtime = data.iloc[size-1, :].name
+    last_time = datetime.datetime.strptime(strtime, "%Y-%m-%d %H:%M:%S")
+    # data.loc[new_time] = forecast[0]
+    # print(data.loc[new_time])
+    for i in range(7):
+        last_time = last_time + datetime.timedelta(days=1)
+        data.loc[last_time] = int(forecast[i])
+        print(data.loc[last_time])
+    # print(data.columns)
+    data.rename(columns={data.columns[0]: "buy_amount"}, inplace=True)
+    data.index.name = 'DateTime'
+    data.to_csv('../data/buy_amount_prediction.csv')
 
 
