@@ -5,12 +5,14 @@ import cn.vision.invicloud.support.entity.Customer;
 import cn.vision.invicloud.support.pojo.vo.*;
 import cn.vision.invicloud.support.service.ICustomerService;
 import cn.vision.invicloud.support.service.IOrderAnalyService;
+import cn.vision.invicloud.support.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,6 +23,8 @@ public class DemoController {
     private ICustomerService customerService;
     @Autowired
     private IOrderAnalyService analyService;
+    @Autowired
+    private IProductService productService;
 
     @GetMapping(value = "/view")
     public String getDemoPage(@ModelAttribute("menus")List<RoleMenuVO> menus, @ModelAttribute("user") UserVO user, @RequestParam("customerId")Integer customerId,Model model){
@@ -40,9 +44,17 @@ public class DemoController {
         List<LikeVO> likelist=analyService.getLikes(file2);
         for(LikeVO o:likelist){
             if(o.getCustomerId().equals(customerId)){
-                model.addAttribute("likeList",o.getLikeList());
+                List<Integer> products=o.getLikeList();
+                model.addAttribute("likeList",products);
+                List<ProductVO> goods=new ArrayList<ProductVO>();
+                for(Integer i:products){
+                ProductVO productVO=productService.getById(i);
+                goods.add(productVO);
+                }
+                model.addAttribute("goods",goods);
             }
         }
+
         return "/recommend/demo";
     }
 

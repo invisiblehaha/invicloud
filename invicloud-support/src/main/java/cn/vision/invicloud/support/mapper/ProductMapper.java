@@ -24,7 +24,7 @@ public interface ProductMapper extends BaseMapper<Product> {
      * @param productId 商品Id
      * @return
      */
-    ProductVO getById(@Param("productNumber") Integer productId);
+    ProductVO getById(@Param("productId") Integer productId);
 
     List<Product> list(@Param("pageInfo") PageInfo pageInfo,
                        @Param("search") String search, RowBounds rowBounds);

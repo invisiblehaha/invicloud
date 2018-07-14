@@ -44,6 +44,61 @@
             user_id = #{userId}
     </select>
 
+    <!-- 动态删除操作  delete from user where id in(?,?,?);-->
+    <delete id="deleteByUserId">
+        delete from crm_user
+        where
+      user_id =  #{userId}
+    </delete>
+
+
+    <!-- 更新学生信息 -->
+    <update id="updateByUserId">
+        UPDATE crm_user
+            SET crm_user.user_id = #{userId},
+                crm_user.login_name = #{loginName},
+                crm_user.login_password = #{loginPassword},
+                 crm_user.salt, user_name = #{userName},
+                  crm_user.sex = #{sex},
+                   crm_user.age = #{age},
+                    crm_user.pic_img = #{picImg},
+                     crm_user.status = #{status},
+                     crm_user.telephone = #{telephone},
+                     crm_user.create_time= #{createTime},
+                     crm_user.update_time = #{updateTime}
+         WHERE crm_user.user_id = #{userId};
+</update>
+
+
+
+    <!-- 插入用户 -->
+    <insert id="insertUser" >
+        INSERT INTO crm_user (
+            user_id,
+            login_name,
+            login_password ,
+            salt, user_name AS userName,
+            sex,
+            age,
+            pic_img,
+            status,
+            telephone,
+            create_time,
+            update_time)
+              VALUES   (  #{userId},
+                           #{loginName},
+                          #{loginPassword},
+                          #{userName},
+                          #{sex},
+                          #{age},
+                          #{picImg},
+                          #{status},
+                          #{telephone},
+                          #{create_time},
+                          #{update_time})
+</insert>
+
+
     <!-- 根据分页信息/搜索内容查找用户列表 -->
     <select id="listByPage" resultType="cn.vision.invicloud.support.pojo.vo.UserVO">
         SELECT

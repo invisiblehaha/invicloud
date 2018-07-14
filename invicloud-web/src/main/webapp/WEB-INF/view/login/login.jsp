@@ -21,12 +21,13 @@
 
 <body>
 <div class="two">
+    <div class="outout"></div>
+    <div class="outout">
     <div class="out-container">
-    <div class="logo1"><h1 style="color: #ddf; font-size: 4em">InvisiCLOUD</h1></div>
     <div class="container">
 
     <div class="web_qr_login" id="web_qr_login" style="display: block;">
-
+        <div class="logo1"><h2 style="color:cornflowerblue;font-size: 2.5em">InvisiCLOUD</h2></div>
         <!--登录-->
         <div class="web_login" id="web_login">
 
@@ -83,6 +84,7 @@
 </div>
 </div>
     </div>
+</div>
 </div>
 </body>
 <script type="text/javascript" src="${ctxsta}/js/login.js"></script>

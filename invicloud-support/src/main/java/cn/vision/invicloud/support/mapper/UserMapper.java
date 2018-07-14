@@ -42,4 +42,10 @@ public interface UserMapper extends BaseMapper<User> {
      */
     Integer updateById(@Param("userId") Integer userId,@Param("loginName") String loginName,@Param("userName") String userName,@Param("sex") Integer sex,@Param("age") Integer age,@Param("telephone") String telephone);
 
+
+
+    /*
+     * 自己写的
+     * */
+    Integer deleteById(@Param("userId") Integer userId);
 }
