@@ -12,9 +12,11 @@ plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 
+'''
+select substr(regeist_time,1,10) as rgt_time,count(*) as rgt_amount from crm_customer group by substr(regeist_time,1,10) ORDER BY rgt_time;'''
 if __name__ == '__main__':
     # 参数初始化
-    discfile = '../data/order_by_buy_amount.txt'
+    discfile = '../data/vip_increase.txt'
     forecastnum = 7
     # 读取数据，指定日期列为指标，Pandas自动将“日期”列识别为Datetime格式
     data = pd.read_csv(discfile, index_col=0, sep='\t')
@@ -69,7 +71,7 @@ if __name__ == '__main__':
     # data.loc[size] = 1234
     # print(data.iloc[size-1, :].name)
     strtime = data.iloc[size-1, :].name
-    last_time = datetime.datetime.strptime(strtime, "%Y-%m-%d %H:%M:%S")
+    last_time = datetime.datetime.strptime(strtime, "%Y-%m-%d")
     # data.loc[new_time] = forecast[0]
     # print(data.loc[new_time])
     for i in range(7):
@@ -77,6 +79,6 @@ if __name__ == '__main__':
         data.loc[last_time] = int(forecast[i])
         print(data.loc[last_time])
     # print(data.columns)
-    data.rename(columns={data.columns[0]: "buy_amount"}, inplace=True)
+    data.rename(columns={data.columns[0]: "register_amount"}, inplace=True)
     data.index.name = 'DateTime'
-    data.to_csv('src\main\webapp\static\data\databuy_amount_prediction.csv')
+    data.to_csv('../data/vip_increase_prediction.csv')

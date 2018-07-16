@@ -40,4 +40,16 @@ public interface RunPython {
      * 得到客户的等级noble
      */
     void getCustomerRFM() throws IOException;
+
+    /**
+     * 得到会员的分类推荐
+     * @throws IOException
+     */
+    void getCategoryRecommendation() throws IOException;
+
+    /**
+     * 预测会员注册
+     * @throws IOException
+     */
+    void predictVIPIncrease() throws IOException;
 }

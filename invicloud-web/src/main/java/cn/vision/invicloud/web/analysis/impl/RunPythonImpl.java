@@ -41,4 +41,15 @@ public class RunPythonImpl implements RunPython {
     public void getCustomerRFM() throws IOException {
         Runtime.getRuntime().exec("python src\\main\\java\\cn\\vision\\invicloud\\web\\analysis\\python\\analysis_RFM.py");
     }
+
+    @Override
+    public void getCategoryRecommendation() throws IOException {
+        Runtime.getRuntime().exec("python cn/vision/invicloud/web/analysis/python/category_recommendation.py");
+
+    }
+
+    @Override
+    public void predictVIPIncrease() throws IOException {
+        Runtime.getRuntime().exec("python cn/vision/invicloud/web/analysis/python/predict_VIP_ increase.py");
+    }
 }

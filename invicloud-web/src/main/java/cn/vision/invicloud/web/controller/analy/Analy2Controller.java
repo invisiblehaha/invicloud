@@ -6,6 +6,7 @@ import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.pojo.vo.LikeVO;
 import cn.vision.invicloud.support.service.IOrderAnalyService;
 import cn.vision.invicloud.web.common.WebPageResult;
+import cn.vision.invicloud.web.common.utils.MoveFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,8 @@ public class Analy2Controller {
     @ResponseBody
     public Object listLevels(PageInfo pageInfo){
         String file=System.getProperty("user.dir")+"/recommendationByProductCF.txt";
+        String newFile = "cn/vision/invicloud/web/analysis/data"+"/recommendationByProductCF.txt";
+        MoveFileUtils.moveFile(file, newFile);
         BasePageDTO<LikeVO> basePageDTO=analyService.listLike(file,pageInfo);
         return new WebPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());
     }
