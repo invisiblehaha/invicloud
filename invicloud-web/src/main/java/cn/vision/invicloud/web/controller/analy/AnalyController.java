@@ -34,8 +34,10 @@ public class AnalyController {
     @ResponseBody
     public Object listLevels(PageInfo pageInfo){
         String file=System.getProperty("user.dir")+"/consumptionLevel.txt";
-        String newFile = "cn/vision/invicloud/web/analysis/data"+"/consumptionLevel.txt";
+        System.out.println(file);
+        String newFile = "src/main/java/cn/vision/invicloud/web/analysis/result/consumptionLevel.txt";
         //MoveFileUtils.moveFile(file, newFile);
+        MoveFileUtils.moveFile(newFile, System.getProperty("user.dir"));
         BasePageDTO<LevelVO> basePageDTO=analyService.listLevel(file,pageInfo);
         return new WebPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());
     }

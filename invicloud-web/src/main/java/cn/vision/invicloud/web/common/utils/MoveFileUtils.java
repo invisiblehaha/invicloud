@@ -8,14 +8,17 @@ import java.io.File;
  * @date 2018/7/16
  */
 public class MoveFileUtils {
-    public static void moveFile(String oldFilePath, String newFilePath) {
+    public static void moveFile(String oldFile, String newFilePath) {
         try {
-            File fold = new File(oldFilePath);
-            File fnew = new File(newFilePath);
-            fold.renameTo(fnew);
-            System.out.println("文件移动成功");
-        }catch (Exception e){
-            System.out.println("文件移动失败");
+
+            File afile = new File(oldFile);
+            if (afile.renameTo(new File(newFilePath+afile.getName()))) {
+                System.out.println("File is moved successful!");
+            } else {
+                System.out.println("File is failed to move!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
