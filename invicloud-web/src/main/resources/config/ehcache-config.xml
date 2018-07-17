@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <!-- ehcache将把数据写到JAVA临时目录下 -->
+    <diskStore path="java.io.tmpdir"/>
+
+    <!-- 系统默认缓存 -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="3600"
+            timeToLiveSeconds="3600"
+            overflowToDisk="true"
+            diskSpoolBufferSizeMB = "50">
+    </defaultCache>
+
+    <!-- 登录缓存 半小时内没反应GG-->
+    <cache name="passwordRetryCache"
+           maxElementsInMemory="50000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB = "50">
+    </cache>
+
+    <!--默认缓存配置，以下属性是必须的：
+            name ：cache的标识符，在一个CacheManager中必须唯一。
+            maxElementsInMemory ： 在内存中缓存的element的最大数目。
+            maxElementsOnDisk ： 在磁盘上缓存的element的最大数目。
+            eternal ： 设定缓存的elements是否有有效期。如果为true，timeouts属性被忽略。
+            overflowToDisk ： 设定当内存缓存溢出的时候是否将过期的element缓存到磁盘上。
+            以下属性是可选的：
+            timeToIdleSeconds ： 缓存element在过期前的空闲时间。
+            timeToLiveSeconds ： 缓存element的有效生命期。
+            diskPersistent ： 在VM重启的时候是否持久化磁盘缓存，默认是false。
+            diskExpiryThreadIntervalSeconds ： 磁盘缓存的清理线程运行间隔，默认是120秒.
+            memoryStoreEvictionPolicy ： 当内存缓存达到最大，有新的element加入的时候，
+            移除缓存中element的策略。默认是LRU，可选的有LFU和FIFO
+            缓存子元素：
+            cacheEventListenerFactory：注册相应的的缓存监听类，用于处理缓存事件，如put,remove,update,和expire
+            bootstrapCacheLoaderFactory:指定相应的BootstrapCacheLoader，用于在初始化缓存，以及自动设置。
+    -->
+
+    <!--
+        LRU:LRU是Least Recently Used 的缩写 LRU缓存把最近最少使用的数据移除，让给最新读取的数据。而往往最常读取的，也是读取次数最多的，所以，利用LRU缓存，我们能够提高系统的performance(性能)
+        LFU是最近最不常用页面置换算法(Least Frequently Used),也就是淘汰一定时期内被访问次数最少的页!
+        FIFO(First In First Out ，先进先出)
+      算法是根据先进先出原理来淘汰数据的，实现上是最简单的一种,具体算法如下：
+      1. 新访问的数据插入FIFO队列尾部，数据在FIFO队列中顺序移动；
+      2. 淘汰FIFO队列头部的数据；
+     -->
+
+
+</ehcache>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.vision.invicloud.support.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.vision.invicloud.support.entity.User">
+        <id column="user_id" property="userId" />
+        <result column="login_name" property="loginName" />
+        <result column="login_password" property="loginPassword" />
+        <result column="salt" property="salt" />
+        <result column="user_name" property="userName" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
+        <result column="pic_img" property="picImg" />
+        <result column="status" property="status" />
+        <result column="telephone" property="telephone" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id AS userId, login_name AS loginName, login_password AS loginPassword, salt, user_name AS userName,  sex, age, pic_img AS picImg, status, telephone, create_time AS createTime,update_time AS updateTime
+    </sql>
+
+    <!-- 根据用户ID查找用户信息 -->
+    <select id="getById" resultType="cn.vision.invicloud.support.pojo.vo.UserVO">
+        SELECT
+            user_id AS userId,
+            login_name AS loginName,
+            login_password AS loginPassword,
+            salt, user_name AS userName,
+            sex,
+            age,
+            pic_img AS picImg,
+            status,
+            telephone,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM
+            crm_user
+        WHERE
+            user_id = #{userId}
+    </select>
+
+    <!-- 根据分页信息/搜索内容查找用户列表 -->
+    <select id="listByPage" resultType="cn.vision.invicloud.support.pojo.vo.UserVO">
+        SELECT
+        user_id AS userId,
+        login_name AS loginName,
+        login_password AS loginPassword,
+        salt, user_name AS userName,
+        sex,
+        age,
+        pic_img AS picImg,
+        status,
+        telephone,
+        create_time AS createTime,
+        update_time AS updateTime
+        FROM
+        crm_user
+        <where>
+            1=1
+            <if test="search != null">
+                AND (
+                user_name LIKE '%' #{search} '%'
+                OR user_name LIKE '%' #{search} '%'
+                OR telephone LIKE '%' #{search} '%'
+                )
+            </if>
+            <if test="pageInfo.sort != null">
+                ORDER BY ${pageInfo.sort} ${pageInfo.order}
+            </if>
+        </where>
+    </select>
+</mapper>
