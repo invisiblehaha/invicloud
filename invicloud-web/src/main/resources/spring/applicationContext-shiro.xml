@@ -35,13 +35,13 @@
         <property name="filterChainDefinitions">
             <!-- 路径基于HttpServletRequest.getContextPath() -->
             <value>
-                /webSocketServer =anon
-                /websocket/** = anon
+                /register/register/** = anon
                 /resources/** = anon
                 /static/** = anon
                 /login = anon
                 /captcha-image.jpg = anon
                 /** = authc
+
             </value>
         </property>
     </bean>

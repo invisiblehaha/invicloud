@@ -17,7 +17,19 @@
 </head>
 
 <body>
-  
+<section class="content-header">
+    <h1>
+        InvisiCloud
+        <small>系统管理</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>系统管理</a></li>
+        <li class="active">日志管理</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content container-fluid">
 <table id="table"></table>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
@@ -57,7 +69,7 @@
             columns: [
                 {field: 'logId', title: '编号', sortable: true, align: 'center', halign: 'center'},
                 {field: 'userId', title: '操作用户', align: 'center', halign: 'center'},
-                {field: 'createTime', title: '操作时间', align: 'center', halign: 'center'},
+                {field: 'createTime', title: '操作时间', align: 'center',formatter: 'timeFormatter', halign: 'center'},
                 {field: 'spendTime', title: '耗时', align: 'center', sortable: true, halign: 'center'},
                 {field: 'url', title: '请求路径', halign: 'center'},
                 {field: 'method', title: '请求类型', align: 'center', halign: 'center'},
@@ -87,5 +99,6 @@
         return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
     }
 </script>
+</section>
 </body>
 </html>

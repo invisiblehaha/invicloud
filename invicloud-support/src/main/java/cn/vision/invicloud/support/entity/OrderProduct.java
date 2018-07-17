@@ -32,12 +32,12 @@ public class OrderProduct extends Model<OrderProduct> {
     /**
      * 购买数量
      */
-    @TableField("buy_amount")
+    @TableField("ba")
     private Integer buyAmount;
     /**
      * 购买金额
      */
-    @TableField("pay_amount")
+    @TableField("pa")
     private BigDecimal payAmount;
 
 

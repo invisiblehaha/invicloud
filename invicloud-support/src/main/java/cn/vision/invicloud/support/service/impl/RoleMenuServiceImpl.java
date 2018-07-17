@@ -134,7 +134,7 @@ public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu> i
     private void recursionMenu(List<RoleMenuVO> menus, List<RoleMenuDTO> childMenus, RoleMenuDTO parentMenu) {
         List<RoleMenuDTO> childMenuList = new ArrayList<>();
         for (RoleMenuDTO menu : childMenus) {
-            if (parentMenu.getMenuId() == menu.getParentId()) {
+            if (parentMenu.getMenuId().equals(menu.getParentId())) {
                 childMenuList.add(menu);
             }
         }

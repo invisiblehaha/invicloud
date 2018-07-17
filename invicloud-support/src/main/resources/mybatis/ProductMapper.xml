@@ -24,15 +24,17 @@
     <!-- 根据商品Id查找商品 -->
     <select id="getById" resultType="cn.vision.invicloud.support.pojo.vo.ProductVO">
         SELECT
-            p.product_id AS productId,
+            product_id AS productId,
             product_name AS productName,
             product_price AS productPrice,
             product_introduce AS productIntroduce,
-            stock,
+            stock AS stock,
             pic_img AS picImg,
-            remarks
+            remarks AS remarks
         FROM
             crm_product
+            WHERE
+            product_id=#{productId}
     </select>
 
     <!-- 根据分页信息/搜索内容查找日志记录列表 -->

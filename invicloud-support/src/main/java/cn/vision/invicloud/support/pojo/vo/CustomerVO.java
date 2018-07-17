@@ -51,7 +51,7 @@ public class CustomerVO implements Serializable {
     /**
      * 会员级别
      */
-    private Integer rank;
+    private Integer noble;
 
 
     public Integer getCustomerId() {
@@ -126,12 +126,12 @@ public class CustomerVO implements Serializable {
         this.regeistTime = regeistTime;
     }
 
-    public Integer getRank() {
-        return rank;
+    public Integer getNoble() {
+        return noble;
     }
 
-    public void setRank(Integer rank) {
-        this.rank = rank;
+    public void setNoble(Integer noble) {
+        this.noble = noble;
     }
 
 }

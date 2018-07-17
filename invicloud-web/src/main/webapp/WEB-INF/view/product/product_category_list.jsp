@@ -17,21 +17,34 @@
 </head>
 
 <body>
+<section class="content-header">
+    <h1>
+        InvisiCloud
+        <small>库存管理</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>库存管理</a></li>
+        <li class="active">分类管理</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content container-fluid">
 <table id="table"
        data-toggle="table"
        data-height="600"
        data-search="true"
        data-show-refresh="true"
-       data-show-toggle="true"
-       data-show-pagination-switch="true"
-       data-show-columns="true"
+       <%--data-show-toggle="true"--%>
+       <%--data-show-pagination-switch="true"--%>
+       <%--data-show-columns="true"--%>
        data-detail-view="true"
        data-detail-formatter="detailFormatter"
-       data-url="${ctx}/product/category/gid/1"
+       data-url="${ctx}/product/category/gid/0"
        data-page-size="20"
        data-page-list="[20, 50, 100, 200]"
        data-side-pagination="server"
-       data-striped="true"
+       <%--data-striped="true"--%>
        data-pagination="true"
        data-sort-order="desc">
     <thead>
@@ -75,9 +88,11 @@
             url: baselocation + '/product/category/gid/' + parentid,
             method: 'get',
             sidePagination: 'server',
-            clickToSelect: true,
+           // clickToSelect: true,
             uniqueId: "categoryId",
             pagination: true,
+            smartDisplay: false,
+            paginationLoop: false,
             pageSize: 10,
             pageList: [10, 25],
             pageNumber: 1,
@@ -124,5 +139,6 @@
         return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
     }
 </script>
+</section>
 </body>
 </html>

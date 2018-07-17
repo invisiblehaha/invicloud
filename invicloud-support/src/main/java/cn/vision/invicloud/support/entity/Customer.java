@@ -65,7 +65,7 @@ public class Customer extends Model<Customer> {
     /**
      * 会员级别
      */
-    private Integer rank;
+    private Integer noble;
 
 
     public Integer getCustomerId() {
@@ -140,12 +140,12 @@ public class Customer extends Model<Customer> {
         this.regeistTime = regeistTime;
     }
 
-    public Integer getRank() {
-        return rank;
+    public Integer getNoble() {
+        return noble;
     }
 
-    public void setRank(Integer rank) {
-        this.rank = rank;
+    public void setNoble(Integer noble) {
+        this.noble = noble;
     }
 
     @Override
@@ -165,7 +165,7 @@ public class Customer extends Model<Customer> {
         ", status=" + status +
         ", telephone=" + telephone +
         ", regeistTime=" + regeistTime +
-        ", rank=" + rank +
+        ", noble=" + noble +
         "}";
     }
 }

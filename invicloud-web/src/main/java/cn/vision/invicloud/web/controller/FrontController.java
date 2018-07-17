@@ -1,6 +1,5 @@
 package cn.vision.invicloud.web.controller;
 
-import cn.vision.invicloud.support.entity.User;
 import cn.vision.invicloud.support.pojo.vo.RoleMenuVO;
 import cn.vision.invicloud.support.pojo.vo.UserVO;
 import cn.vision.invicloud.support.service.IRoleMenuService;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -25,6 +25,8 @@ public class FrontController {
     private IUserService userService;
     @Autowired
     private IRoleMenuService roleMenuService;
+    @Autowired
+    private HttpSession session;
 
     /**
      * GET 首页
@@ -47,7 +49,8 @@ public class FrontController {
         // 系统目录
         List<RoleMenuVO> menus = roleMenuService.listByUserId(LoginUtils.getUserId());
         model.addAttribute("menus", menus);
-
+        session.setAttribute("user", user);
+        session.setAttribute("menus", menus);
         return "/index";
     }
 }

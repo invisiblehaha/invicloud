@@ -10,7 +10,10 @@ $(function(){
                 if (data.code === 1) {
                     window.location.href = baselocation + '/index';
                 }
-                else alert('没输对吧，这里的具体错误实现过下写');
+                else if(data.code === 10000)
+                {
+
+                }
             }
         });
     });

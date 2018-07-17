@@ -9,7 +9,7 @@
     // 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
     // pageContext.setAttribute("basePath", basePath);
 %>
-<!DOCTYPE HTML>
+
 <html>
 <head>
     <title>所有商品</title>
@@ -19,6 +19,19 @@
 </head>
 
 <body>
+<section class="content-header">
+    <h1>
+        InvisiCloud
+        <small>库存管理</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>库存管理</a></li>
+        <li class="active">商品管理</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content container-fluid">
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 
 <table id="table"></table>
@@ -46,7 +59,7 @@
             pagination: true,
             paginationLoop: false,
             sidePagination: 'server',
-            pageSize: '20',
+            pageSize: '10',
             silentSort: false,
             smartDisplay: false,
             escape: true,
@@ -87,5 +100,6 @@
         return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
     }
 </script>
+</section>
 </body>
 </html>

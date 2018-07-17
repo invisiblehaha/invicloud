@@ -22,5 +22,5 @@ public interface IOrderService extends IService<Order> {
      * @param pageInfo 分页信息
      * @return
      */
-    BasePageDTO<OrderVO> list(Integer userId, PageInfo pageInfo);
+    BasePageDTO<OrderVO> list(Integer userId, PageInfo pageInfo, String search);
 }

@@ -36,4 +36,16 @@ public interface UserMapper extends BaseMapper<User> {
      */
     List<UserVO> listByPage(@Param("pageInfo") PageInfo pageInfo, @Param("search") String search, RowBounds rowBounds);
 
+    /**
+     * 根据userId更新用户信息
+     * @return
+     */
+    Integer updateById(@Param("userId") Integer userId,@Param("loginName") String loginName,@Param("userName") String userName,@Param("sex") Integer sex,@Param("age") Integer age,@Param("telephone") String telephone);
+
+
+
+    /*
+     * 自己写的
+     * */
+    Integer deleteById(@Param("userId") Integer userId);
 }

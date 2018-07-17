@@ -26,10 +26,22 @@
         <result column="pay_amount" property="payAmount" />
         <collection property="orderProducts" ofType="cn.vision.invicloud.support.entity.OrderProduct">
             <result column="product_id" property="productId"/>
-            <result column="buy_amount" property="buyAmount" />
-            <result column="pay_amount" property="payAmount" />
+            <result column="ba" property="buyAmount" />
+            <result column="pa" property="payAmount" />
         </collection>
     </resultMap>
+
+    <resultMap type="cn.vision.invicloud.support.pojo.vo.OrderAnalyVO" id="OrderAnalyMap">
+        <result column="customer_id" property="customerId"/>
+        <result column="product_id" property="productId"/>
+    </resultMap>
+
+<resultMap type="cn.vision.invicloud.support.pojo.vo.LevelAnalyVO" id="LevelAnalyMap">
+    <result column="customer_id" property="customerId"/>
+    <result column="buy_amount" property="buyAmount"/>
+    <result column="pay_amount" property="payAmount"/>
+    <result column="order_number" property="orderNum"/>
+</resultMap>
 
     <!-- 根据用户ID、订单状态列表、分页信息、搜索内容查找订单总记录数 -->
     <select id="getCount" resultType="java.lang.Integer">
@@ -47,7 +59,7 @@
 
     <select id="list" resultMap="OrderVOsResultMap">
         SELECT
-        *
+        o.*, p.product_id, p.buy_amount AS ba, p.pay_amount AS pa
         FROM (
           SELECT
           *
@@ -58,6 +70,12 @@
               <if test="userId != null">
                   AND user_id = #{userId}
               </if>
+              <if test="search != null">
+                  AND (
+                  order_id LIKE '%' #{search} '%'
+                  OR customer_id LIKE '%' #{search} '%'
+                  )
+              </if>
           </where>
           ORDER BY o.create_time DESC
           LIMIT #{pageInfo.offset}, #{pageInfo.limit}
@@ -66,5 +84,27 @@
         ORDER BY o.create_time DESC
     </select>
 
+    <select id="analylist" resultMap="OrderAnalyMap">
+  SELECT o.customer_id, p.product_id
+  FROM crm_order o , crm_order_product p
+  WHERE o.order_id = p.order_id and customer_id > 0
+    </select>
+
+
+<select id="analylist2" resultMap="LevelAnalyMap">
+SELECT
+	o.customer_id,
+	SUM(o.buy_amount) AS buy_amount,
+	SUM(o.pay_amount) AS pay_amount,
+	COUNT(1) AS order_number
+FROM
+	crm_order_product p,
+	crm_order o
+WHERE
+	o.customer_id > 0
+	AND o.order_id = p.order_id
+GROUP BY
+	o.customer_id;
+</select>
 
 </mapper>

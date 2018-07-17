@@ -4,19 +4,26 @@ import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MessageHandler extends TextWebSocketHandler {
 
-    private static final List<WebSocketSession> sessions=new ArrayList<>();
+    private static final List<WebSocketSession> sessions=new CopyOnWriteArrayList<>();
+    private static final Set<String> users=new ConcurrentSkipListSet<>();
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         //TODO:查詢未處理客戶
         System.out.println("成功建立websocket连接!");
         sessions.add(session);
-        session.sendMessage(new TextMessage("你連上了 老哥"));
+        for(String user:users)
+            session.sendMessage(new TextMessage("1 "+user));
+
         System.out.println("当前线上用户数量:"+sessions.size());
     }
 
@@ -26,7 +33,17 @@ public class MessageHandler extends TextWebSocketHandler {
         if (message instanceof TextMessage) {
             this.handleTextMessage(session, (TextMessage)message);
             System.out.println("服务器收到消息："+message);
-            sendMessageToAll(new TextMessage("服务器群发：" +message.getPayload()));
+
+            String msg=((TextMessage) message).getPayload();
+            boolean flag=false;
+            if (msg.charAt(0)=='1'){
+                flag=users.contains(msg.substring(2));
+                users.add(msg.substring(2));
+            }
+            else if(msg.charAt(0)=='0')users.remove(msg.substring(2));
+            else throw new IllegalStateException("Unexpected Textmessage:message");
+
+            if(!flag)sendMessageToAll(new TextMessage(""+message.getPayload()));
         } else if (message instanceof BinaryMessage) {
             this.handleBinaryMessage(session, (BinaryMessage)message);
         } else {
@@ -48,7 +65,7 @@ public class MessageHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
-        System.out.println("Someone logout");
+        System.out.println("有人退群了");
         sessions.remove(session);
     }
 
