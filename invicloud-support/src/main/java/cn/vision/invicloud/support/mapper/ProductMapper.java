@@ -28,4 +28,5 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     List<Product> list(@Param("pageInfo") PageInfo pageInfo,
                        @Param("search") String search, RowBounds rowBounds);
+    List<ProductVO> getAllProduct();
 }

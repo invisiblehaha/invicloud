@@ -23,6 +23,10 @@ public interface IOrderAnalyService extends IService<Order> {
 
     void toTxt2();
 
+    void buyAmount();
+    void payAmount();
+    void rfm();
+
     List<String> fromTxt(String filename);
 
     List<LevelVO> getLevels(String filename);
@@ -30,4 +34,5 @@ public interface IOrderAnalyService extends IService<Order> {
     Integer findInt(String parent);
     List<LikeVO> getLikes(String filename);
     BasePageDTO<LikeVO> listLike(String filename,PageInfo pageInfo);
+
 }

@@ -43,6 +43,23 @@
     <result column="order_number" property="orderNum"/>
 </resultMap>
 
+    <resultMap id="AnalyBuyMap" type="cn.vision.invicloud.support.pojo.vo.BuyVO">
+        <result column="create_time" property="createTime"/>
+        <result column="buy_amount" property="buyAmount"/>
+    </resultMap>
+
+    <resultMap id="AnalyPayMap" type="cn.vision.invicloud.support.pojo.vo.PayVO">
+        <result column="create_time" property="createTime"/>
+        <result column="pay_amount" property="payAmount"/>
+    </resultMap>
+
+    <resultMap id="RFMMap" type="cn.vision.invicloud.support.pojo.vo.RFMVO">
+        <result column="customer_id" property="customerId"/>
+        <result column="recent" property="recent"/>
+        <result column="monetary" property="monetary"/>
+        <result column="frequency" property="frequency"/>
+    </resultMap>
+
     <!-- 根据用户ID、订单状态列表、分页信息、搜索内容查找订单总记录数 -->
     <select id="getCount" resultType="java.lang.Integer">
         SELECT
@@ -106,5 +123,31 @@ WHERE
 GROUP BY
 	o.customer_id;
 </select>
+
+<select id="analyBuy" resultMap="AnalyBuyMap">
+SELECT create_time,
+SUM(buy_amount) as buy_amount
+FROM crm_order
+GROUP BY create_time ASC;
+</select>
+
+<select id="analyPay" resultMap="AnalyPayMap">
+SELECT create_time,
+SUM(pay_amount) as pay_amount
+FROM crm_order
+GROUP BY create_time ASC;
+</select>
+
+<select id="rfm" resultMap="RFMMap">
+SELECT customer_id,
+MAX(create_time) as recent ,
+SUM(pay_amount) as monetary,
+COUNT(1) as frequency
+FROM crm_order
+WHERE customer_id != 0
+GROUP BY customer_id
+Order BY customer_id;
+</select>
+
 
 </mapper>

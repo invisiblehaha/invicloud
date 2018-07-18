@@ -52,6 +52,7 @@ public class DetectController {
             if(id==Key.KEY_FOR_SEARCH_MATCHFAILED_MESSAGE)
             {
                 return new WebResult(RegisterReturnCode.REGISTER_FACE_NOT_SEARCHED);
+
             }
             if(id==Key.KEY_FOR_DETECT_FAILED_MESSAGE)
             {

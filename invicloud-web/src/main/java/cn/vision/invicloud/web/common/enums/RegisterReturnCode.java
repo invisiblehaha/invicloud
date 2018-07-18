@@ -32,7 +32,6 @@ public enum RegisterReturnCode implements IReturnCode{
     {
         return code;
     }
-    @Override
     public String getMessage()
     {
         return message;

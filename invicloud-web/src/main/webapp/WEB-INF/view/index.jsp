@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
     <link rel="stylesheet" type="text/css" href="${ctxsta}/css/browse-2.css" />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="http://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.js"></script>
     <script type="text/javascript">
         var heartflag=false;
@@ -43,21 +44,23 @@
             var customer=evt.data.substr(2);
             if(type=='1'){
 //                var customerdom=$("<div id='"+customer+"'></div>").text(customer);
-                var customerdom=$("<div class=\"md-trigger\" data-modal=\"modal-1\" id=\""+customer+"\">" +
-                    "<div class=\"container-small\"> " +
-                "<div class=\"row\"> " +
-                    "<div class=\"col-sm-4\"><img src=\"/static/images/recommend/"+customer+".jpg\" class=\"head\"> " +
-                "</div> " +
-                "<div class=\"col-sm-8\"> " +
-                "<div class=\"row\" style=\"color: #000;font-size: small;margin-top: 5px;\">cumtomer_id</div> " +
-                "<div class=\"row\" style=\"color: #6c757d;font-size: small\">"+customer+"</div>" +
-                "</div> " +
-                "</div> " +
-                "<div class=\"sharing\"> " +
-                "</div> " +
-                "</div> " +
-                "<input type=\"hidden\" name=\"customerId\" value=\""+customer+"\" class=\"inputSubmit\"> " +
-                "</div>");
+            if(customer!=0){
+                var customerdom = $("<div class=\"md-trigger\" data-modal=\"modal-1\" id=\"" + customer + "\">" +
+                    "<div class=\"container-small\">" +
+                    "<div class=\"row\"> " +
+                    "<div class=\"col-sm-4\"><img src=\"/static/images/recommend/" + customer + ".jpg\" class=\"head\"> " +
+                    "</div> " +
+                    "<div class=\"col-sm-8\"> " +
+                    "<div class=\"row\" style=\"color: #000;font-size: small;margin-top: 5px;\">cumtomer_id</div> " +
+                    "<div class=\"row\" style=\"color: #6c757d;font-size: small\">" + customer + "</div>" +
+                    "</div> " +
+                    "</div> " +
+                    "<div class=\"sharing\"> " +
+                    "</div> " +
+                    "</div> " +
+                    "<input type=\"hidden\" name=\"customerId\" value=\"" + customer + "\" class=\"inputSubmit\"> " +
+                    "</div>");
+            }
                 customerdom.click(function(){
                     if (websocket.readyState === websocket.OPEN) {
                         websocket.send("0 "+customer);
@@ -101,7 +104,22 @@
 
 <!-- Main content -->
 <section class="content container-fluid">
+
     <div id="show">
+        <div class="md-trigger" data-modal="modal-1">
+            <div class="container-small">
+                <div class="row">
+                    <div class="col-sm-4"><img src="/static/images/recommend/0.jpg" class="head">
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="row" style="color: #000;font-size: small;margin-top: 5px;">商店</div>
+                    </div>
+                </div>
+                <div class="sharing">
+                </div>
+            </div>
+            <input type="hidden" name="customerId" value="0" class="inputSubmit">
+        </div>
 
         <div class="md-trigger" data-modal="modal-1">
             <div class="container-small">
@@ -220,11 +238,21 @@
             </div>
             <input type="hidden" name="customerId" value="501" class="inputSubmit">
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
     <div id="userlist"></div>
 </section>
 <script src="${ctxsta}/js/modalEffects.js"></script>
-<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>

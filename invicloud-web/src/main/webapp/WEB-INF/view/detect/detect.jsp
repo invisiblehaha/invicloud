@@ -83,7 +83,8 @@
                         }
                         else if(cusInfo["code"]==20004)
                         {
-                            alert(cusInfo["message"]);
+//                            alert(cusInfo["message"]);
+                            doSendUsers("1 "+0);
                         }
                         else alert("Sorry,fail...")
                     }

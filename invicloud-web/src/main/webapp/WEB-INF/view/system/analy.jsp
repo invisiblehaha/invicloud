@@ -15,7 +15,7 @@
     <script type="text/javascript">baselocation="${ctx}"</script>
     <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
-    <link rel="stylesheet" href="${ctxsta}/css/css2.css"/>
+    <link rel="stylesheet" href="${ctxsta}/css/css-table.css"/>
 </head>
 <body style="width: 100%">
 <section class="content-header">
@@ -27,13 +27,14 @@
         <li><a href="#"><i class="fa fa-dashboard"></i>系统管理</a></li>
         <li class="active">分析数据-消费水平</li>
     </ol>
+    <button id="analy">分析数据</button>
 </section>
 
 <!-- Main content -->
-<section class="container content container-fluid">
+<section class="content container-fluid">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
-    <button id="analy">分析数据</button>
+
     <table id="table" class="table-responsive"></table>
 
     <script src="<%=basePath%>static/bootstrap-table/dist/bootstrap-table.js"></script>
@@ -55,7 +56,7 @@
                 sortable: true, //排序方式
                 sortOrder: "desc",//初始化加载第一页，默认第一页
                 pageNumber: 1,//这默认页码
-                pageSize: 15,
+                pageSize: 10,
                 pageList: [10, 15, 25, 50, 100],
               //  search: true,
                 showRefresh: true,
@@ -100,9 +101,8 @@
             return html.join('');
         }
     </script>
-
-
 </section>
+
 <script type="text/javascript" src="<%=basePath%>static/js/analy.js"></script>
 </body>
 </html>

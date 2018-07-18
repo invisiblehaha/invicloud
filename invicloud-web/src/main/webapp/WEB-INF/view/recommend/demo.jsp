@@ -12,7 +12,7 @@
 %>
 <html>
 <head>
-    <title>日志</title>
+    <title>客户详情</title>
     <script type="text/javascript">baselocation="${ctx}"</script>
     <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
@@ -68,7 +68,7 @@
         <h5>推荐商品：</h5>
 <c:forEach items="${goods}" var="good">
     <div class="columns">
-        <a href="productDetail.jsp?id=${good.productId}"><p class="thumbnail_align"> <img src="${good.picImg}" class="thumbnail"/> </p></a>
+        <a href="<%=basePath%>recommend/product/view?id=${good.productId}&customerId=${customer.customerId}"><p class="thumbnail_align"> <img src="${good.picImg}" class="thumbnail"/> </p></a>
         <small>${good.productName}</small>
     </div>
 </c:forEach>
@@ -77,7 +77,12 @@
     <div class="container-right">
     <div class="quarter2">
         <nav>商品列表</nav>
-
+        <c:forEach items="${products}" var="product">
+            <div class="columns">
+                <a href="<%=basePath%>recommend/product/view?id=${product.productId}&customerId=${customer.customerId}"><p class="thumbnail_align"> <img src="${product.picImg}" class="thumbnail"/> </p></a>
+                <small>${product.productName}</small>
+            </div>
+        </c:forEach>
     </div>
     <div class="quarter4">
         <button id="createOrder">生成订单</button>

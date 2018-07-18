@@ -54,4 +54,18 @@
             ORDER BY ${pageInfo.sort} ${pageInfo.order}
         </if>
     </select>
+
+    <!-- 获取所有商品 -->
+    <select id="getAllProduct" resultType="cn.vision.invicloud.support.pojo.vo.ProductVO">
+    SELECT
+    product_id AS productId,
+    product_name AS productName,
+    product_price AS productPrict,
+    product_introduce AS productIntroduce,
+    stock,
+    pic_img AS picImg,
+    remarks
+    FROM
+    crm_product
+    </select>
 </mapper>

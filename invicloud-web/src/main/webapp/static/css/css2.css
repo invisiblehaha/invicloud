@@ -23,6 +23,7 @@
     display: inline-block;
     width: 40%;
     height: 100%;
+
 }
 .container-right{
     display: inline-block;
@@ -42,6 +43,7 @@
     align-items: center;
     position: relative;
     overflow-y:auto;
+    overflow-x: hidden;
     justify-content: center;
 
 }
@@ -136,4 +138,30 @@ nav{
 .thumbnail {
     width: 100%;
     margin-left: auto;
+}
+.showImg{
+    margin-left: 15%;
+    width: 100%;
+}
+.bottom-detail{
+    margin-left: 15%;
+    width:95%;
+    border-radius: 8px;
+    background-color: white;
+    opacity: 0.6;
+    align-self: center;
+    height:30%;
+    margin-top: 5%;
+}
+.right-detail{
+    width:70%;
+    border-radius: 8px;
+    background-color: white;
+    opacity: 0.6;
+    align-self: center;
+    height: 80%;
+    margin-left: 15%;
+}
+.buyNum{
+    width: 30%;
 }

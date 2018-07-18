@@ -47,5 +47,7 @@ public interface UserMapper extends BaseMapper<User> {
     /*
      * 自己写的
      * */
-    Integer deleteById(@Param("userId") Integer userId);
+    Integer deleteByUserId(@Param("userId") Integer userId);
+
+    Integer updateByUserId(@Param("userId") Integer userId);
 }

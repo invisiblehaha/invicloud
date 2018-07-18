@@ -1,11 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 陶勇聪
-  Date: 2018/7/13
-  Time: 21:11
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    //{pageContext.request.ContextPath}
+    String path = request.getContextPath();
+    // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+    // 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
+    // pageContext.setAttribute("basePath", basePath);
+%>
 <html>
 <!-- 销售量预测 -->
 <head>
@@ -25,7 +27,7 @@
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
     var csv = null;
-    $.get("static/data/pay_amount_prediction.csv", function (data) {
+    $.get("<%=basePath%>static/data/buy_amount_prediction.csv", function (data) {
         csv = data;
         Highcharts.chart('container', {
             chart: {

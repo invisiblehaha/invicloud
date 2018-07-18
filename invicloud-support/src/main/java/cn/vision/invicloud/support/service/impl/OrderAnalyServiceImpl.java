@@ -100,6 +100,114 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
 
         }
     }
+    public void buyAmount(){
+        List<BuyVO> list = orderMapper.analyBuy();
+        File file = new File("order_by_buy_amount.txt");
+        if (file.exists()) {
+            file.delete();
+        }
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        Iterator<BuyVO> iter = list.iterator();
+        try {
+            fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+            bw.write("create_time\tbuy_amount");
+            bw.newLine();
+            while (iter.hasNext()) {
+                bw.write(iter.next().toString());
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    public void payAmount(){
+        List<PayVO> list = orderMapper.analyPay();
+        File file = new File("order_by_pay_amount.txt");
+        if (file.exists()) {
+            file.delete();
+        }
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        Iterator<PayVO> iter = list.iterator();
+        try {
+            fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+            bw.write("create_time\tpay_amount");
+            bw.newLine();
+            while (iter.hasNext()) {
+                bw.write(iter.next().toString());
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    public void rfm(){
+        List<RFMVO> list = orderMapper.rfm();
+        File file = new File("RFM_data.txt");
+        if (file.exists()) {
+            file.delete();
+        }
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        Iterator<RFMVO> iter = list.iterator();
+        try {
+            fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+            bw.write("customer_id\trecent\tmonetary\tfrequency");
+            bw.newLine();
+            while (iter.hasNext()) {
+                bw.write(iter.next().toString());
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
     public List<String> fromTxt(String filename){
         List<String> newList = new ArrayList<>();
         FileReader fr = null;

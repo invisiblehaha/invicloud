@@ -40,4 +40,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         pageInfo.setTotal((int)page.getTotal());
         return new BasePageDTO<Product>(pageInfo, products);
     }
+    @Override
+    public List<ProductVO> getAllProduct(){
+        List<ProductVO> allProduct=productMapper.getAllProduct();
+        return allProduct;
+    }
 }

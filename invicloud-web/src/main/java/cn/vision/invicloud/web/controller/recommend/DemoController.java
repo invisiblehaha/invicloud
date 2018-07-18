@@ -54,6 +54,8 @@ public class DemoController {
                 model.addAttribute("goods",goods);
             }
         }
+        List<ProductVO> productVOList=productService.getAllProduct();
+        model.addAttribute("products",productVOList);
 
         return "/recommend/demo";
     }

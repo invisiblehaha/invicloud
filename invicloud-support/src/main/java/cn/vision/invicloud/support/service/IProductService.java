@@ -6,6 +6,8 @@ import cn.vision.invicloud.support.entity.Product;
 import cn.vision.invicloud.support.pojo.vo.ProductVO;
 import com.baomidou.mybatisplus.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 商品表 服务类
@@ -29,4 +31,5 @@ public interface IProductService extends IService<Product> {
      * @return
      */
     BasePageDTO<Product> list(PageInfo pageInfo, String search);
+    List<ProductVO> getAllProduct();
 }

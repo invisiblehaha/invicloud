@@ -54,7 +54,7 @@
                 sortable: true, //排序方式
                 sortOrder: "desc",//初始化加载第一页，默认第一页
                 pageNumber: 1,//这默认页码
-                pageSize: 15,
+                pageSize: 10,
                 pageList: [10, 15, 25, 50, 100],
                 //  search: true,
                 showRefresh: true,
