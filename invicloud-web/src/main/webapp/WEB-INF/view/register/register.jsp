@@ -207,13 +207,13 @@
     //tracking
     var ctracker = new clm.tracker();
     var canvas2 = document.getElementById('myCanvas');
-    var context2 = canvas2.getContext('2d');
+    //var context2 = canvas2.getContext('2d');
     ctracker.init();
-    var positionInitial = ctracker.getCurrentPosition();//获取最初的position，用作后续的判断
+    //var positionInitial = ctracker.getCurrentPosition();//获取最初的position，用作后续的判断(放到了detect检测人脸里)
     ctracker.start(video);
     function positionLoop() {
         requestAnimationFrame(positionLoop);
-        var positions = ctracker.getCurrentPosition();
+        /*var positions = ctracker.getCurrentPosition();
         img1 = canvas2.toDataURL("image/png");//储存了img流，直接用这个的base64就行
         context2.fillStyle="#ffffff";
         context2.beginPath();
@@ -226,7 +226,7 @@
             context2.drawImage(video,0,0,400,400);
             //将获取的图片base64信息封装在info中
             UserUpload = true;
-        }
+        }*/
     }
     positionLoop();
 
