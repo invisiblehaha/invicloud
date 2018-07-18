@@ -42,7 +42,6 @@
             var type=evt.data.substr(0,1);
             var customer=evt.data.substr(2);
             if(type=='1'){
-//                var customerdom=$("<div id='"+customer+"'></div>").text(customer);
                 var customerdom=$("<div class=\"md-trigger\" data-modal=\"modal-1\" id=\""+customer+"\">" +
                     "<div class=\"container-small\"> " +
                 "<div class=\"row\"> " +

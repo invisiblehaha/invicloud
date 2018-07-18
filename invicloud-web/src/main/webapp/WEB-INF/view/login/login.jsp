@@ -63,15 +63,16 @@
                                                     <label class="input-tips" for="registerCode">验证码: </label>
                                                     <div class="inputOuter">
                                                         <input class="inputstyle" type="text" name="registerCode"
-                                                               id="registerCode" required>
+                                                               id="registerCode" placeholder="请输入验证码" required>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width: 100%;align-content: center">
+                                                <span style='color: red;' id='message'></span>
                                                 <img id="registerPic" src="${ctx}\captcha-image.jpg"
-                                                     alt="registerCode"/>
+                                                     alt="registerCode" align="right" />
                                             </td>
                                         </tr>
 

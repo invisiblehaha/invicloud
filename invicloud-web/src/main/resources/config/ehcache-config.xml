@@ -8,19 +8,9 @@
             maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="3600"
-            timeToLiveSeconds="3600"
             overflowToDisk="true"
             diskSpoolBufferSizeMB = "50">
     </defaultCache>
-
-    <!-- 登录缓存 半小时内没反应GG-->
-    <cache name="passwordRetryCache"
-           maxElementsInMemory="50000"
-           eternal="false"
-           timeToIdleSeconds="1800"
-           overflowToDisk="true"
-           diskSpoolBufferSizeMB = "50">
-    </cache>
 
     <!--默认缓存配置，以下属性是必须的：
             name ：cache的标识符，在一个CacheManager中必须唯一。
