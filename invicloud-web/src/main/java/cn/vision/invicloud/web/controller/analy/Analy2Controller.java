@@ -33,7 +33,7 @@ public class Analy2Controller {
         String file=System.getProperty("user.dir")+"/recommendationByProductCF.txt";
         System.out.println(file);
 
-        String newFile = "src/main/java/cn/vision/invicloud/web/analysis/result"+"/recommendationByProductCF.txt";
+        String newFile = "src/main/java/cn/vision/invicloud/web/analysis/result/recommendationByProductCF.txt";
         //MoveFileUtils.moveFile(file, newFile);
         MoveFileUtils.moveFile(newFile, System.getProperty("user.dir"));
         BasePageDTO<LikeVO> basePageDTO=analyService.listLike(file,pageInfo);

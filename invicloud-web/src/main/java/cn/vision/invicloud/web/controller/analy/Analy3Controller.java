@@ -30,7 +30,7 @@ public class Analy3Controller {
     public Object listLevels(PageInfo pageInfo){
         String file=System.getProperty("user.dir")+"/recommendationByCustomerCF.txt";
         System.out.println(file);
-        String newFile = "src/main/java/cn/vision/invicloud/web/analysis/result"+"/recommendationByCustomerCF.txt";
+        String newFile = "src/main/java/cn/vision/invicloud/web/analysis/result/recommendationByCustomerCF.txt";
         //MoveFileUtils.moveFile(newFile, System.getProperty("user.dir"));
         BasePageDTO<LikeVO> basePageDTO=analyService.listLike(file,pageInfo);
         return new WebPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());

@@ -11,3 +11,7 @@ select substr(regeist_time,1,10) as rgt_time,count(*) as rgt_amount from crm_cus
 生成category_recommendation_data.txt:
 select customer_id, category_id FROM crm_order_product op,crm_order o, crm_product_category pc where op.order_id=o.order_id and op.product_id=pc.product_id and customer_id>0
 
+生成 predict_single_product_data.txt
+每次需要不同的 p.product_id=？
+列表的日期数据需要是连续的，若有日期缺失，需要补充
+SELECT  o.create_time, p.buy_amount FROM crm_order o, crm_order_product p WHERE o.order_id=p.order_id and p.product_id=0 ORDER BY p.product_id,o.create_time;
