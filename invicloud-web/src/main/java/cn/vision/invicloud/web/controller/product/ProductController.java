@@ -37,5 +37,4 @@ public class ProductController {
         return new WebPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());
     }
 
-
 }

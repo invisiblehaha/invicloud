@@ -75,6 +75,7 @@
 //                {field: 'productIntroduce', title: '商品介绍', align: 'center',  halign: 'center'},
                 {field: 'stock', title: '库存', align: 'center',  halign: 'center'},
 //                {field: 'remarks', title: '备注', align: 'center', halign: 'center'},
+                {field: 'analy', title: '分析预测', formatter: 'operateFormatter', events:'operateEvents'}
             ]
         });
     });
@@ -99,6 +100,26 @@
         m = m > 9 ? m : '0' + m;
         return y + '-' + m + '-' + d + ' ' + h + ':' + mi;
     }
+
+    function operateFormatter(value, row, index)
+    {
+        return '<button class="analy" type="button" >分析预测</button> ';
+    }
+    window.operateEvents =
+        { 'click .analy' :  function(e, value, row, index){
+        var pid=row.productId;
+                $.ajax({
+                    type: 'get',
+                    url: "/product/productPredict/view?id="+pid,
+                    success : function(){
+                        window.location.href ="/product/productPredict/view?id="+pid
+                    }
+                });
+            }
+
+        };
+
+
 </script>
 </section>
 </body>

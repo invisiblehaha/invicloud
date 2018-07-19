@@ -3,6 +3,7 @@ package cn.vision.invicloud.support.mapper;
 import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Product;
 import cn.vision.invicloud.support.pojo.vo.ProductVO;
+import cn.vision.invicloud.support.pojo.vo.SingProductAnalyVO;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
@@ -29,4 +30,6 @@ public interface ProductMapper extends BaseMapper<Product> {
     List<Product> list(@Param("pageInfo") PageInfo pageInfo,
                        @Param("search") String search, RowBounds rowBounds);
     List<ProductVO> getAllProduct();
+
+    List<SingProductAnalyVO> analySing(@Param("productId")Integer productId);
 }

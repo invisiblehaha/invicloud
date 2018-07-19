@@ -30,7 +30,7 @@
 </section>
 
 <!-- Main content -->
-<section class="container content container-fluid">
+<section class="content container-fluid">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
     <table id="table" class="table-responsive"></table>

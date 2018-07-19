@@ -62,6 +62,10 @@
         <td class="lefttd">平均消费数量：</td>
         <td>${averageNum}</td>
     </tr>
+    <tr>
+        <td class="lefttd">分类饼图</td>
+        <td>${catmap}</td>
+    </tr>
 </table>
 </div>
     <div class="quarter3">

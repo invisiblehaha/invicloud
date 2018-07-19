@@ -60,6 +60,21 @@
         <result column="frequency" property="frequency"/>
     </resultMap>
 
+    <resultMap id="CatRecomenMap" type="cn.vision.invicloud.support.pojo.vo.CategoryAnalyVO">
+        <result column="customer_id" property="customerId"/>
+        <result column="category_id" property="categoryId"/>
+    </resultMap>
+
+    <resultMap id="VIPMap" type="cn.vision.invicloud.support.pojo.vo.VIPVO">
+        <result column="rgt_time" property="rgtTime"/>
+        <result column="rgt_amount" property="rgtAmount"/>
+    </resultMap>
+
+    <resultMap id="CatMap" type="cn.vision.invicloud.support.pojo.vo.CatAnalyVO">
+        <result column="category_id" property="categoryId"/>
+        <result column="buy_total" property="buyTotal"/>
+    </resultMap>
+
     <!-- 根据用户ID、订单状态列表、分页信息、搜索内容查找订单总记录数 -->
     <select id="getCount" resultType="java.lang.Integer">
         SELECT
@@ -148,6 +163,28 @@ WHERE customer_id != 0
 GROUP BY customer_id
 Order BY customer_id;
 </select>
+<select id="catAnaly" resultMap="CatRecomenMap">
+    select customer_id,
+category_id
+FROM crm_order_product op,crm_order o, crm_product_category pc
+where op.order_id=o.order_id and op.product_id=pc.product_id and customer_id>0
+</select>
+<select id="vipIncrease" resultMap="VIPMap">
+select substr(regeist_time,1,10) as rgt_time,
+count(*) as rgt_amount
+from crm_customer
+group by rgt_time
+ORDER BY rgt_time;
+</select>
 
+<select id="getCatList" resultMap="CatMap">
+select pc.category_id,SUM(o.buy_amount) as buy_total
+from crm_order o, crm_order_product op,crm_product_category pc
+where o.customer_id=#{customerId}
+ and o.order_id=op.order_id
+ and op.product_id=pc.product_id
+GROUP BY pc.category_id
+ORDER BY pc.category_id;
+</select>
 
 </mapper>
