@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/invicloud.iml" filepath="$PROJECT_DIR$/invicloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invicloud-common/invicloud-common.iml" filepath="$PROJECT_DIR$/invicloud-common/invicloud-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invicloud-support/invicloud-support.iml" filepath="$PROJECT_DIR$/invicloud-support/invicloud-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invicloud-web/invicloud-web.iml" filepath="$PROJECT_DIR$/invicloud-web/invicloud-web.iml" />
+    </modules>
+  </component>
+</project>

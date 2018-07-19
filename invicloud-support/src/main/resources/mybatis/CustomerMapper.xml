@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.vision.invicloud.support.mapper.CustomerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.vision.invicloud.support.entity.Customer">
+        <id column="customer_id" property="customerId" />
+        <result column="customer_token" property="customerToken" />
+        <result column="real_name" property="realName" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
+        <result column="pic_img" property="picImg" />
+        <result column="status" property="status" />
+        <result column="telephone" property="telephone" />
+        <result column="regeist_time" property="regeistTime" />
+        <result column="noble" property="noble" />
+    </resultMap>
+
+
+    <select id="getBycustomerId" resultMap="BaseResultMap">
+        SELECT
+          c.customer_id,c.customer_token,c.real_name,c.sex,c.age,c.pic_img,c.status,c.telephone,c.regeist_time,c.noble
+          FROM
+          crm_customer c
+          WHERE
+          customer_id=#{customerId}
+    </select>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        customer_id AS customerId, customer_token AS customerToken, real_name AS realName, sex, age, pic_img AS picImg, status, telephone, regeist_time AS regeistTime, noble
+    </sql>
+    <select id="getByCustomerToken" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_customer
+        WHERE
+        customer_token=#{customerToken}
+    </select>
+
+
+    <select id="getById" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_customer
+        WHERE
+        customer_id=#{customerId}
+    </select>
+
+
+    <select id="listByPage" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_customer
+        <if test="noble != null">
+            WHERE noble=#{noble}
+        </if>
+        <if test="pageInfo.sort != null">
+            ORDER BY ${pageInfo.sort} ${pageInfo.order}
+        </if>
+    </select>
+    <!-- 根据分页信息/搜索内容查找商品列表 -->
+    <select id="listByPage2" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
+        SELECT
+        customer_id AS customerId, customer_token AS customerToken, real_name AS realName, sex, age, pic_img AS picImg, status, telephone, regeist_time AS regeistTime, noble
+        FROM
+        crm_customer
+        <where>
+            1=1
+            <if test="search != null">
+                AND (
+                real_name LIKE '%' #{search} '%'
+                )
+            </if>
+            <if test="pageInfo.sort != null">
+                ORDER BY ${pageInfo.sort} ${pageInfo.order}
+            </if>
+        </where>
+    </select>
+
+    <select id="getLastestPlusCustomerId" resultType="java.lang.Integer">
+        SELECT
+        MAX(customer_id)
+        FROM
+        crm_customer
+    </select>
+
+    <insert id="insert" parameterType="cn.vision.invicloud.support.entity.Customer">
+        insert into crm_customer(customer_id,customer_token,real_name,sex,age,pic_img,status,telephone,regeist_time,noble)
+        values(#{customer.customerId},#{customer.customerToken},#{customer.realName},#{customer.sex},#{customer.age},#{customer.picImg},#{customer.status},#{customer.telephone},#{customer.regeistTime},#{customer.noble})
+    </insert>
+</mapper>
