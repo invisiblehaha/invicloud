@@ -23,3 +23,8 @@ where op.order_id=o.order_id and op.product_id=pc.product_id and customer_id>0
 每次需要不同的 p.product_id=？
 列表的日期数据需要是连续的，若有日期缺失，需要补充
 SELECT  o.create_time, p.buy_amount FROM crm_order o, crm_order_product p WHERE o.order_id=p.order_id and p.product_id=0 ORDER BY p.product_id,o.create_time;
+
+select pc.category_id,SUM(o.buy_amount) as buy_total
+from crm_order o, crm_order_product op,crm_product_category pc
+where o.customer_id=0 and o.order_id=op.order_id and op.product_id=pc.product_id
+GROUP BY pc.category_id ORDER BY pc.category_id;

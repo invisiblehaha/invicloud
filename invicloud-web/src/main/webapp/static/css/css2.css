@@ -43,7 +43,7 @@
     align-items: center;
     position: relative;
     overflow-y:auto;
-    overflow-x: hidden;
+    overflow-x: scroll;
     justify-content: center;
 
 }

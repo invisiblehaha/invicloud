@@ -380,4 +380,8 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         return new BasePageDTO<LikeVO>(pageInfo, list);
     }
 
+    public List<CatAnalyVO> getCatList(Integer customerId){
+        return orderMapper.getCatList(customerId);
+    }
+
 }

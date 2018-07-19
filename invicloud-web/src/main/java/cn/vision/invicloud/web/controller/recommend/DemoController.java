@@ -1,6 +1,5 @@
 package cn.vision.invicloud.web.controller.recommend;
 
-import cn.vision.invicloud.support.common.BasePageDTO;
 import cn.vision.invicloud.support.entity.Customer;
 import cn.vision.invicloud.support.pojo.vo.*;
 import cn.vision.invicloud.support.service.ICustomerService;
@@ -12,8 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/recommend/demo")
@@ -55,8 +58,20 @@ public class DemoController {
             }
         }
         List<ProductVO> productVOList=productService.getAllProduct();
-        model.addAttribute("products",productVOList);
 
+        List<CatAnalyVO> catList=analyService.getCatList(customerId);
+        model.addAttribute("products",productVOList);
+        Map<Integer, String> map=new HashMap<>();
+        int total=0;
+        for (CatAnalyVO catAnalyVO:catList) {
+        total+=catAnalyVO.getBuyTotal();
+        }
+        DecimalFormat df = (DecimalFormat) NumberFormat.getPercentInstance();
+        df.applyPattern("0.00%");
+        for (CatAnalyVO catAnalyVO:catList) {
+        map.put(catAnalyVO.getCategoryId(),df.format((double)catAnalyVO.getBuyTotal()/(double)total));
+        model.addAttribute("catmap",map);
+        }
         return "/recommend/demo";
     }
 

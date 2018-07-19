@@ -70,6 +70,11 @@
         <result column="rgt_amount" property="rgtAmount"/>
     </resultMap>
 
+    <resultMap id="CatMap" type="cn.vision.invicloud.support.pojo.vo.CatAnalyVO">
+        <result column="category_id" property="categoryId"/>
+        <result column="buy_total" property="buyTotal"/>
+    </resultMap>
+
     <!-- 根据用户ID、订单状态列表、分页信息、搜索内容查找订单总记录数 -->
     <select id="getCount" resultType="java.lang.Integer">
         SELECT
@@ -170,6 +175,16 @@ count(*) as rgt_amount
 from crm_customer
 group by rgt_time
 ORDER BY rgt_time;
+</select>
+
+<select id="getCatList" resultMap="CatMap">
+select pc.category_id,SUM(o.buy_amount) as buy_total
+from crm_order o, crm_order_product op,crm_product_category pc
+where o.customer_id=#{customerId}
+ and o.order_id=op.order_id
+ and op.product_id=pc.product_id
+GROUP BY pc.category_id
+ORDER BY pc.category_id;
 </select>
 
 </mapper>

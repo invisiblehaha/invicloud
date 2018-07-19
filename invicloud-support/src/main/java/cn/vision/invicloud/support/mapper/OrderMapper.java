@@ -48,4 +48,6 @@ public interface OrderMapper extends BaseMapper<Order> {
 
     List<VIPVO> vipIncrease();
 
+    List<CatAnalyVO>  getCatList(@Param("customerId")Integer customerId);
+
 }

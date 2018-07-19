@@ -4,6 +4,7 @@ package cn.vision.invicloud.support.service;
 import cn.vision.invicloud.support.common.BasePageDTO;
 import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Order;
+import cn.vision.invicloud.support.pojo.vo.CatAnalyVO;
 import cn.vision.invicloud.support.pojo.vo.LevelVO;
 import cn.vision.invicloud.support.pojo.vo.LikeVO;
 import cn.vision.invicloud.support.pojo.vo.OrderAnalyVO;
@@ -35,5 +36,7 @@ public interface IOrderAnalyService extends IService<Order> {
     Integer findInt(String parent);
     List<LikeVO> getLikes(String filename);
     BasePageDTO<LikeVO> listLike(String filename,PageInfo pageInfo);
+
+    List<CatAnalyVO> getCatList(Integer customerId);
 
 }
