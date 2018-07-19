@@ -41,6 +41,16 @@
             product_id=#{productId}
     </select>
 
+
+    <!-- 动态删除操作  delete from product where id in(?,?,?);-->
+    <delete id="deleteByProductId">
+        delete from crm_product
+        where
+      product_id =  #{productId}
+    </delete>
+
+
+
     <!-- 根据分页信息/搜索内容查找日志记录列表 -->
     <select id="list" resultType="cn.vision.invicloud.support.entity.Product">
         SELECT

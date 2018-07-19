@@ -90,6 +90,23 @@ public class UserController {
             return new WebResult(CommonReturnCode.UNAUTHORIZED);
         }
     }
+    /**
+     * update 修改用户
+     *
+     * @return
+     */
+    @PostMapping(value = "/editable")
+    @ResponseBody
+    public void update(User user) {
+
+    }
+
+
+
+
+
+
+
 
     /**
      * GET 创建用户页面

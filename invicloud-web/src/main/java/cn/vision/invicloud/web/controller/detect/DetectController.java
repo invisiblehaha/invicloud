@@ -6,6 +6,7 @@ import cn.vision.invicloud.support.service.ICustomerService;
 import cn.vision.invicloud.web.common.WebPageResult;
 import cn.vision.invicloud.web.common.WebResult;
 import cn.vision.invicloud.web.common.enums.RegisterReturnCode;
+import cn.vision.invicloud.web.common.utils.UpdateUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,7 @@ public class DetectController {
             String img = b64String;
             System.out.println(img);
             System.out.println(b64String);
-            byte[] buff = Base64ToByteArr(b64String);
+            byte[] buff = UpdateUtils.Base64ToByteArr(b64String);
             id = InterfaceOfAllAPIs.searchForUserId(buff, "FS_1");
             if(id==Key.KEY_FOR_SEARCH_MATCHFAILED_MESSAGE)
             {
@@ -69,10 +70,5 @@ public class DetectController {
         }
     }
 
-    final Base64.Decoder decoder = Base64.getDecoder();
-    public byte[] Base64ToByteArr(String b64)
-    {
-        String[] strArr=b64.split(",");
-        return decoder.decode(strArr[1]);
-    }
+   
 }

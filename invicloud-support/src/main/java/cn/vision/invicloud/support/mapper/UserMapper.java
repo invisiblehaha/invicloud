@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,7 +41,8 @@ public interface UserMapper extends BaseMapper<User> {
      * 根据userId更新用户信息
      * @return
      */
-    Integer updateById(@Param("userId") Integer userId,@Param("loginName") String loginName,@Param("userName") String userName,@Param("sex") Integer sex,@Param("age") Integer age,@Param("telephone") String telephone);
+    Integer updateById(@Param("userId") Integer userId,@Param("loginName") String loginName,@Param("userName") String userName,
+	@Param("sex") Integer sex,@Param("age") Integer age,@Param("telephone") String telephone);
 
 
 
@@ -48,6 +50,4 @@ public interface UserMapper extends BaseMapper<User> {
      * 自己写的
      * */
     Integer deleteByUserId(@Param("userId") Integer userId);
-
-    Integer updateByUserId(@Param("userId") Integer userId);
 }

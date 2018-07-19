@@ -8,7 +8,7 @@ def analy_vip_custom(customer_id, buy_amount, pay_amount, order_amount):
     ava_pay_amount = pay_amount/order_amount
 
     if ava_buy_number > 0:
-        return "user_id ="+str(customer_id)+"的会员的每次购物平均消费金额为："+str(int(ava_pay_amount))+", 每次购物所购买平均商品数量为：" + str(int(ava_buy_number))
+        return "user_id ="+str(customer_id)+"的会员的每次购物平均消费金额为:"+str(int(ava_pay_amount))+", 每次购物所购买平均商品数量为:" + str(int(ava_buy_number))
     else:
         return "user_id ="+str(customer_id)+"的会员暂时未在本店消费"
 
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     path = None
     separator = None
 
-    path = sys.argv[1]+'\\2.txt'
+    path = sys.argv[1]+'/2.txt'
     separator = '\t'
 
     print('开始读取数据')
@@ -37,7 +37,7 @@ if __name__ == '__main__':
         print(temp)
         result_df.loc[i] = [customer_id, temp]
         i += 1
-    result_df.to_csv(sys.argv[1]+'\\consumptionLevel.txt')
+    result_df.to_csv(sys.argv[1]+'/consumptionLevel.txt')
 
 
 

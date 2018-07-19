@@ -7,10 +7,13 @@ import cn.vision.invicloud.support.pojo.vo.RoleMenuVO;
 import cn.vision.invicloud.support.pojo.vo.UserVO;
 import cn.vision.invicloud.support.service.IProductService;
 import cn.vision.invicloud.web.common.WebPageResult;
-import com.sun.tracing.dtrace.ModuleAttributes;
+import cn.vision.invicloud.web.common.WebResult;
+import cn.vision.invicloud.web.common.enums.CommonReturnCode;
+import cn.vision.invicloud.web.common.utils.LoginUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import com.sun.tracing.dtrace.ModuleAttributes;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,5 +39,25 @@ public class ProductController {
         BasePageDTO<Product> basePageDTO = productService.list(pageInfo, search);
         return new WebPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());
     }
+
+
+
+    /**
+     * DELETE 删除用户
+     *
+     * @return
+     */
+    @DeleteMapping(value = "/{productId}")
+    @ResponseBody
+    public Object delete(@PathVariable("productId") Integer productId) {
+        if (productService.getById(productId) != null) {
+            Integer count = productService.deleteByProductId(productId);
+            return new WebResult(CommonReturnCode.SUCCESS);
+        } else {
+            return new WebResult(CommonReturnCode.UNAUTHORIZED);
+        }
+    }
+
+
 
 }

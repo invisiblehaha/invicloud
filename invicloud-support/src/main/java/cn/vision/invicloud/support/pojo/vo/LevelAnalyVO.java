@@ -20,7 +20,7 @@ public class LevelAnalyVO implements Serializable{
     /**
      *购买金额
      */
-    private Integer payAmount;
+    private BigDecimal payAmount;
     /**
      * 订单数
      */
@@ -33,7 +33,7 @@ public class LevelAnalyVO implements Serializable{
         return buyAmount;
     }
 
-    public Integer getPayAmont() {
+    public BigDecimal getPayAmont() {
         return payAmount;
     }
 
@@ -49,7 +49,7 @@ public class LevelAnalyVO implements Serializable{
         this.buyAmount = buyAmount;
     }
 
-    public void setPayAmont(Integer payAmont) {
+    public void setPayAmont(BigDecimal payAmont) {
         this.payAmount = payAmont;
     }
 

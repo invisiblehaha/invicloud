@@ -121,9 +121,9 @@ desired effect
                         </ul>
                     </li>
                     <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                    </li>
+                    <%--<li>--%>
+                        <%--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--%>
+                    <%--</li>--%>
                 </ul>
             </div>
         </nav>
@@ -152,14 +152,28 @@ desired effect
                 <li class="header">HEADER</li>
 
                 <!-- Optionally, you can add icons to the links -->
-                <c:forEach items="${menus}" var="menu">
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>${menu.menuName}</span>
-                            <span class="pull-right-container">
+                <c:forEach items="${menus}" var="menu" varStatus="s">
+                    <c:choose>
+                        <c:when test="${cookie['selectedmenu'].value eq s.count}">
+                <li class="treeview menu-open">
+                    </c:when>
+                    <c:otherwise>
+                <li class="treeview">
+                    </c:otherwise>
+                    </c:choose>
+                    <a href="#"><i class="fa fa-link"></i> <span>${menu.menuName}</span>
+                        <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
               </span>
                         </a>
-                        <ul class="treeview-menu">
+                    <c:choose>
+                        <c:when test="${cookie['selectedmenu'].value eq s.count}">
+                            <ul class="treeview-menu" style="display: block;">
+                        </c:when>
+                        <c:otherwise>
+                            <ul class="treeview-menu">
+                        </c:otherwise>
+                    </c:choose>
                             <c:forEach items="${menu.childMenus}" var="item">
                             <li><a href="${ctx}${item.href}">${item.menuName}</a></li>
                             </c:forEach>
@@ -279,6 +293,7 @@ desired effect
 </div>
 <!-- ./wrapper -->
 <!-- AdminLTE App -->
+<script src="<%=basePath%>static/js/decorator.js"></script>
 <script src="<%=basePath%>resources/dist/js/adminlte.min.js"></script>
 
 </body>

@@ -17,6 +17,9 @@ import java.util.Base64;
 import humanfaceAPI.*;
 import java.util.Calendar;
 import java.util.Date;
+import cn.vision.invicloud.web.common.utils.UpdateUtils;
+import humanfaceAPI.InterfaceOfAllAPIs;
+import humanfaceAPI.Key;
 
 
 @Controller
@@ -43,12 +46,7 @@ public class RegisterController {
     }
 
 
-    final Base64.Decoder decoder = Base64.getDecoder();
-    public byte[] Base64ToByteArr(String b64)
-    {
-        String[] strArr=b64.split(",");
-        return decoder.decode(strArr[1]);
-    }
+
 
     /**
      * POST 注册信息
@@ -61,7 +59,7 @@ public class RegisterController {
                            @RequestParam("phoneNumber")String phoneNumber,
                            @RequestParam("img")String imgString)
     {
-        byte[] buff=Base64ToByteArr(imgString);
+        byte[] buff=UpdateUtils.Base64ToByteArr(imgString);
         String detectToken = InterfaceOfAllAPIs.detect(buff);
 
 //        if(InterfaceOfAllAPIs.searchForUserId(buff,"FS_1")!=Key.KEY_FOR_SEARCH_MATCHFAILED_MESSAGE)
@@ -92,7 +90,7 @@ public class RegisterController {
 
 
         //识别不到人脸时
-        if(detectToken == Key.KEY_FOR_DETECT_FAILED_MESSAGE)
+        if(detectToken.equals(Key.KEY_FOR_DETECT_FAILED_MESSAGE))
         {
             return new WebResult(RegisterReturnCode.REGISTER_FACE_NOT_DETECTED);
         }

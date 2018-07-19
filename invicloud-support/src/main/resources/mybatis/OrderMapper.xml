@@ -26,8 +26,8 @@
         <result column="pay_amount" property="payAmount" />
         <collection property="orderProducts" ofType="cn.vision.invicloud.support.entity.OrderProduct">
             <result column="product_id" property="productId"/>
-            <result column="buy_amount" property="buyAmount" />
-            <result column="pay_amount" property="payAmount" />
+            <result column="ba" property="buyAmount" />
+            <result column="pa" property="payAmount" />
         </collection>
     </resultMap>
 
@@ -91,7 +91,7 @@
 
     <select id="list" resultMap="OrderVOsResultMap">
         SELECT
-        *
+        o.*,p.product_id,p.buy_amount AS ba,p.pay_amount AS pa
         FROM (
           SELECT
           *
@@ -140,17 +140,12 @@ GROUP BY
 </select>
 
 <select id="analyBuy" resultMap="AnalyBuyMap">
-SELECT create_time,
-SUM(buy_amount) as buy_amount
-FROM crm_order
-GROUP BY create_time ASC;
+SELECT str_to_date(substr(create_time,1,10), '%Y-%m-%d %h:%i:%s') as create_time, SUM(buy_amount) as buy_amount FROM crm_order GROUP BY create_time ASC;
+
 </select>
 
 <select id="analyPay" resultMap="AnalyPayMap">
-SELECT create_time,
-SUM(pay_amount) as pay_amount
-FROM crm_order
-GROUP BY create_time ASC;
+SELECT str_to_date(substr(create_time,1,10), '%Y-%m-%d %h:%i:%s') as create_time, SUM(pay_amount) as pay_amount FROM crm_order GROUP BY create_time ASC;
 </select>
 
 <select id="rfm" resultMap="RFMMap">
@@ -170,11 +165,7 @@ FROM crm_order_product op,crm_order o, crm_product_category pc
 where op.order_id=o.order_id and op.product_id=pc.product_id and customer_id>0
 </select>
 <select id="vipIncrease" resultMap="VIPMap">
-select substr(regeist_time,1,10) as rgt_time,
-count(*) as rgt_amount
-from crm_customer
-group by rgt_time
-ORDER BY rgt_time;
+SELECT str_to_date(substr(regeist_time,1,10), '%Y-%m-%d %h:%i:%s') as rgt_time, count(*) as rgt_amount FROM crm_customer GROUP BY rgt_time ASC;
 </select>
 
 <select id="getCatList" resultMap="CatMap">

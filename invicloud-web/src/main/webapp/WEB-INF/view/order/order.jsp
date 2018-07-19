@@ -100,14 +100,44 @@
             ]
         });
     });
-    function detailFormatter(index, row) {
-        var html = [];
-        $.each(row, function (key, value) {
-            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
-        });
-        return html.join('');
+    function detailFormatter(index, row, $detail) {
+        InitSubTable(index, row, $detail);
     }
 
+    InitSubTable = function (index, row, $detail) {
+        var cur_table = $detail.html('<table></table>').find('table');
+        $(cur_table).bootstrapTable({
+            data: row.orderProducts,
+            sidePagination: 'client',
+            // clickToSelect: true,
+            uniqueId: "productId",
+            pagination: true,
+            smartDisplay: false,
+            paginationLoop: false,
+            pageSize: 10,
+            pageList: [10, 25],
+            pageNumber: 1,
+            columns: [{
+                field: 'productId',
+                title: '商品编号',
+                halign: 'center',
+                align: 'center',
+                sortable: 'true'
+            }, {
+                field: 'buyAmount',
+                title: '购买数量',
+                halign: 'center',
+                align: 'center',
+                sortable: 'true'
+            }, {
+                field: 'payAmount',
+                title: '购买金额',
+                halign: 'center',
+                align: 'center',
+                sortable: 'true'
+            }]
+        });
+    };
 
     function timeFormatter(stamp) {
         var date = new Date(stamp);

@@ -32,7 +32,7 @@ public interface OrderMapper extends BaseMapper<Order> {
      * @param pageInfo 分页信息
      * @return
      */
-    List<OrderVO> list(@Param("userId") Integer userId, @Param("pageInfo") PageInfo pageInfo,@Param("search") String search, RowBounds rowBounds);
+    List<OrderVO> list(@Param("userId") Integer userId, @Param("pageInfo") PageInfo pageInfo,@Param("search") String search);
 
     List<OrderAnalyVO> analylist();
 

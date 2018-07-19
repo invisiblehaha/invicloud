@@ -21,7 +21,7 @@ class Data:
         self.customer_id_list = []
 
         if dataset == 'category_recommendation_data.txt':
-            path = sys.argv[1]+'\\category_recommendation_data.txt'
+            path = sys.argv[1]+'/category_recommendation_data.txt'
             separator = '\t'
 
         print('开始读取数据')
@@ -314,4 +314,4 @@ if __name__ == '__main__':
 
     print(result1.iloc[0])
 
-    result1.to_csv(sys.argv[1] +'\\category_recommendation.txt')
+    result1.to_csv(sys.argv[1] +'/category_recommendation.txt')

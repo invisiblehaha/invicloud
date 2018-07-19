@@ -14,7 +14,7 @@ import datetime
 import sys
 
 if __name__ == '__main__':
-    rfm = pd.read_csv(sys.argv[1]+'\\RFM_data.txt', sep='\t')
+    rfm = pd.read_csv(sys.argv[1]+'/RFM_data.txt', sep='\t')
     # print(raw_data.head(10))
     temp = rfm['recent'].values
     print(rfm['customer_id'])
@@ -40,4 +40,4 @@ if __name__ == '__main__':
     #对原数据表进行类别标记
     rfm['label'] = clf.labels_
     # 查看标记后的数据
-    rfm.iloc[:, [0, 4]].to_csv(sys.argv[1]+ '\\RFM_result.txt')
+    rfm.iloc[:, [0, 4]].to_csv(sys.argv[1]+ '/RFM_result.txt')

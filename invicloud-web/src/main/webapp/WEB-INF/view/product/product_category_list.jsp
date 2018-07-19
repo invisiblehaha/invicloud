@@ -36,11 +36,11 @@
        data-search="true"
        data-show-refresh="true"
        <%--data-show-toggle="true"--%>
-       data-show-pagination-switch="true"
-       data-show-columns="true"
+       <%--data-show-pagination-switch="true"--%>
+       <%--data-show-columns="true"--%>
        data-detail-view="true"
        data-detail-formatter="detailFormatter"
-       data-url="${ctx}/product/category/gid/1"
+       data-url="${ctx}/product/category/gid/0"
        data-page-size="20"
        data-page-list="[20, 50, 100, 200]"
        data-side-pagination="server"

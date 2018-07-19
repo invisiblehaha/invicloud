@@ -1,3 +1,10 @@
+/**
+ * windows: getPath().substring(1)
+ * macos:getPath()
+ * windows:txt前应为双反斜杠
+ */
+
+
 package cn.vision.invicloud.support.service.impl;
 
 import cn.vision.invicloud.support.analysis.RunPython;
@@ -11,7 +18,9 @@ import cn.vision.invicloud.support.service.IOrderAnalyService;
 import cn.vision.invicloud.support.utils.MoveFileUtils;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import cn.vision.invicloud.support.service.IOrderAnalyService;
 import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,7 +37,6 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
     public List<OrderAnalyVO> list1() {
         return orderMapper.analylist();
     }
-
 
     @Override
     public void toTxt() throws IOException, InterruptedException {
@@ -62,10 +70,11 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
         RunPython runPython = new RunPythonImpl();
-        String pythonPath2 = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_4.py").getPath().substring(1);
-        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_3.py").getPath().substring(1);
+        String pythonPath2 = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_4.py").getPath();
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_3.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.getRecommedationByData(pythonPath, txtPath);
         runPython.getRecommedationByData2(pythonPath2, txtPath);
@@ -102,9 +111,10 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
         RunPython runPython = new RunPythonImpl();
-        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_2.py").getPath().substring(1);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_2.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.getRecommedationByData2(pythonPath, txtPath);
     }
@@ -142,9 +152,10 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
         RunPython runPython = new RunPythonImpl();
-        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_buy_amount.py").getPath().substring(1);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_buy_amount.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.getBuyAmountPrediction(pythonPath, txtPath);
     }
@@ -183,9 +194,10 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
         RunPython runPython = new RunPythonImpl();
-        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_pay_amount.py").getPath().substring(1);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_pay_amount.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.getPayAmountPrediction(pythonPath, txtPath);
     }
@@ -226,7 +238,7 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
 
         }
         RunPython runPython = new RunPythonImpl();
-        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_RFM.py").getPath().substring(1);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_RFM.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.getCustomerRFM(pythonPath, txtPath);
     }
@@ -264,9 +276,10 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
         RunPython runPython = new RunPythonImpl();
-        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/category_recommendation.py").getPath().substring(1);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/category_recommendation.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.getCategoryRecommendation(pythonPath, txtPath);
     }
@@ -305,9 +318,10 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
         RunPython runPython = new RunPythonImpl();
-        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_VIP_increase.py").getPath().substring(1);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_VIP_increase.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.predictVIPIncrease(pythonPath, txtPath);
     }

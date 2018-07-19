@@ -21,7 +21,8 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        user_id AS userId, login_name AS loginName, login_password AS loginPassword, salt, user_name AS userName,  sex, age, pic_img AS picImg, status, telephone, create_time AS createTime,update_time AS updateTime
+        user_id AS userId, login_name AS loginName, login_password AS loginPassword, salt, user_name AS userName, 
+	 sex, age, pic_img AS picImg, status, telephone, create_time AS createTime,update_time AS updateTime
     </sql>
 
     <!-- 根据用户ID查找用户信息 -->
@@ -71,33 +72,6 @@
 
 
 
-    <!-- 插入用户 -->
-    <insert id="insertUser" >
-        INSERT INTO crm_user (
-            user_id,
-            login_name,
-            login_password ,
-            salt, user_name AS userName,
-            sex,
-            age,
-            pic_img,
-            status,
-            telephone,
-            create_time,
-            update_time)
-              VALUES   (  #{userId},
-                           #{loginName},
-                          #{loginPassword},
-                          #{userName},
-                          #{sex},
-                          #{age},
-                          #{picImg},
-                          #{status},
-                          #{telephone},
-                          #{create_time},
-                          #{update_time})
-</insert>
-
 
     <!-- 根据分页信息/搜索内容查找用户列表 -->
     <select id="listByPage" resultType="cn.vision.invicloud.support.pojo.vo.UserVO">
@@ -143,7 +117,5 @@
         WHERE
         user_id = #{userId}
     </update>
-
-
-
+    
 </mapper>

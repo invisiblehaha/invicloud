@@ -104,6 +104,8 @@
 
 <!-- Main content -->
 <section class="content container-fluid">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
 
     <div id="show">
         <div class="md-trigger" data-modal="modal-1">

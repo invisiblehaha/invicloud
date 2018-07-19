@@ -28,11 +28,11 @@ public class AnalyController {
 
         analyService.toTxt();
         analyService.toTxt2();
-        analyService.rfm();
-        analyService.vipIncrease();
-        analyService.catAnaly();
         analyService.buyAmount();
         analyService.payAmount();
+        analyService.rfm();
+        analyService.catAnaly();
+        analyService.vipIncrease();
         return "redirect:/view";
     }
     @PostMapping(value = "/")

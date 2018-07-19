@@ -32,4 +32,6 @@ public interface ProductMapper extends BaseMapper<Product> {
     List<ProductVO> getAllProduct();
 
     List<SingProductAnalyVO> analySing(@Param("productId")Integer productId);
+	//自己写
+    Integer deleteByProductId(@Param("productId") Integer productId);
 }

@@ -20,6 +20,7 @@ public class ProductAnalyController {
     @GetMapping(value = "/view")
     public String list(@ModelAttribute("menus")List<RoleMenuVO> menus, @ModelAttribute("user") UserVO user,@RequestParam("id") String productId, Model model ){
         productService.singProduct(Integer.parseInt(productId));
+
         return "/product/productPredict";
     }
 }

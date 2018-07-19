@@ -16,6 +16,105 @@
 
     <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
+
+    <style type="text/css">
+        /* 弹窗 (background) */
+        .modal {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        /* 弹窗内容 */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        /* 添加动画 */
+        @-webkit-keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        /* 关闭按钮 */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: lightblue;
+            color: white;
+        }
+
+        .modal-body {padding: 2px 16px;}
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color:lightblue;
+            color: white;
+        }
+    </style>
+
+    <script>
+        function add() {
+            var info= {
+                productId:$("#a").val(),
+                productName:$("#b").val(),
+                productPrice:$("#c").val(),
+                stock:$("#d").val()
+
+            };
+            $.ajax({
+                url:"${pageContext.request.contextPath}/product/product/ahh",
+                type:"post",
+                data: info,
+                dataType:"json",
+                success: function (data)
+                {
+
+                },
+                error:function(){
+
+                }
+
+            })
+
+        }
+    </script>
 </head>
 
 <body>
@@ -75,10 +174,37 @@
 //                {field: 'productIntroduce', title: '商品介绍', align: 'center',  halign: 'center'},
                 {field: 'stock', title: '库存', align: 'center',  halign: 'center'},
 //                {field: 'remarks', title: '备注', align: 'center', halign: 'center'},
-                {field: 'analy', title: '分析预测', formatter: 'operateFormatter', events:'operateEvents'}
+                {field: 'analy', title: '分析预测', formatter: 'operateFormatter', events:'operateEvents'},
+		 {field: 'operation', title: '操作', formatter: 'actionFormatter', events:'actionEvents'}
             ]
         });
     });
+function actionFormatter(value, row, index)
+    {
+        return '<a class="delete">删除</a>';
+    }
+    //表格  - 操作 - 事件`
+    window.actionEvents =
+        {            'click .delete' :  function(e, value, row, index)
+            {
+                var array= $('#table').bootstrapTable('getSelections');
+
+                var msg = "您真的确定要删除吗？";
+                if (confirm(msg) == true) {
+                    $.ajax({
+                        url: "/product/product/"+ row.productId,
+                        type: "delete",
+                        success: function (data)
+                        {
+                            //重新加载记录
+                            //重新加载数据
+                            $("#user").bootstrapTable('refresh', {url: '/product/product'});
+                        }
+                    });
+                }
+
+            }
+        };
 
     function detailFormatter(index, row) {
         var html = [];
@@ -122,5 +248,64 @@
 
 </script>
 </section>
+<!-- 打开弹窗按钮 -->
+<button id="myBtn">打开弹窗</button>
+
+<!-- 弹窗 -->
+<div id="myModal" class="modal">
+
+    <!-- 弹窗内容 -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>弹窗头部</h2>
+        </div>
+        <div class="modal-body">
+            <form>
+                <p>编号</p>
+                <input type="text" id="a" name="productId" required="required" />
+                <p>商品名称</p>
+                <input type="text" id="b" name="productName" required="required" />
+                <p>价格</p>
+                <input type="text" id="c" name="productPrice" required="required" />
+                <p>库存</p>
+                <input type="text" id="d" name="stock" required="required" />
+                <button type="button" onclick="add()">Click Me!</button>
+
+            </form>
+        </div>
+        <div class="modal-footer">
+            <h3>弹窗底部</h3>
+        </div>
+    </div>
+
+</div>
+<script>
+    // 获取弹窗
+    var modal = document.getElementById('myModal');
+
+    // 打开弹窗的按钮对象
+    var btn = document.getElementById("myBtn");
+
+    // 获取 <span> 元素，用于关闭弹窗 that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // 点击按钮打开弹窗
+    btn.onclick = function() {
+        modal.style.display = "block";
+    };
+
+    // 点击 <span> (x), 关闭弹窗
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    // 在用户点击其他地方时，关闭弹窗
+    window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+</script>
 </body>
 </html>

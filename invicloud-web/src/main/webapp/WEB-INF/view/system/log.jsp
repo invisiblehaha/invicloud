@@ -69,7 +69,7 @@
             columns: [
                 {field: 'logId', title: '编号', sortable: true, align: 'center', halign: 'center'},
                 {field: 'userId', title: '操作用户', align: 'center', halign: 'center'},
-                {field: 'createTime', title: '操作时间', align: 'center', halign: 'center'},
+                {field: 'createTime', title: '操作时间', align: 'center',formatter: 'timeFormatter', halign: 'center'},
                 {field: 'spendTime', title: '耗时', align: 'center', sortable: true, halign: 'center'},
                 {field: 'url', title: '请求路径', halign: 'center'},
                 {field: 'method', title: '请求类型', align: 'center', halign: 'center'},

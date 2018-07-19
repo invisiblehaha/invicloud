@@ -18,6 +18,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.text.SimpleDateFormat;
+import java.math.BigDecimal;
+import java.util.List;
 /**
  * <p>
  * 商品表 服务实现类
@@ -33,6 +35,17 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     private ProductMapper productMapper;
 
 
+
+    //加的
+    @Override
+    public Integer deleteByProductId(Integer productId) {
+
+        return productMapper.deleteByProductId(productId);
+    }
+
+  
+
+
     @Override
     public ProductVO getById(Integer productId) {
         return productMapper.getById(productId);
@@ -46,6 +59,19 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         return new BasePageDTO<Product>(pageInfo, products);
     }
     @Override
+    public Product insertInto (Integer  productId, String productName, BigDecimal productPrice, Integer stock)
+    {
+        Product product=new Product();
+        product.setProductId(productId);
+        product.setProductName(productName);
+        product.setProductPrice(productPrice);
+        product.setStock(stock);
+        return product;
+    }
+
+
+
+
     public List<ProductVO> getAllProduct(){
         List<ProductVO> allProduct=productMapper.getAllProduct();
         return allProduct;

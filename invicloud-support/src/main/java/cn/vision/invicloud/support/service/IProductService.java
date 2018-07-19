@@ -8,7 +8,7 @@ import cn.vision.invicloud.support.pojo.vo.SingProductAnalyVO;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
-
+import java.math.BigDecimal;
 /**
  * <p>
  * 商品表 服务类
@@ -37,4 +37,7 @@ public interface IProductService extends IService<Product> {
     void singProduct(Integer productId);
 
     boolean ifIn(SingProductAnalyVO item, List<SingProductAnalyVO> list);
+    Product insertInto (Integer productId, String productName, BigDecimal productPrice, Integer stock);
+
+    public Integer deleteByProductId(Integer productId);
 }
