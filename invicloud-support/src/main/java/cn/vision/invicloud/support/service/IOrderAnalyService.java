@@ -25,11 +25,11 @@ public interface IOrderAnalyService extends IService<Order> {
 
     void toTxt2() throws IOException;
 
-    void buyAmount();
-    void payAmount();
+    void buyAmount() throws IOException;
+    void payAmount() throws IOException;
     void rfm() throws IOException;
-    void catAnaly();
-    void vipIncrease();
+    void catAnaly() throws IOException;
+    void vipIncrease() throws IOException;
 
     List<String> fromTxt(String filename);
 

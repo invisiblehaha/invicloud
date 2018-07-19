@@ -2,10 +2,7 @@ package cn.vision.invicloud.support.analysis.impl;
 
 import cn.vision.invicloud.support.analysis.RunPython;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 
 /**
  * @author 陶勇聪
@@ -13,17 +10,45 @@ import java.io.PrintStream;
  */
 public class RunPythonImpl implements RunPython {
 
+    private  void printMessage(InputStream input) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                BufferedReader bf = new BufferedReader(new InputStreamReader(input));
+                String line = null;
+                try {
+                    while((line=bf.readLine())!=null) {
+                    System.out.println(line);
+                    }
+                } catch (IOException e) {
+                e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
     private void runUtil(String pythonPath, String txtPath){
         try{
             System.out.println("start");
             Process pr = Runtime.getRuntime().exec("python "+pythonPath+" "+txtPath);
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            String line;
-            while ((line = in.readLine()) != null) {
-                System.out.println(line);
-            }
-            in.close();
+            //BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            //String line1;
+            //while ((line1 = in.readLine()) != null) {
+            //    System.out.println(line1);
+            //}
+            //in.close();
+            //
+            //BufferedReader er = new BufferedReader(new InputStreamReader(pr.getErrorStream()));
+            //String line2;
+            //while ((line2 = er.readLine()) != null) {
+            //    System.out.println(line2);
+            //}
+            //
+            //in.close();
+            //er.close();
+            printMessage(pr.getInputStream());
+            printMessage(pr.getErrorStream());
             pr.waitFor();
             System.out.println("end");
         } catch (Exception e){
@@ -48,12 +73,13 @@ public class RunPythonImpl implements RunPython {
 
     @Override
     public void getBuyAmountPrediction(String pythonPath, String txtPath) throws IOException {
-        Runtime.getRuntime().exec("python "+pythonPath+" "+txtPath);
+        runUtil(pythonPath, txtPath);
     }
 
     @Override
     public void getPayAmountPrediction(String pythonPath, String txtPath) throws IOException {
-        Runtime.getRuntime().exec("python "+pythonPath+" "+txtPath);
+        runUtil(pythonPath, txtPath);
+        //Runtime.getRuntime().exec("python "+pythonPath+" "+txtPath);
     }
 
     @Override
@@ -69,7 +95,7 @@ public class RunPythonImpl implements RunPython {
 
     @Override
     public void predictVIPIncrease(String pythonPath, String txtPath) throws IOException {
-        Runtime.getRuntime().exec("python "+pythonPath+" "+txtPath);
+        runUtil(pythonPath, txtPath);
     }
 
     @Override

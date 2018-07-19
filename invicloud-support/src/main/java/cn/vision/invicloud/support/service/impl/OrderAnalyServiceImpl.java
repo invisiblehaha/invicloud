@@ -109,7 +109,7 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         runPython.getRecommedationByData2(pythonPath, txtPath);
     }
     @Override
-    public void buyAmount() {
+    public void buyAmount() throws IOException {
         List<BuyVO> list = orderMapper.analyBuy();
         File file = new File("order_by_buy_amount.txt");
         if (file.exists()) {
@@ -144,12 +144,13 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             }
         }
         RunPython runPython = new RunPythonImpl();
-        String filePath = System.getProperty("user.dir");
-        //runPython.test(filePath);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_buy_amount.py").getPath().substring(1);
+        String txtPath = System.getProperty("user.dir");
+        runPython.getBuyAmountPrediction(pythonPath, txtPath);
     }
 
     @Override
-    public void payAmount() {
+    public void payAmount() throws IOException {
         List<PayVO> list = orderMapper.analyPay();
         File file = new File("order_by_pay_amount.txt");
         if (file.exists()) {
@@ -184,8 +185,9 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             }
         }
         RunPython runPython = new RunPythonImpl();
-        String filePath = System.getProperty("user.dir");
-        //runPython.test(filePath);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_pay_amount.py").getPath().substring(1);
+        String txtPath = System.getProperty("user.dir");
+        runPython.getPayAmountPrediction(pythonPath, txtPath);
     }
     @Override
     public void rfm() throws IOException {
@@ -226,11 +228,12 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         RunPython runPython = new RunPythonImpl();
         String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_RFM.py").getPath().substring(1);
         String txtPath = System.getProperty("user.dir");
-        runPython.getRecommedationByData2(pythonPath, txtPath);
+        runPython.getCustomerRFM(pythonPath, txtPath);
     }
 
 
-    public void catAnaly(){
+    @Override
+    public void catAnaly() throws IOException {
         List<CategoryAnalyVO> list = orderMapper.catAnaly();
         File file = new File("category_recommendation_data.txt");
         if (file.exists()) {
@@ -261,11 +264,15 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
+        RunPython runPython = new RunPythonImpl();
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/category_recommendation.py").getPath().substring(1);
+        String txtPath = System.getProperty("user.dir");
+        runPython.getCategoryRecommendation(pythonPath, txtPath);
     }
 
-    public void vipIncrease(){
+    @Override
+    public void vipIncrease() throws IOException {
         List<VIPVO> list = orderMapper.vipIncrease();
         File file = new File("vip_increase.txt");
         if (file.exists()) {
@@ -298,12 +305,16 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
+        RunPython runPython = new RunPythonImpl();
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_VIP_increase.py").getPath().substring(1);
+        String txtPath = System.getProperty("user.dir");
+        runPython.predictVIPIncrease(pythonPath, txtPath);
     }
 
 
 
+    @Override
     public List<String> fromTxt(String filename){
         List<String> newList = new ArrayList<>();
         FileReader fr = null;
@@ -406,6 +417,7 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         return new BasePageDTO<LikeVO>(pageInfo, list);
     }
 
+    @Override
     public List<CatAnalyVO> getCatList(Integer customerId){
         return orderMapper.getCatList(customerId);
     }

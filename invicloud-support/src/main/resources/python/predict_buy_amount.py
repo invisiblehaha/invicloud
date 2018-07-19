@@ -80,4 +80,5 @@ if __name__ == '__main__':
     # print(data.columns)
     data.rename(columns={data.columns[0]: "buy_amount"}, inplace=True)
     data.index.name = 'DateTime'
-    data.to_csv('src\main\webapp\static\data\databuy_amount_prediction.csv')
+    data.to_csv(sys.argv[1]+'\\buy_amount_prediction.csv')
+

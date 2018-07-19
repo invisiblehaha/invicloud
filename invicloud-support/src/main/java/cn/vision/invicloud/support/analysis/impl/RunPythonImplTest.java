@@ -37,11 +37,17 @@ public class RunPythonImplTest {
     }
 
     @Test
-    public void getBuyAmountPredictionTest() {
+    public void getBuyAmountPredictionTest() throws IOException {
+        String pythonPath = "G:\\GitHub\\invicloud\\invicloud\\out\\artifacts\\invicloud_web_Web_exploded\\WEB-INF\\classes\\python\\predict_buy_amount.py";
+        String filePath ="G:\\Tomcat\\apache-tomcat-9.0.1\\bin";
+        runPython.getBuyAmountPrediction(pythonPath,filePath);
     }
 
     @Test
-    public void getPayAmountPredictionTest() {
+    public void getPayAmountPredictionTest() throws IOException {
+        String pythonPath = "G:\\GitHub\\invicloud\\invicloud\\out\\artifacts\\invicloud_web_Web_exploded\\WEB-INF\\classes\\python\\predict_pay_amount.py";
+        String filePath ="G:\\Tomcat\\apache-tomcat-9.0.1\\bin";
+        runPython.getPayAmountPrediction(pythonPath,filePath);
     }
     //通过
     @Test
@@ -50,16 +56,20 @@ public class RunPythonImplTest {
         String filePath ="G:\\Tomcat\\apache-tomcat-9.0.1\\bin";
         runPython.getCustomerRFM(pythonPath,filePath);
     }
-
+    //通过
     @Test
     public void getCategoryRecommendationTest() throws IOException {
         String pythonPath = "G:\\GitHub\\invicloud\\invicloud\\out\\artifacts\\invicloud_web_Web_exploded\\WEB-INF\\classes\\python\\category_recommendation.py";
         String filePath ="G:\\Tomcat\\apache-tomcat-9.0.1\\bin";
-        runPython.getCustomerRFM(pythonPath,filePath);
+        runPython.getCategoryRecommendation(pythonPath,filePath);
     }
-
+    //通过
     @Test
-    public void predictVIPIncreaseTest() {
+    public void predictVIPIncreaseTest() throws IOException {
+
+        String pythonPath = "G:\\GitHub\\invicloud\\invicloud\\out\\artifacts\\invicloud_web_Web_exploded\\WEB-INF\\classes\\python\\predict_VIP_increase.py";
+        String filePath ="G:\\Tomcat\\apache-tomcat-9.0.1\\bin";
+        runPython.predictVIPIncrease(pythonPath,filePath);
     }
 
 }

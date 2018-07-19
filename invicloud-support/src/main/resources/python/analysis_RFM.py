@@ -33,7 +33,6 @@ if __name__ == '__main__':
     seed = 9
     # 对数据进行聚类
     clf = KMeans(n_clusters=8, random_state=seed)
-
     # 拟合模型
     clf = clf.fit(rfm_new)
     # 查看聚类质心点
@@ -41,4 +40,4 @@ if __name__ == '__main__':
     #对原数据表进行类别标记
     rfm['label'] = clf.labels_
     # 查看标记后的数据
-    rfm.iloc[:, [0, 4]].to_csv('src/main/java/cn/vision/invicloud/support/analysis/result/RFM_result.txt')
+    rfm.iloc[:, [0, 4]].to_csv(sys.argv[1]+ '\\RFM_result.txt')

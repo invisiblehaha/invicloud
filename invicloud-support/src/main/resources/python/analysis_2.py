@@ -19,7 +19,7 @@ if __name__ == '__main__':
     path = None
     separator = None
 
-    path = '../data/2.txt'
+    path = sys.argv[1]+'\\2.txt'
     separator = '\t'
 
     print('开始读取数据')
