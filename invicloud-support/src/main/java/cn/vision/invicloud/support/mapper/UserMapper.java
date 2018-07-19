@@ -36,4 +36,6 @@ public interface UserMapper extends BaseMapper<User> {
      */
     List<UserVO> listByPage(@Param("pageInfo") PageInfo pageInfo, @Param("search") String search, RowBounds rowBounds);
 
+    //返回即将被注册的userid
+    Integer getLastestPlusCustomerId();
 }

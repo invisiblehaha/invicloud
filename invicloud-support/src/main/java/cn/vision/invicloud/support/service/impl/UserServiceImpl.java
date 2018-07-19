@@ -149,4 +149,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return false;
     }
 
+    @Override
+    public Integer getLastestPlusCustomerId()
+    {
+        return userMapper.getLastestPlusCustomerId();
+
+    }
+
 }

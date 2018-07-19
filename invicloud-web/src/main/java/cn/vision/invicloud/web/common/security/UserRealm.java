@@ -39,6 +39,9 @@ public class UserRealm extends AuthorizingRealm {
 
         User user = userService.getByLoginName(token.getUsername());
 
+        if(token.getPassword().length<=0){
+            return new SimpleAuthenticationInfo(user,null,getName());
+        }
         if (user == null) {
             throw new UnknownAccountException();// 没找到帐号
         }

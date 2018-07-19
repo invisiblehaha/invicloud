@@ -5,16 +5,17 @@ import cn.vision.invicloud.support.service.ICustomerService;
 import cn.vision.invicloud.web.common.WebResult;
 import cn.vision.invicloud.web.common.enums.CommonReturnCode;
 import cn.vision.invicloud.web.common.enums.RegisterReturnCode;
-import com.google.code.kaptcha.Producer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import javax.servlet.http.HttpServletRequest;
+
+import java.awt.*;
+import java.io.File;
 import java.util.Base64;
 import humanfaceAPI.*;
+
+import javax.imageio.stream.FileImageOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -50,6 +51,18 @@ public class RegisterController {
         return decoder.decode(strArr[1]);
     }
 
+    public void byte2image(byte[] data,String path){
+        if(data.length<3||path.equals("")) return;
+        try{
+            FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));
+            imageOutput.write(data, 0, data.length);
+            imageOutput.close();
+            System.out.println("Make Picture success,Please find image in " + path);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
+            ex.printStackTrace();
+        }
+    }
     /**
      * POST 注册信息
      */
@@ -64,6 +77,13 @@ public class RegisterController {
         byte[] buff=Base64ToByteArr(imgString);
         String detectToken = InterfaceOfAllAPIs.detect(buff);
 
+        //byte2image(buff, "e:\\1\\1.jpg"); 测试摄像头拍到的照片
+
+        //识别不到人脸时
+        if(detectToken == Key.KEY_FOR_DETECT_FAILED_MESSAGE)
+        {
+            return new WebResult(RegisterReturnCode.REGISTER_FACE_NOT_DETECTED);
+        }
         if(InterfaceOfAllAPIs.searchForUserId(buff,"FS_1")!=Key.KEY_FOR_SEARCH_MATCHFAILED_MESSAGE)
         {
             return new WebResult(RegisterReturnCode.FACE_REGISTER_TWICE);
@@ -91,16 +111,11 @@ public class RegisterController {
         customer.setTelephone(phoneNumber);
 
 
-        //识别不到人脸时
-        if(detectToken == Key.KEY_FOR_DETECT_FAILED_MESSAGE)
-        {
-            return new WebResult(RegisterReturnCode.REGISTER_FACE_NOT_DETECTED);
-        }
+
 
         try
         {
             customerService.insertCustomer(customer);
-
             String addLog = InterfaceOfAllAPIs.addOneFaceIntoFaceSet(detectToken,"FS_1");
             String bindLog = InterfaceOfAllAPIs.setUserIdForFaceToken(detectToken,Integer.toString(theCustomerId));
             System.out.println(addLog);
@@ -111,16 +126,7 @@ public class RegisterController {
             return new WebResult(RegisterReturnCode.INFO_NOT_COMPLETE);
         }
 
-       /* try
-        {
-            customerService.insertCustomer(customer);
-           *//* System.out.println(insertResult);//调试用，如果系统运行正常请删除*//*
-        }
-        catch(Exception e)
-        {
-            System.out.println("数据库操作异常！");
-            return new WebResult(RegisterReturnCode.ADDTO_DATABASE_FAILED);
-    }*/
+
 
 
         return new WebResult(CommonReturnCode.SUCCESS);

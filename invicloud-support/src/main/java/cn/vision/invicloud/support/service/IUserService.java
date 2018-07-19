@@ -78,4 +78,7 @@ public interface IUserService extends IService<User> {
      * @return
      */
     Integer deleteByUserId(Integer userId);
+
+    //返回返回即将被注册的userid
+    Integer getLastestPlusCustomerId();
 }

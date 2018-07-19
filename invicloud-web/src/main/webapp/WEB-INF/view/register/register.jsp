@@ -12,10 +12,8 @@
     <title>invicloud注册页面</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-   <%-- <script src="${pageContext.request.contextPath}/static/js/tracking-min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/face.js"></script>--%>
     <script src="${pageContext.request.contextPath}/static/js/clmtrackr.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/stats.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/Stats.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/cssReg.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -102,7 +100,6 @@
                         <div id="video-canvas" style="display: none">
                             <video  id="myVideo" autoplay="autoplay" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 10px;top:500px; object-fit: fill"></video><hr/>
                             <canvas id="myCanvasForVideo" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 10px;top:500px;"></canvas>
-                            <button type="button" id="capture" style="position: absolute;left: 10px;top:920px;" class="button_blue">拍照</button><br>
                             <canvas id="myCanvas" height="400" width="400" style="border: 1px solid gray;position: absolute;left: 420px;top:500px;"></canvas>
                         </div>
 
@@ -135,7 +132,7 @@
 
 <script language="javascript" type="text/javascript">
     var img1;
-    var UserUpload = false;
+    var cameraInvoked = false;
     var streaming = false;
     var video = document.getElementById('myVideo');
 
@@ -207,13 +204,14 @@
     //tracking
     var ctracker = new clm.tracker();
     var canvas2 = document.getElementById('myCanvas');
-    //var context2 = canvas2.getContext('2d');
+    var context2 = canvas2.getContext('2d');
     ctracker.init();
-    //var positionInitial = ctracker.getCurrentPosition();//获取最初的position，用作后续的判断(放到了detect检测人脸里)
+    var positionInitial = ctracker.getCurrentPosition();//获取最初的position，用作后续的判断(放到了detect检测人脸里)
     ctracker.start(video);
     function positionLoop() {
         requestAnimationFrame(positionLoop);
-        /*var positions = ctracker.getCurrentPosition();
+
+        var positions = ctracker.getCurrentPosition();
         img1 = canvas2.toDataURL("image/png");//储存了img流，直接用这个的base64就行
         context2.fillStyle="#ffffff";
         context2.beginPath();
@@ -226,7 +224,7 @@
             context2.drawImage(video,0,0,400,400);
             //将获取的图片base64信息封装在info中
             UserUpload = true;
-        }*/
+        }
     }
     positionLoop();
 
@@ -245,7 +243,7 @@
 
 
     function changeImg() {
-        UserUpload = false;
+        cameraInvoked = false;
         var file=$("#registerForm").find("input")[5].files[0];
         var reader = new FileReader();
         var imgFile;
@@ -262,6 +260,7 @@
 
     function start_Camera() {
 
+        cameraInvoked = true;
         if(document.getElementById("video-canvas").style.display=="none")
         {
             document.getElementById("video-canvas").style.display="";
@@ -285,30 +284,13 @@
     }
 
 
-    document.querySelector("#capture").addEventListener("click", function (event) {
-        if (streaming) {
-            var canvas1 = document.getElementById('myCanvas');
-            canvas1.width = canvas1.width;
-            img1 = canvas1.toDataURL("image/png");
-            var context = canvas1.getContext('2d');
-            context.fillStyle="#ffffff";
-            context.beginPath();
-            context.fillRect(0,0,canvas1.width,canvas1.height);
-            context.closePath();
-
-            //画出摄像头捕捉的图像
-            context.drawImage(video, 0, 0,400,400);
-            //将获取的图片base64信息封装在info中
-            UserUpload = true;
-        }
-    })
-
     function end_Camera()
     {
         if(document.getElementById("video-canvas").style.display=="")
         {
             document.getElementById("video-canvas").style.display="none";
         }
+        cameraInvoked = false;
     }
 
 
@@ -317,6 +299,7 @@
         if (document.getElementById("catagory").style.display == "none") {
             document.getElementById("catagory").style.display = "";
         }
+        cameraInvoked = false;
     }
     function closeCatagory() {
 
@@ -344,7 +327,7 @@
         }
 
 
-        if(UserUpload)
+        if(cameraInvoked==true)
         {
             var info =
                 {
