@@ -6,6 +6,7 @@ from statsmodels.graphics.tsaplots import plot_pacf
 from statsmodels.stats.diagnostic import acorr_ljungbox
 from statsmodels.tsa.arima_model import ARIMA
 import datetime
+import sys
 
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
@@ -14,7 +15,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 if __name__ == '__main__':
     # 参数初始化
-    discfile = '../data/order_by_buy_amount.txt'
+    discfile = sys.argv[1] + '\\order_by_buy_amount.txt'
     forecastnum = 7
     # 读取数据，指定日期列为指标，Pandas自动将“日期”列识别为Datetime格式
     data = pd.read_csv(discfile, index_col=0, sep='\t')

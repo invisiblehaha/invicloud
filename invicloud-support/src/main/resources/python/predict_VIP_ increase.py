@@ -6,7 +6,7 @@ from statsmodels.graphics.tsaplots import plot_pacf
 from statsmodels.stats.diagnostic import acorr_ljungbox
 from statsmodels.tsa.arima_model import ARIMA
 import datetime
-
+import sys
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
@@ -16,7 +16,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 select substr(regeist_time,1,10) as rgt_time,count(*) as rgt_amount from crm_customer group by substr(regeist_time,1,10) ORDER BY rgt_time;'''
 if __name__ == '__main__':
     # 参数初始化
-    discfile = '../data/vip_increase.txt'
+    discfile = sys.argv[1]+'\\vip_increase.txt'
     forecastnum = 7
     # 读取数据，指定日期列为指标，Pandas自动将“日期”列识别为Datetime格式
     data = pd.read_csv(discfile, index_col=0, sep='\t')
@@ -81,4 +81,4 @@ if __name__ == '__main__':
     # print(data.columns)
     data.rename(columns={data.columns[0]: "register_amount"}, inplace=True)
     data.index.name = 'DateTime'
-    data.to_csv('../data/vip_increase_prediction.csv')
+    data.to_csv('src/main/webapp/static/data/vip_increase_prediction.csv')

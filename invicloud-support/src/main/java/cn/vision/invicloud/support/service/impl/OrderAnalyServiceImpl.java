@@ -1,24 +1,22 @@
 package cn.vision.invicloud.support.service.impl;
 
+import cn.vision.invicloud.support.analysis.RunPython;
 import cn.vision.invicloud.support.common.BasePageDTO;
 import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Order;
+import cn.vision.invicloud.support.analysis.impl.RunPythonImpl;
 import cn.vision.invicloud.support.mapper.OrderMapper;
 import cn.vision.invicloud.support.pojo.vo.*;
 import cn.vision.invicloud.support.service.IOrderAnalyService;
+import cn.vision.invicloud.support.utils.MoveFileUtils;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import cn.vision.invicloud.support.service.IOrderAnalyService;
 import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 @Service
@@ -31,8 +29,9 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         return orderMapper.analylist();
     }
 
+
     @Override
-    public void toTxt() {
+    public void toTxt() throws IOException, InterruptedException {
         List<OrderAnalyVO> list = orderMapper.analylist();
         File file = new File("1.txt");
         if (file.exists()) {
@@ -63,10 +62,16 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
+        RunPython runPython = new RunPythonImpl();
+        String pythonPath2 = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_4.py").getPath().substring(1);
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_3.py").getPath().substring(1);
+        String txtPath = System.getProperty("user.dir");
+        runPython.getRecommedationByData(pythonPath, txtPath);
+        runPython.getRecommedationByData2(pythonPath2, txtPath);
     }
-    public void toTxt2(){
+    @Override
+    public void toTxt2() throws IOException {
         List<LevelAnalyVO> list = orderMapper.analylist2();
         File file = new File("2.txt");
         if (file.exists()) {
@@ -97,10 +102,14 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
+        RunPython runPython = new RunPythonImpl();
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_2.py").getPath().substring(1);
+        String txtPath = System.getProperty("user.dir");
+        runPython.getRecommedationByData2(pythonPath, txtPath);
     }
-    public void buyAmount(){
+    @Override
+    public void buyAmount() throws IOException {
         List<BuyVO> list = orderMapper.analyBuy();
         File file = new File("order_by_buy_amount.txt");
         if (file.exists()) {
@@ -133,10 +142,14 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
+        RunPython runPython = new RunPythonImpl();
+        String filePath = System.getProperty("user.dir");
+        //runPython.test(filePath);
     }
-    public void payAmount(){
+
+    @Override
+    public void payAmount() throws IOException {
         List<PayVO> list = orderMapper.analyPay();
         File file = new File("order_by_pay_amount.txt");
         if (file.exists()) {
@@ -169,10 +182,13 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
+        RunPython runPython = new RunPythonImpl();
+        String filePath = System.getProperty("user.dir");
+        //runPython.test(filePath);
     }
-    public void rfm(){
+    @Override
+    public void rfm() throws IOException {
         List<RFMVO> list = orderMapper.rfm();
         File file = new File("RFM_data.txt");
         if (file.exists()) {
@@ -207,7 +223,21 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
             }
 
         }
+        RunPython runPython = new RunPythonImpl();
+        String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/analysis_RFM.py").getPath().substring(1);
+        String txtPath = System.getProperty("user.dir");
+        runPython.getRecommedationByData2(pythonPath, txtPath);
     }
+
+    @Override
+    public void removeAllData() {
+        String oldfile = System.getProperty("user.dir")+"\\1.txt";
+        String newpath = "src/main/java/cn/vision/invicloud/support/entity/";
+        String path = OrderAnalyServiceImpl.class.getResource("").getPath();;
+        MoveFileUtils.moveFile(oldfile, newpath);
+    }
+
+    @Override
     public List<String> fromTxt(String filename){
         List<String> newList = new ArrayList<>();
         FileReader fr = null;
@@ -231,6 +261,7 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         }
         return newList;
     }
+    @Override
     public Integer findInt(String parent){
         String item="";
         parent=parent.trim();
@@ -243,6 +274,7 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         }
         return Integer.parseInt(item);
     }
+    @Override
     public  List<LevelVO> getLevels(String filename){
         List<LevelVO> levelVOList=new ArrayList<LevelVO>();
         List<String> list=fromTxt(filename);
@@ -274,6 +306,7 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
 
     }
 
+    @Override
     public List<LikeVO> getLikes(String filename){
         List<LikeVO> likeVOList=new ArrayList<LikeVO>();
         List<String> list=fromTxt(filename);
@@ -296,7 +329,8 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
        return likeVOList;
 
     }
-    public BasePageDTO<LikeVO> listLike(String filename,PageInfo pageInfo){
+    @Override
+    public BasePageDTO<LikeVO> listLike(String filename, PageInfo pageInfo){
         List<LikeVO> list=this.getLikes(filename);
         int count=0;
         for (LikeVO o: list) {

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -24,12 +24,14 @@ public class AnalyController {
     }
     @PostMapping(value = "/generate")
     @ResponseBody
-    public Object generateTxts(){
+    public Object generateTxts() throws IOException, InterruptedException {
+
         analyService.toTxt();
         analyService.toTxt2();
         analyService.buyAmount();
         analyService.payAmount();
         analyService.rfm();
+
         return "redirect:/view";
     }
     @PostMapping(value = "/")

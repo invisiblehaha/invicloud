@@ -1,23 +1,27 @@
+'''
+select customer_id, category_id FROM crm_order_product op,crm_order o, crm_product_category pc where op.order_id=o.order_id and op.product_id=pc.product_id and customer_id>0
+'''
+
 import operator
 import random
 import math
 import time
 import pandas
+import sys
 
 
 class Data:
-    def __init__(self, dataset='1.txt'):
+    def __init__(self, dataset='category_recommendation_data.txt'):
         """
         无上下文信息的隐性反馈数据集。
-        :param dataset: 1.txt
         """
 
         path = None
         separator = None
         self.customer_id_list = []
 
-        if dataset == '1.txt':
-            path = 'src/main/java/cn/vision/invicloud/web/analysis/data/1.txt'
+        if dataset == 'category_recommendation_data.txt':
+            path = sys.argv[1]+'\\category_recommendation_data.txt'
             separator = '\t'
 
         print('开始读取数据')
@@ -82,101 +86,6 @@ class Data:
             else:
                 train.append([user, item])
         return train, test
-
-
-class UserCF:
-    def __init__(self, data):
-        """
-        基于用户的协同过滤算法。
-        :param data: 无上下文信息的隐性反馈数据集，包括训练集，测试集等
-        """
-        self.data = data
-
-        print('基于用户的协同过滤算法')
-        print('开始计算用户相似度矩阵')
-        self.W = self.__user_similarity()
-
-        self.K = None  # 推荐时选择与用户最相似的用户个数
-        self.N = None  # 每个用户最多推荐物品数量
-        self.recommendation = None
-
-    def compute_recommendation(self, K=80, N=10):
-        """
-        开始计算推荐列表
-        :param K: 推荐时选择与物品最相似的物品个数
-        :param N: 每个用户最多推荐物品数量
-        """
-        self.K = K
-        self.N = N
-
-        print('开始计算推荐列表（K=' + str(self.K) + ', N=' + str(self.N) + '）')
-        self.recommendation = self.__get_recommendation()
-
-    def __user_similarity(self):
-        """
-        计算训练集的用户相似度
-        :return: 存放每两个用户之间相似度的二维列表
-        """
-        train_item_users = [[] for i in range(self.data.num_item)]  # train_item_users[i]是对物品i有过正反馈的所有用户列表
-        for user, item in self.data.train:
-            train_item_users[item].append(user)
-
-        print('统计每两个用户之间的共同正反馈物品数量和每个用户有过正反馈物品的总量')
-        W = [[0 for j in range(self.data.num_user)] for i in
-             range(self.data.num_user)]  # W[u][v]是用户u和v的共同有正反馈物品的数量（v>u）
-        N = [0 for i in range(self.data.num_user)]  # N[u]是用户u有过正反馈的所有物品的数量
-        for users in train_item_users:
-            for user in users:
-                # 统计N
-                N[user] += 1
-
-                # 统计W
-                for v in users:
-                    if v > user:
-                        W[user][v] += 1
-
-        print('计算每两个用户之间的相似度')
-        for i in range(self.data.num_user - 1):
-            for j in range(i + 1, self.data.num_user):
-                if W[i][j] != 0:
-                    W[i][j] /= math.sqrt(N[i] * N[j])
-                    W[j][i] = W[i][j]
-        return W
-
-    def __recommend(self, user, train_user_items):
-        """
-        对用户user选取最相似的K个用户推荐他们有行为的最多N个物品。
-        :param user: 推荐的目标用户
-        :param train_user_items: train_user_items[i]是用户i所有有过正反馈的物品集合
-        :return: 推荐给用户user的物品列表
-        """
-        Wu = dict()
-        for v in range(self.data.num_user):
-            if self.W[user][v] != 0:
-                Wu[v] = self.W[user][v]
-
-        # 计算出用户user对每个物品感兴趣程度
-        rank = dict()
-        for similar_user, similarity_factor in sorted(Wu.items(), key=operator.itemgetter(1), reverse=True)[:self.K]:
-            for item in train_user_items[similar_user] - train_user_items[user]:
-                rank[item] = rank.setdefault(item, 0) + similarity_factor
-
-        return [r[0] for r in sorted(rank.items(), key=operator.itemgetter(1), reverse=True)[:self.N]]
-
-    def __get_recommendation(self):
-        """
-        得到所有用户的推荐物品列表。
-        :return: 推荐列表，下标i对应给用户i推荐的物品列表
-        """
-        # 得到训练集中每个用户所有有过正反馈物品集合
-        train_user_items = [set() for u in range(self.data.num_user)]
-        for user, item in self.data.train:
-            train_user_items[user].add(item)
-
-        recommendation = []
-        for user in range(self.data.num_user):
-            recommendation.append(self.__recommend(user, train_user_items))
-        return recommendation
 
 
 class ItemCF:
@@ -283,6 +192,100 @@ class ItemCF:
         return recommendation
 
 
+class UserCF:
+    def __init__(self, data):
+        """
+        基于用户的协同过滤算法。
+        :param data: 无上下文信息的隐性反馈数据集，包括训练集，测试集等
+        """
+        self.data = data
+
+        print('基于用户的协同过滤算法')
+        print('开始计算用户相似度矩阵')
+        self.W = self.__user_similarity()
+
+        self.K = None  # 推荐时选择与用户最相似的用户个数
+        self.N = None  # 每个用户最多推荐物品数量
+        self.recommendation = None
+
+    def compute_recommendation(self, K=80, N=10):
+        """
+        开始计算推荐列表
+        :param K: 推荐时选择与物品最相似的物品个数
+        :param N: 每个用户最多推荐物品数量
+        """
+        self.K = K
+        self.N = N
+
+        print('开始计算推荐列表（K=' + str(self.K) + ', N=' + str(self.N) + '）')
+        self.recommendation = self.__get_recommendation()
+
+    def __user_similarity(self):
+        """
+        计算训练集的用户相似度
+        :return: 存放每两个用户之间相似度的二维列表
+        """
+        train_item_users = [[] for i in range(self.data.num_item)]  # train_item_users[i]是对物品i有过正反馈的所有用户列表
+        for user, item in self.data.train:
+            train_item_users[item].append(user)
+
+        print('统计每两个用户之间的共同正反馈物品数量和每个用户有过正反馈物品的总量')
+        W = [[0 for j in range(self.data.num_user)] for i in
+             range(self.data.num_user)]  # W[u][v]是用户u和v的共同有正反馈物品的数量（v>u）
+        N = [0 for i in range(self.data.num_user)]  # N[u]是用户u有过正反馈的所有物品的数量
+        for users in train_item_users:
+            for user in users:
+                # 统计N
+                N[user] += 1
+
+                # 统计W
+                for v in users:
+                    if v > user:
+                        W[user][v] += 1
+
+        print('计算每两个用户之间的相似度')
+        for i in range(self.data.num_user - 1):
+            for j in range(i + 1, self.data.num_user):
+                if W[i][j] != 0:
+                    W[i][j] /= math.sqrt(N[i] * N[j])
+                    W[j][i] = W[i][j]
+        return W
+
+    def __recommend(self, user, train_user_items):
+        """
+        对用户user选取最相似的K个用户推荐他们有行为的最多N个物品。
+        :param user: 推荐的目标用户
+        :param train_user_items: train_user_items[i]是用户i所有有过正反馈的物品集合
+        :return: 推荐给用户user的物品列表
+        """
+        Wu = dict()
+        for v in range(self.data.num_user):
+            if self.W[user][v] != 0:
+                Wu[v] = self.W[user][v]
+
+        # 计算出用户user对每个物品感兴趣程度
+        rank = dict()
+        for similar_user, similarity_factor in sorted(Wu.items(), key=operator.itemgetter(1), reverse=True)[:self.K]:
+            for item in train_user_items[similar_user] - train_user_items[user]:
+                rank[item] = rank.setdefault(item, 0) + similarity_factor
+
+        return [r[0] for r in sorted(rank.items(), key=operator.itemgetter(1), reverse=True)[:self.N]]
+
+    def __get_recommendation(self):
+        """
+        得到所有用户的推荐物品列表。
+        :return: 推荐列表，下标i对应给用户i推荐的物品列表
+        """
+        # 得到训练集中每个用户所有有过正反馈物品集合
+        train_user_items = [set() for u in range(self.data.num_user)]
+        for user, item in self.data.train:
+            train_user_items[user].add(item)
+
+        recommendation = []
+        for user in range(self.data.num_user):
+            recommendation.append(self.__recommend(user, train_user_items))
+        return recommendation
+
 
 if __name__ == '__main__':
     # algorithms = [UserCF, ItemCF]
@@ -302,16 +305,13 @@ if __name__ == '__main__':
     customer_id_list = data.customer_id_list
     print(customer_id_list)
     print(recommendation)
-    result = pandas.DataFrame(columns=['customer_id', 'recommendation'])
+    result1 = pandas.DataFrame(columns=['customer_id', 'recommendation'])
 
     size = len(data.customer_id_list)
-    # for i in range(0, size):
-    #     result.iloc[i, 0] = customer_id_list[i]
-    #     result.iloc[i, 1] = recommendation[i]
-    #     print(result.iloc[i])
-    result['customer_id'] = customer_id_list
-    result['recommendation'] = recommendation
 
-    print(result.iloc[0])
+    result1['customer_id'] = customer_id_list
+    result1['recommendation'] = recommendation
 
-    result.to_csv('src/main/java/cn/vision/invicloud/web/analysis/result/recommendationByProductCF.txt')
+    print(result1.iloc[0])
+
+    result1.to_csv(sys.argv[1] +'\\category_recommendation.txt')

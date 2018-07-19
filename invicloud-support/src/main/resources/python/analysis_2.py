@@ -1,4 +1,4 @@
-
+import sys
 import pandas
 
 
@@ -37,8 +37,7 @@ if __name__ == '__main__':
         print(temp)
         result_df.loc[i] = [customer_id, temp]
         i += 1
-    result_df.to_csv('src/main/java/cn/vision/invicloud/web/analysis/result/consumptionLevel.txt')
-    print(result_df)
+    result_df.to_csv(sys.argv[1]+'\\consumptionLevel.txt')
 
 
 

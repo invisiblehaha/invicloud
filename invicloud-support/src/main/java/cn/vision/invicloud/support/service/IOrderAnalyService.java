@@ -10,6 +10,7 @@ import cn.vision.invicloud.support.pojo.vo.OrderAnalyVO;
 import com.baomidou.mybatisplus.service.IService;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,13 +20,18 @@ public interface IOrderAnalyService extends IService<Order> {
 
     List<OrderAnalyVO> list1();
 
-    void toTxt();
+    void toTxt() throws IOException, InterruptedException;
 
-    void toTxt2();
+    void toTxt2() throws IOException;
 
-    void buyAmount();
-    void payAmount();
-    void rfm();
+    void buyAmount() throws IOException;
+    void payAmount() throws IOException;
+    void rfm() throws IOException;
+
+    /**
+     * 将所有 tomcat/bin 下的txt 文件移到 data 文件夹下
+     */
+    void removeAllData();
 
     List<String> fromTxt(String filename);
 
