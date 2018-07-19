@@ -4,6 +4,7 @@ import cn.vision.invicloud.support.common.BasePageDTO;
 import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Product;
 import cn.vision.invicloud.support.pojo.vo.ProductVO;
+import cn.vision.invicloud.support.pojo.vo.SingProductAnalyVO;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
@@ -32,4 +33,8 @@ public interface IProductService extends IService<Product> {
      */
     BasePageDTO<Product> list(PageInfo pageInfo, String search);
     List<ProductVO> getAllProduct();
+
+    void singProduct(Integer productId);
+
+    boolean ifIn(SingProductAnalyVO item, List<SingProductAnalyVO> list);
 }

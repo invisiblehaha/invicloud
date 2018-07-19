@@ -26,7 +26,8 @@ public interface IOrderAnalyService extends IService<Order> {
     void buyAmount();
     void payAmount();
     void rfm();
-
+    void catAnaly();
+    void vipIncrease();
     List<String> fromTxt(String filename);
 
     List<LevelVO> getLevels(String filename);

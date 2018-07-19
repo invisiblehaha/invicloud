@@ -44,4 +44,8 @@ public interface OrderMapper extends BaseMapper<Order> {
 
     List<RFMVO> rfm();
 
+    List<CategoryAnalyVO> catAnaly();
+
+    List<VIPVO> vipIncrease();
+
 }

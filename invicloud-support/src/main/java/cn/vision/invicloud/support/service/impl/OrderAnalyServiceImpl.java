@@ -208,6 +208,80 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
 
         }
     }
+
+    public void catAnaly(){
+        List<CategoryAnalyVO> list = orderMapper.catAnaly();
+        File file = new File("category_recommendation_data.txt");
+        if (file.exists()) {
+            file.delete();
+        }
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        Iterator<CategoryAnalyVO> iter = list.iterator();
+        try {
+            fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+            while (iter.hasNext()) {
+                bw.write(iter.next().toString());
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    public void vipIncrease(){
+        List<VIPVO> list = orderMapper.vipIncrease();
+        File file = new File("vip_increase.txt");
+        if (file.exists()) {
+            file.delete();
+        }
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        Iterator<VIPVO> iter = list.iterator();
+        try {
+            fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+            bw.write("rgt_time\trgt_amount");
+            bw.newLine();
+            while (iter.hasNext()) {
+                bw.write(iter.next().toString());
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+
+
     public List<String> fromTxt(String filename){
         List<String> newList = new ArrayList<>();
         FileReader fr = null;

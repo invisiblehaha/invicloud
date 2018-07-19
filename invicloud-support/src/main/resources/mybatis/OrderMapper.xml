@@ -60,6 +60,16 @@
         <result column="frequency" property="frequency"/>
     </resultMap>
 
+    <resultMap id="CatRecomenMap" type="cn.vision.invicloud.support.pojo.vo.CategoryAnalyVO">
+        <result column="customer_id" property="customerId"/>
+        <result column="category_id" property="categoryId"/>
+    </resultMap>
+
+    <resultMap id="VIPMap" type="cn.vision.invicloud.support.pojo.vo.VIPVO">
+        <result column="rgt_time" property="rgtTime"/>
+        <result column="rgt_amount" property="rgtAmount"/>
+    </resultMap>
+
     <!-- 根据用户ID、订单状态列表、分页信息、搜索内容查找订单总记录数 -->
     <select id="getCount" resultType="java.lang.Integer">
         SELECT
@@ -148,6 +158,18 @@ WHERE customer_id != 0
 GROUP BY customer_id
 Order BY customer_id;
 </select>
-
+<select id="catAnaly" resultMap="CatRecomenMap">
+    select customer_id,
+category_id
+FROM crm_order_product op,crm_order o, crm_product_category pc
+where op.order_id=o.order_id and op.product_id=pc.product_id and customer_id>0
+</select>
+<select id="vipIncrease" resultMap="VIPMap">
+select substr(regeist_time,1,10) as rgt_time,
+count(*) as rgt_amount
+from crm_customer
+group by rgt_time
+ORDER BY rgt_time;
+</select>
 
 </mapper>

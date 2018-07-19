@@ -30,6 +30,8 @@ public class AnalyController {
         analyService.buyAmount();
         analyService.payAmount();
         analyService.rfm();
+        analyService.catAnaly();
+        analyService.vipIncrease();
         return "redirect:/view";
     }
     @PostMapping(value = "/")
