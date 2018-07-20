@@ -16,15 +16,6 @@
         <result column="noble" property="noble" />
     </resultMap>
 
-
-    <select id="getBycustomerId" resultMap="BaseResultMap">
-        SELECT
-          c.customer_id,c.customer_token,c.real_name,c.sex,c.age,c.pic_img,c.status,c.telephone,c.regeist_time,c.noble
-          FROM
-          crm_customer c
-          WHERE
-          customer_id=#{customerId}
-    </select>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         customer_id AS customerId, customer_token AS customerToken, real_name AS realName, sex, age, pic_img AS picImg, status, telephone, regeist_time AS regeistTime, noble
@@ -48,6 +39,14 @@
         customer_id=#{customerId}
     </select>
 
+    <select id="getBycustomerId" resultType="cn.vision.invicloud.support.entity.Customer">
+    SELECT
+        <include refid="Base_Column_List" />
+    FROM
+    crm_customer
+    WHERE
+    customer_id=#{customerId}
+    </select>
 
     <select id="listByPage" resultType="cn.vision.invicloud.support.pojo.vo.CustomerVO">
         SELECT
@@ -91,4 +90,6 @@
         insert into crm_customer(customer_id,customer_token,real_name,sex,age,pic_img,status,telephone,regeist_time,noble)
         values(#{customer.customerId},#{customer.customerToken},#{customer.realName},#{customer.sex},#{customer.age},#{customer.picImg},#{customer.status},#{customer.telephone},#{customer.regeistTime},#{customer.noble})
     </insert>
+
+
 </mapper>

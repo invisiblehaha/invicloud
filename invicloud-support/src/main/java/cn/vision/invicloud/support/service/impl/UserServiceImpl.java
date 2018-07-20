@@ -35,6 +35,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Autowired
     private UserRoleMapper userRoleMapper;
 
+
     @Override
     public Integer insertUser(User user, String[] roleIds){
         // 验证用户名
@@ -136,6 +137,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         userRole.setUserId(userId);
         userRoleMapper.delete(new EntityWrapper<UserRole>(userRole));
         // 删除用户信息
+
+
         return userMapper.deleteById(userId);
     }
 
@@ -147,6 +150,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Integer getLastestPlusCustomerId()
+    {
+        return userMapper.getLastestPlusCustomerId();
+
     }
 
 }

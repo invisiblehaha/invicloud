@@ -50,4 +50,8 @@ public interface UserMapper extends BaseMapper<User> {
      * 自己写的
      * */
     Integer deleteByUserId(@Param("userId") Integer userId);
+	
+	//返回即将被注册的userid
+    Integer getLastestPlusCustomerId();
+	//没有insert user吗？
 }

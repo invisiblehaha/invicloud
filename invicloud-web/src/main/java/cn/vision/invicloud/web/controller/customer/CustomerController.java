@@ -1,4 +1,5 @@
 package cn.vision.invicloud.web.controller.customer;
+import cn.vision.invicloud.support.entity.Customer;
 import cn.vision.invicloud.support.pojo.vo.RoleMenuVO;
 import cn.vision.invicloud.support.pojo.vo.UserVO;
 import cn.vision.invicloud.support.service.ICustomerService;
@@ -31,7 +32,13 @@ public class CustomerController {
     @GetMapping(value = "/")
     @ResponseBody
     public Object listCustomer(PageInfo pageInfo, @RequestParam(required = false, value = "search") String search) {
-        BasePageDTO<CustomerVO> basePageDTO = customerService.listByPage2(pageInfo, search);
+        BasePageDTO<CustomerVO> basePageDTO = customerService.listByPage2(pageInfo,search);
         return new WebPageResult(basePageDTO.getList(), basePageDTO.getPageInfo().getTotal());
+    }
+
+    @PostMapping(value="/edit")
+    @ResponseBody
+    public void edit(Customer customer){
+        System.out.println(customer.getAge());
     }
 }

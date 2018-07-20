@@ -62,6 +62,7 @@ public class SystemLogAspect {
                 bfParams.append(request.getQueryString());
             }
         }
+        if(bfParams.length()>3000)bfParams=new StringBuffer("faceimg");
 
         String strMessage = String.format("[类名]:%s,[方法]:%s,[参数]:%s", strClassName, strMethodName, bfParams.toString());
         logger.info(strMessage);

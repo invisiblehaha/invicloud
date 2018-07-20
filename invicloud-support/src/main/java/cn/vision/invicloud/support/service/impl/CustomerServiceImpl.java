@@ -8,7 +8,6 @@ import cn.vision.invicloud.support.pojo.vo.CustomerVO;
 import cn.vision.invicloud.support.service.ICustomerService;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,9 +41,6 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     public CustomerVO getById(Integer customerId) {
         return customerMapper.getById(customerId);
     }
-    public Customer getBycustomerId(Integer customerId){
-        return customerMapper.getBycustomerId(customerId);
-    }
 
     @Override
     public BasePageDTO<CustomerVO> listByPage(PageInfo pageInfo, Integer noble) {
@@ -53,7 +49,6 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
         pageInfo.setTotal((int)page.getTotal());
         return new BasePageDTO<CustomerVO>(pageInfo, adverts);
     }
-
     @Override
     public BasePageDTO<CustomerVO> listByPage2(PageInfo pageInfo, String search) {
         Page<CustomerVO> page = new Page<>(pageInfo.getCurrent(), pageInfo.getLimit());
@@ -66,5 +61,9 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     {
         return customerMapper.getLastestPlusCustomerId();
 
+    }
+    @Override
+    public Customer getBycustomerId(Integer customerId){
+        return customerMapper.getBycustomerId(customerId);
     }
 }

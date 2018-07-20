@@ -26,6 +26,13 @@ public interface CustomerMapper extends BaseMapper<Customer> {
      */
     CustomerVO getByCustomerToken(@Param("customerToken")String  customerToken);
 
+
+	/**
+     *根据传入的customer对象执行insert操作
+     * @param customer 顾客对象
+     * @return
+     * */
+    Integer insert(@Param("customer")Customer customer);
     /**
      * 根据用户ID查找用户显示信息
      * @param customerId 用户ID

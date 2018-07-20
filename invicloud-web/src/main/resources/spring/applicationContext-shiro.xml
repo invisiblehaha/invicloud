@@ -13,7 +13,7 @@
     <!-- 项目自定义的Realm：继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的SystemAuthorizingRealm.java -->
     <bean id="userRealm" class="cn.vision.invicloud.web.common.security.UserRealm" >
         <property name="credentialsMatcher">
-            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+            <bean class="cn.vision.invicloud.web.common.security.UserCredientialMatcher">
                 <!-- 加密算法为MD5 -->
                 <property name="hashAlgorithmName" value="MD5"></property>
                 <!-- 加密次数 -->
@@ -35,7 +35,7 @@
         <property name="filterChainDefinitions">
             <!-- 路径基于HttpServletRequest.getContextPath() -->
             <value>
-                /register/register/** = anon
+                /register/** = anon
                 /resources/** = anon
                 /static/** = anon
                 /login = anon

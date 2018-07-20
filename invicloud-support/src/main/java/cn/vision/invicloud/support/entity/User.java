@@ -77,6 +77,9 @@ public class User extends Model<User> {
     @TableField("update_time")
     private Date updateTime;
 
+    @TableField("faceToken")
+    private String faceToken;
+
 
     public Integer getUserId() {
         return userId;
@@ -173,6 +176,10 @@ public class User extends Model<User> {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    public String getFaceToken(){ return faceToken; }
+
+    public void setFaceToken(String faceToken) { this.faceToken =  faceToken; }
 
     @Override
     protected Serializable pkVal() {

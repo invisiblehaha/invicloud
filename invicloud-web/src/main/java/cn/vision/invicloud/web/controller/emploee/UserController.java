@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import humanfaceAPI.*;
 import java.util.List;
 
 /**
@@ -62,28 +62,35 @@ public class UserController {
      *
      * @return
      */
-    @GetMapping(value = "/{userId}")
-    public String detail(Model model, @PathVariable Integer userId) {
-        // 用户信息
-        User user = userService.getById(userId);
-        model.addAttribute("user", user);
-
-        // 分配角色
-        List<Role> roles = userRoleService.listByUserId(user.getUserId());
-        model.addAttribute("roles", roles);// 用户权限
-
-        return "";
-    }
+//    @GetMapping(value = "/{userId}")
+//    public String detail(Model model, @PathVariable Integer userId) {
+//        // 用户信息
+//        User user = userService.getById(userId);
+//        model.addAttribute("user", user);
+//
+//        // 分配角色
+//        List<Role> roles = userRoleService.listByUserId(user.getUserId());
+//        model.addAttribute("roles", roles);// 用户权限
+//
+//        return "";
+//    }
 
     /**
      * DELETE 删除用户
      *
      * @return
      */
-    @DeleteMapping(value = "/{userId}")
+    @GetMapping(value = "/{userId}")
     @ResponseBody
     public Object delete(@PathVariable("userId") Integer userId) {
         if (LoginUtils.getUser() != null) {
+
+
+            //删除faceToken
+            User u=userService.getById(userId);
+            String face=u.getFaceToken();
+            InterfaceOfAllAPIs.deleteOneFaceFromFaceSet(face,"FS_0");
+
             Integer count = userService.deleteByUserId(userId);
             return new WebResult(CommonReturnCode.SUCCESS);
         } else {

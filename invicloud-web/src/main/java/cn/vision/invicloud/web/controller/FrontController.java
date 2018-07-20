@@ -1,5 +1,6 @@
 package cn.vision.invicloud.web.controller;
 
+import cn.vision.invicloud.support.entity.User;
 import cn.vision.invicloud.support.pojo.vo.RoleMenuVO;
 import cn.vision.invicloud.support.pojo.vo.UserVO;
 import cn.vision.invicloud.support.service.IRoleMenuService;

@@ -110,7 +110,21 @@
       </script>
 </head>
 <body>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<section class="content-header">
+    <h1>
+        InvisiCloud
+        <small>用户管理</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>用户管理</a></li>
+    </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content container-fluid">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
 <table id="table"></table>
 <!-- Bootstrap table -->
 <script src="${ctxsta}/bootstrap-table/dist/bootstrap-table.js"></script>
@@ -161,7 +175,7 @@
                 {field: 'createTime', title: '创建时间', sortable: true, align: 'center', halign: 'center', formatter: 'timeFormatter'},
                 {field: 'updateTime', title: '更新时间', sortable: true, align: 'center', halign: 'center', formatter: 'timeFormatter'},
                 {field: 'operation', title: '操作', formatter: 'actionFormatter', events:'actionEvents'}
-            ]，
+            ]
         });
     });
 
@@ -203,12 +217,10 @@
             if (confirm(msg) == true) {
                 $.ajax({
                     url: "/user/list/"+row.userId,
-                    type: "delete",
+                    type: "get",
                     success: function (data)
                     {
-                        //重新加载记录
-                        //重新加载数据
-                        $("#user").bootstrapTable('refresh', {url: '/user/list'});
+                        window.location.href = "${pageContext.request.contextPath}/user/list/view"
                     }
                 });
             }
@@ -303,5 +315,6 @@
         }
     }
 </script>
+</section>
 </body>
 </html>

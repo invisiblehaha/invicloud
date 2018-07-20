@@ -16,13 +16,13 @@
         <result column="telephone" property="telephone" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
+        <result column="faceToken" property="faceToken"/>
     </resultMap>
 
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        user_id AS userId, login_name AS loginName, login_password AS loginPassword, salt, user_name AS userName, 
-	 sex, age, pic_img AS picImg, status, telephone, create_time AS createTime,update_time AS updateTime
+        user_id AS userId, login_name AS loginName, login_password AS loginPassword, salt, user_name AS userName,  sex, age, pic_img AS picImg, status, telephone, create_time AS createTime,update_time AS updateTime, faceToken
     </sql>
 
     <!-- 根据用户ID查找用户信息 -->
@@ -38,7 +38,8 @@
             status,
             telephone,
             create_time AS createTime,
-            update_time AS updateTime
+            update_time AS updateTime,
+            faceToken
         FROM
             crm_user
         WHERE
@@ -72,6 +73,35 @@
 
 
 
+    <!-- 插入用户 -->
+    <insert id="insertUser" >
+        INSERT INTO crm_user (
+            user_id,
+            login_name,
+            login_password ,
+            salt, user_name AS userName,
+            sex,
+            age,
+            pic_img,
+            status,
+            telephone,
+            create_time,
+            update_time,
+            faceToken)
+              VALUES   (  #{userId},
+                           #{loginName},
+                          #{loginPassword},
+                          #{userName},
+                          #{sex},
+                          #{age},
+                          #{picImg},
+                          #{status},
+                          #{telephone},
+                          #{create_time},
+                          #{update_time},
+                          #{faceToken})
+</insert>
+
 
     <!-- 根据分页信息/搜索内容查找用户列表 -->
     <select id="listByPage" resultType="cn.vision.invicloud.support.pojo.vo.UserVO">
@@ -86,7 +116,8 @@
         status,
         telephone,
         create_time AS createTime,
-        update_time AS updateTime
+        update_time AS updateTime,
+        faceToken
         FROM
         crm_user
         <where>
@@ -117,5 +148,12 @@
         WHERE
         user_id = #{userId}
     </update>
-    
+
+    <select id="getLastestPlusCustomerId" resultType="java.lang.Integer">
+        SELECT
+        MAX(user_id)
+        FROM
+        crm_user
+    </select>
+
 </mapper>
