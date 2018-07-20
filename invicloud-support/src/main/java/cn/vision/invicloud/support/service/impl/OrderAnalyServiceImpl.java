@@ -158,6 +158,10 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_buy_amount.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.getBuyAmountPrediction(pythonPath, txtPath);
+        String csvPath = System.getProperty("user.dir").replaceAll("\\\\", "/")+"/buy_amount_prediction.csv";
+        String temp = OrderAnalyServiceImpl.class.getClassLoader().getResource("/").getPath();
+        String target = temp.substring(0, temp.length()-16) +"static/";
+        MoveFileUtils.moveFile(csvPath, target);
     }
 
     @Override
@@ -200,6 +204,12 @@ public class OrderAnalyServiceImpl extends ServiceImpl<OrderMapper, Order> imple
         String pythonPath = OrderAnalyServiceImpl.class.getClassLoader().getResource("python/predict_pay_amount.py").getPath();
         String txtPath = System.getProperty("user.dir");
         runPython.getPayAmountPrediction(pythonPath, txtPath);
+        String csvPath = System.getProperty("user.dir").replaceAll("\\\\", "/")+"/pay_amount_prediction.csv";
+        //String temp = System.getProperty("user.dir").replaceAll("\\\\", "/");
+        //String target = temp.substring(0, temp.length()-3) + "webapp/";
+        String temp = OrderAnalyServiceImpl.class.getClassLoader().getResource("/").getPath();
+        String target = temp.substring(0, temp.length()-16) +"static/";
+        MoveFileUtils.moveFile(csvPath, target);
     }
     @Override
     public void rfm() throws IOException {

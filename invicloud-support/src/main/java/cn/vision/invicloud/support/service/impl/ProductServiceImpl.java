@@ -59,14 +59,10 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         return new BasePageDTO<Product>(pageInfo, products);
     }
     @Override
-    public Product insertInto (Integer  productId, String productName, BigDecimal productPrice, Integer stock)
+    public Integer insertInto (String productName, BigDecimal productPrice, Integer stock)
     {
-        Product product=new Product();
-        product.setProductId(productId);
-        product.setProductName(productName);
-        product.setProductPrice(productPrice);
-        product.setStock(stock);
-        return product;
+
+        return productMapper.insertInto(productName,productPrice,stock);
     }
 
 

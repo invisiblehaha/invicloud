@@ -2,8 +2,11 @@ package cn.vision.invicloud.support.service;
 import cn.vision.invicloud.support.common.BasePageDTO;
 import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.EmotionRecord;
+import cn.vision.invicloud.support.pojo.vo.EmotionAnalyVO;
 import cn.vision.invicloud.support.pojo.vo.EmotionRecordVO;
 import com.baomidou.mybatisplus.service.IService;
+
+import java.util.List;
 
 public interface IEmotionRecordService extends IService<EmotionRecord>{
 
@@ -15,5 +18,6 @@ public interface IEmotionRecordService extends IService<EmotionRecord>{
 
     //分页显示（有疑问：是否需要）
     BasePageDTO<EmotionRecordVO> listByPage(PageInfo pageInfo);*/
-
+//返回心情饼图
+    List<EmotionAnalyVO> getEList(Integer customerId);
 }

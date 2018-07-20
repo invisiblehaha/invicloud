@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import com.sun.tracing.dtrace.ModuleAttributes;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -43,7 +44,7 @@ public class ProductController {
 
 
     /**
-     * DELETE 删除用户
+     * DELETE 删除商品
      *
      * @return
      */
@@ -58,6 +59,12 @@ public class ProductController {
         }
     }
 
+   @PostMapping(value = "/instinct")
+    @ResponseBody
+    public Object insertInto(Integer  productId, String productName,Double productPrice,Integer stock ) {
 
+        Integer i = productService.insertInto(productName,BigDecimal.valueOf(productPrice),stock);
+        return i;
+    }
 
 }

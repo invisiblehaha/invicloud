@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -34,4 +35,9 @@ public interface ProductMapper extends BaseMapper<Product> {
     List<SingProductAnalyVO> analySing(@Param("productId")Integer productId);
 	//自己写
     Integer deleteByProductId(@Param("productId") Integer productId);
+
+
+    Integer insertInto( @Param("productName") String productName,
+                       @Param("productPrice") BigDecimal productPrice,@Param("stock") Integer stock );
+
 }

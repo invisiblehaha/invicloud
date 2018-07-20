@@ -34,7 +34,7 @@ public class DemoController {
     @Autowired
     private ICategoryService categoryService;
     @Autowired
-    private IProductCategoryService productCategoryService;
+    private IEmotionRecordService emotionRecordService;
 
     @GetMapping(value = "/view")
     public String getDemoPage(@ModelAttribute("menus")List<RoleMenuVO> menus, @ModelAttribute("user") UserVO user, @RequestParam("customerId")Integer customerId,Model model){
@@ -69,59 +69,39 @@ public class DemoController {
             }
         }
         List<ProductVO> productVOList=productService.getAllProduct();
-
-        List<CatAnalyVO> catList=analyService.getCatList(customerId);
         model.addAttribute("products",productVOList);
-        Map<Integer, String> map=new HashMap<>();
+
+        //购买历史饼图
+        List<CatAnalyVO> catList=analyService.getCatList(customerId);
+        Map<String, Double> map= new HashMap<>();
         int total=0;
         for (CatAnalyVO catAnalyVO:catList) {
-        total+=catAnalyVO.getBuyTotal();
+            total+=catAnalyVO.getBuyTotal();
         }
-        DecimalFormat df = (DecimalFormat) NumberFormat.getPercentInstance();
-        df.applyPattern("0.00%");
+//        DecimalFormat df = (DecimalFormat) NumberFormat.getPercentInstance();
+//        df.applyPattern("0.00%");
+        String name="";
+        double percentage = 0;
         for (CatAnalyVO catAnalyVO:catList) {
-        map.put(catAnalyVO.getCategoryId(),df.format((double)catAnalyVO.getBuyTotal()/(double)total));
-        model.addAttribute("catmap",map);
+            name = categoryService.getById(catAnalyVO.getCategoryId()).getCategoryName();
+            percentage = (double) catAnalyVO.getBuyTotal() / (double) total;
+            map.put(name, percentage);
+            model.addAttribute("catmap", map);
+        }
+
+        //心情历史饼图
+        List<EmotionAnalyVO> EList=emotionRecordService.getEList(customerId);
+        Map<String, Double> map2= new HashMap<>();
+        int total2=0;
+        for(EmotionAnalyVO emotionAnalyVO:EList){
+            total+=emotionAnalyVO.getNum();
+        }
+        for(EmotionAnalyVO emotionAnalyVO:EList){
+            percentage = (double)emotionAnalyVO.getNum()/(double)total2;
+            map.put(emotionAnalyVO.getEmotion(),percentage);
+            model.addAttribute("emap",map2);
         }
         return "/recommend/demo";
     }
-// @PostMapping(value = "/search")
-//    @ResponseBody
-//    public List<ProductVO> searchForProducts(@RequestParam(required = false)String userInput,Model model)
-//    {
-//        List<ProductVO> productVOList=productService.getProductBySearch(userInput);
-//        for(ProductVO o:productVOList)
-//        {
-//            System.out.println(o.getProductName());
-//        }
-//        return productVOList;
-//    }
-//
-//    @PostMapping(value = "/cate")
-//    @ResponseBody
-//    public Object getCategory()
-//    {
-//        JSONObject obj=new JSONObject();
-//        List<Category> categoryList=categoryService.listLowerCategories(0);
-//        obj.put("0",categoryList);
-//        for(Category o:categoryList)
-//        {
-//            o.getCategoryId();
-//            List<Category> categoryList1=categoryService.listLowerCategories(o.getCategoryId());
-//            obj.put(o.getCategoryId().toString(),categoryList1);
-//        }
-//        return obj;
-//    }
-//
-//    @PostMapping(value = "/cateProduct")
-//    @ResponseBody
-//    public Object getCateProduct(String id)
-//    {
-//        List<ProductVO> productVOList=productCategoryService.getCateProduct(id);
-//        for(ProductVO o:productVOList)
-//        {
-//            System.out.println(o.getProductName());
-//        }
-//        return productVOList;
-//    }
+
 }

@@ -13,7 +13,7 @@
 <html>
 <head>
     <title>所有商品</title>
-
+    <script type="text/javascript">baselocation="${ctx}"</script>
     <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
 
@@ -76,16 +76,19 @@
 
         .modal-header {
             padding: 2px 16px;
-            background-color: lightblue;
+            background-color:#408EBA;
             color: white;
+
         }
 
         .modal-body {padding: 2px 16px;}
 
         .modal-footer {
             padding: 2px 16px;
-            background-color:lightblue;
+            background-color: #408EBA;
             color: white;
+            align-items: center;
+
         }
     </style>
 
@@ -99,13 +102,13 @@
 
             };
             $.ajax({
-                url:"${pageContext.request.contextPath}/product/product/ahh",
+                url:"${pageContext.request.contextPath}/product/product/instinct",
                 type:"post",
                 data: info,
                 dataType:"json",
                 success: function (data)
                 {
-
+                    window.location.href = baselocation + 'view';
                 },
                 error:function(){
 
@@ -198,7 +201,7 @@ function actionFormatter(value, row, index)
                         {
                             //重新加载记录
                             //重新加载数据
-                            $("#user").bootstrapTable('refresh', {url: '/product/product'});
+                            window.location.href = baselocation + 'view';
                         }
                     });
                 }
@@ -258,24 +261,22 @@ function actionFormatter(value, row, index)
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
-            <h2>弹窗头部</h2>
+            <h2>输入商品信息</h2>
         </div>
         <div class="modal-body">
             <form>
-                <p>编号</p>
-                <input type="text" id="a" name="productId" required="required" />
-                <p>商品名称</p>
+                <label>商品名称</label>
                 <input type="text" id="b" name="productName" required="required" />
-                <p>价格</p>
+                <label>价格</label>
                 <input type="text" id="c" name="productPrice" required="required" />
-                <p>库存</p>
+                <label>库存</label>
                 <input type="text" id="d" name="stock" required="required" />
-                <button type="button" onclick="add()">Click Me!</button>
+                <button type="button" onclick="add()">确认提交</button>
 
             </form>
         </div>
         <div class="modal-footer">
-            <h3>弹窗底部</h3>
+<br>
         </div>
     </div>
 

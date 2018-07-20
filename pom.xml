@@ -17,6 +17,7 @@
         <module>invicloud-web</module>
         <module>invicloud-support</module>
         <module>invicloud-common</module>
+        <module>invicloud-store</module>
     </modules>
 
     <properties>

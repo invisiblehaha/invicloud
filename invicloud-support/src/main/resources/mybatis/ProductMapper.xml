@@ -42,6 +42,20 @@
     </select>
 
 
+
+<insert id="insertInto">
+   INSERT INTO crm_product
+     ( product_name,
+       product_price ,
+       stock)
+       VALUES
+        (#{productName},
+         #{productPrice},
+         #{stock})
+</insert>
+
+
+
     <!-- 动态删除操作  delete from product where id in(?,?,?);-->
     <delete id="deleteByProductId">
         delete from crm_product

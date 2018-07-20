@@ -29,7 +29,7 @@
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
     var csv = null;
-    $.get("<%=basePath%>static/data/pay_amount_prediction.csv", function (data) {
+    $.get("<%=basePath%>static/pay_amount_prediction.csv", function (data) {
         csv = data;
         Highcharts.chart('container', {
             chart: {

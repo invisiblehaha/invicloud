@@ -10,6 +10,10 @@
         <result column="record_time" property="recordTime" />
     </resultMap>
 
+    <resultMap id="EmotionAnalyMap" type="cn.vision.invicloud.support.pojo.vo.EmotionAnalyVO">
+        <result column="emotion" property="emotion"/>
+        <result column="num" property="num"/>
+    </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
@@ -20,4 +24,13 @@
         insert into crm_emotion_records(record_id, customer_id, emotion, record_time)
         values(#{record.recordId},#{record.customerId},#{record.emotion},#{record.recordTime})
     </insert>
+
+    <select id="getEList" resultMap="EmotionAnalyMap">
+SELECT e.emotion,COUNT(e.emotion) as num
+FROM crm_emotion_records e
+WHERE e.customer_id={#customerId}
+GROUP BY e.emotion
+ORDER BY e.emotion;
+    </select>
+
 </mapper>

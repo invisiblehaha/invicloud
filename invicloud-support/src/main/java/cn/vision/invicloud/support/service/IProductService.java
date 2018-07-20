@@ -37,7 +37,7 @@ public interface IProductService extends IService<Product> {
     void singProduct(Integer productId);
 
     boolean ifIn(SingProductAnalyVO item, List<SingProductAnalyVO> list);
-    Product insertInto (Integer productId, String productName, BigDecimal productPrice, Integer stock);
+    Integer insertInto ( String productName, BigDecimal productPrice, Integer stock);
 
-    public Integer deleteByProductId(Integer productId);
+     Integer deleteByProductId(Integer productId);
 }

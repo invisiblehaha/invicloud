@@ -50,4 +50,7 @@ public interface OrderMapper extends BaseMapper<Order> {
 
     List<CatAnalyVO>  getCatList(@Param("customerId")Integer customerId);
 
+
+
+
 }

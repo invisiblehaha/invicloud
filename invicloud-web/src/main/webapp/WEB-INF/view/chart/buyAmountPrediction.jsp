@@ -1,3 +1,4 @@
+<%@ page import="org.springframework.test.context.ContextConfiguration" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     //{pageContext.request.ContextPath}
@@ -11,6 +12,7 @@
 <html>
 <!-- 销售量预测 -->
 <head>
+
     <meta charset="UTF-8">
     <title></title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -27,7 +29,7 @@
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
     var csv = null;
-    $.get("<%=basePath%>static/data/buy_amount_prediction.csv", function (data) {
+    $.get("<%=basePath%>static/buy_amount_prediction.csv", function (data) {
         csv = data;
         Highcharts.chart('container', {
             chart: {

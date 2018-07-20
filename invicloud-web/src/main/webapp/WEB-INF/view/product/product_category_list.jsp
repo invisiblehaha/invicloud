@@ -44,7 +44,7 @@
        data-page-size="20"
        data-page-list="[20, 50, 100, 200]"
        data-side-pagination="server"
-       <%--data-striped="true"--%>
+       data-striped="true"
        data-pagination="true"
        data-sort-order="desc">
     <thead>
