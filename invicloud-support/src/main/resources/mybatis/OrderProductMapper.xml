@@ -15,5 +15,17 @@
         order_id AS orderId, product_id AS productId, buy_amount AS buyAmount, product_amount AS productAmount
     </sql>
 
-
+    <insert id="addOrderItemToDB" >
+        INSERT INTO crm_order_product (
+        order_id,
+        product_id,
+        buy_amount,
+        pay_amount
+           )
+              VALUES   (  #{orderId},
+                           #{productId},
+                          #{buyAmount},
+                          #{payAmount}
+                        )
+</insert>
 </mapper>

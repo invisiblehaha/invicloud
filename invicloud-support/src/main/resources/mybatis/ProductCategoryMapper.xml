@@ -36,4 +36,20 @@
         ${pageInfo.sort} ${pageInfo.order}
     </select>
 
+    <!-- 根据类目ID列表、分类、排序查找商品列表及标签（分类查找） -->
+    <select id="getCateProduct" resultType="cn.vision.invicloud.support.pojo.vo.ProductVO">
+        SELECT
+        p.product_id AS productId,
+        product_name AS productName,
+        product_price AS productPrice,
+        product_introduce AS productIntroduce,
+        stock,
+        pic_img AS picImg,
+        remarks
+        FROM
+        crm_product_category c
+        LEFT JOIN crm_product p ON c.product_id = p.product_id
+        WHERE
+        c.category_id =#{id}
+    </select>
 </mapper>

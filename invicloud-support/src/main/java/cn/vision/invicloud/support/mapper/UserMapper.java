@@ -53,5 +53,5 @@ public interface UserMapper extends BaseMapper<User> {
 	
 	//返回即将被注册的userid
     Integer getLastestPlusCustomerId();
-	//没有insert user吗？
+	
 }

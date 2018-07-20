@@ -1,16 +1,18 @@
 package cn.vision.invicloud.support.pojo.vo;
 
 
+
 import java.io.Serializable;
+import java.util.Date;
 
 public class SingProductAnalyVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String createTime;
+    private Date createTime;
 
     private int buyAmount;
 
-    public SingProductAnalyVO(String createTime, int buyAmount) {
+    public SingProductAnalyVO(Date createTime, int buyAmount) {
         this.createTime = createTime;
         this.buyAmount = buyAmount;
     }
@@ -18,7 +20,7 @@ public class SingProductAnalyVO implements Serializable {
     public SingProductAnalyVO() {
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
@@ -26,7 +28,7 @@ public class SingProductAnalyVO implements Serializable {
         this.buyAmount = buyAmount;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 

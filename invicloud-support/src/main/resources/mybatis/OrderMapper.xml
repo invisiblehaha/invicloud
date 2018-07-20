@@ -140,12 +140,11 @@ GROUP BY
 </select>
 
 <select id="analyBuy" resultMap="AnalyBuyMap">
-SELECT str_to_date(substr(create_time,1,10), '%Y-%m-%d %h:%i:%s') as create_time, SUM(buy_amount) as buy_amount FROM crm_order GROUP BY create_time ASC;
-
+select t.create_time, SUM(t.buy_amount) as buy_amount from (SELECT str_to_date(substr(create_time,1,10), '%Y-%m-%d %h:%i:%s') as create_time, SUM(buy_amount) as buy_amount FROM crm_order GROUP BY create_time ASC) t GROUP BY t.create_time
 </select>
 
 <select id="analyPay" resultMap="AnalyPayMap">
-SELECT str_to_date(substr(create_time,1,10), '%Y-%m-%d %h:%i:%s') as create_time, SUM(pay_amount) as pay_amount FROM crm_order GROUP BY create_time ASC;
+select t.create_time, SUM(t.pay_amount) as pay_amount from (SELECT str_to_date(substr(create_time,1,10), '%Y-%m-%d %h:%i:%s') as create_time, SUM(pay_amount) as pay_amount FROM crm_order GROUP BY create_time ASC) t GROUP BY t.create_time
 </select>
 
 <select id="rfm" resultMap="RFMMap">
@@ -178,4 +177,16 @@ GROUP BY pc.category_id
 ORDER BY pc.category_id;
 </select>
 
+<insert id="addOrderToDB" keyProperty="orderId" useGeneratedKeys="true" parameterType="cn.vision.invicloud.support.entity.Order">
+        INSERT INTO crm_order (
+            customer_id,
+            pay_type,
+            buy_amount,
+            pay_amount
+            )
+              VALUES   (  #{customerId},
+                           #{payType},
+                          #{buyAmount},
+                          #{payAmount})
+</insert>
 </mapper>

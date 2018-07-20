@@ -30,4 +30,10 @@ public class OrderProductServiceImpl extends ServiceImpl<OrderProductMapper, Ord
         orderProduct.setOrderId(orderId);
         return orderProductMapper.selectList(new EntityWrapper<OrderProduct>(orderProduct));
     }
+
+    @Override
+    public Integer addOrderItemToDB(String orderId,String productId,String productNumber,String productPrice){
+        orderProductMapper.addOrderItemToDB(orderId,productId,productNumber,productPrice);
+        return 1;
+    }
 }

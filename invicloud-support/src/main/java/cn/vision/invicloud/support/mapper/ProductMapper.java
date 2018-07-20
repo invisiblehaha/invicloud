@@ -39,5 +39,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     Integer insertInto( @Param("productName") String productName,
                        @Param("productPrice") BigDecimal productPrice,@Param("stock") Integer stock );
+					   
+    List<ProductVO> getProductBySearch(@Param("search")String search);					   
 
 }

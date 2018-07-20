@@ -15,5 +15,5 @@ import java.util.List;
  * @since 2018-07-04
  */
 public interface OrderProductMapper extends BaseMapper<OrderProduct> {
-
+    Integer addOrderItemToDB(@Param("orderId")String orderId,@Param("productId")String productId,@Param("buyAmount")String buyAmount,@Param("payAmount")String payAmount);
 }

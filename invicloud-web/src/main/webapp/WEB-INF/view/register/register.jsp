@@ -1,8 +1,15 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 贺俞凯
+  Date: 2018/7/10
+  Time: 9:47
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/WEB-INF/base.jsp" %>
 <html>
 <head>
-    <title>invicloud注册页面</title>
+    <title>invicloud顾客注册</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/clmtrackr.js"></script>
@@ -14,110 +21,110 @@
 <div class ="two">
 
     <div class="out-container">
-    <div class="logo2"><h1>InvisiCLOUD</h1></div>
+        <div class="logo1"><h1>InvisiCLOUD</h1></div>
         <div class="container">
             <div class="web_qr_login" id="web_qr_login" style="display:block;">
                 <div class="web_login" id="web_login">
                     <div class="login-box">
                         <div class="register_form">
-    <form id="registerForm">
+                            <form id="registerForm">
 
-        <table>
-            <tr>
-                <td>
-                    <div class="uinArea" id="uinArea">
-                        <label class="input-tips" for="userName">姓名： </label>
-                        <div class="inputOuter" id="uArea">
-                        <input class="inputstyle" type="text" name="userName" id="userName">
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="numberArea" id="numberArea">
-                        <label class="input-tips" for="phoneNumber">电话： </label>
-                        <div class="inputOuter" id="nArea">
-                        <input class="inputstyle" type="text" name="phoneNumber", id="phoneNumber">
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="uinArea" id="uinArea">
+                                                <label class="input-tips" for="userName">姓名： </label>
+                                                <div class="inputOuter" id="uArea">
+                                                    <input class="inputstyle" type="text" name="userName" id="userName">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="numberArea" id="numberArea">
+                                                <label class="input-tips" for="phoneNumber">电话： </label>
+                                                <div class="inputOuter" id="nArea">
+                                                    <input class="inputstyle" type="text" name="phoneNumber", id="phoneNumber">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-            <tr>
-                <td>
-                    <div>
-                        <label class="input-tips">性别： </label><br>
-                        <input type="radio" name="sex" value="0"/>保密
-                        <input type="radio" name="sex" value="1" checked="checked"/>男
-                        <input type="radio" name="sex" value ="2"/>女
-                    </div>
-                </td>
-            </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <label class="input-tips">性别： </label><br>
+                                                <input type="radio" name="sex" value="0"/>保密
+                                                <input type="radio" name="sex" value="1" checked="checked"/>男
+                                                <input type="radio" name="sex" value ="2"/>女
+                                            </div>
+                                        </td>
+                                    </tr>
 
-            <tr>
-                <td>
-                    <div>
-                        <label class="input-tips">出生年：</label><br>
-                        <select id="birthYear"></select>
-                    </div>
-                </td>
-            </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <label class="input-tips">出生年：</label><br>
+                                                <select id="birthYear"></select>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-            <tr>
-                <td>
-                    <div>
-                        <br>
-                        <div class="col-md-3 col-sm-3 col-xs-6">
-                            <a href="#" class="btn btn-sm animated-button victoria-one" onclick="openCatagory();end_Camera();" style="float:left">打开相册</a>
-                        </div><br><br>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <br>
+                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                    <a href="#" class="btn btn-sm animated-button victoria-one" onclick="openCatagory();end_Camera();" style="float:left">打开相册</a>
+                                                </div><br><br>
 
-                        <div class="col-md-3 col-sm-3 col-xs-6">
-                            <a href="#" class="btn btn-sm animated-button victoria-two" onclick="closeCatagory();" style="float:left">关闭相册</a>
-                        </div><br><br><br><br>
+                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                    <a href="#" class="btn btn-sm animated-button victoria-two" onclick="closeCatagory();" style="float:left">关闭相册</a>
+                                                </div><br><br><br><br>
 
-                        <div id="catagory" style="display: none">
-                        <input id="imgfile" type="file" name="userUploadImg" onchange="changeImg()"/><br><br><br><br>
-                        <img id="imgid" width="300" src="${pageContext.request.contextPath}/static/images/initial.jpg" alt="userUploadImg"/>
-                        <br><br><br><br>
-                        </div>
+                                                <div id="catagory" style="position: absolute;left: 420px;top:0px;display: none">
+                                                    <input id="imgfile" type="file" name="userUploadImg" onchange="changeImg()"/><br><br><br><br>
+                                                    <img id="imgid" width="300" src="${pageContext.request.contextPath}/static/images/initial.jpg" alt="userUploadImg"/>
+                                                    <br><br><br><br>
+                                                </div>
 
-                        <div class="col-md-3 col-sm-3 col-xs-6">
-                            <a href="#" class="btn btn-sm animated-button victoria-three" onclick="start_Camera();closeCatagory();" style="float:left">打开摄像头</a>
-                        </div><br><br>
+                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                    <a href="#" class="btn btn-sm animated-button victoria-three" onclick="start_Camera();closeCatagory();" style="float:left">打开摄像头</a>
+                                                </div><br><br>
 
-                        <div class="col-md-3 col-sm-3 col-xs-6">
-                            <a href="#" class="btn btn-sm animated-button victoria-four" onclick="end_Camera();" style="float:left">关闭摄像头</a>
-                        </div><br><br><br><br>
+                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                    <a href="#" class="btn btn-sm animated-button victoria-four" onclick="end_Camera();" style="float:left">关闭摄像头</a>
+                                                </div><br><br><br><br>
 
-                        <div id="video-canvas" style="display: none">
-                            <video  id="myVideo" autoplay="autoplay" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 10px;top:500px; object-fit: fill"></video><hr/>
-                            <canvas id="myCanvasForVideo" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 10px;top:500px;"></canvas>
-                            <canvas id="myCanvas" height="400" width="400" style="border: 1px solid gray;position: absolute;left: 420px;top:500px;"></canvas>
-                        </div>
+                                                <div id="video-canvas" style="display: none">
+                                                    <video  id="myVideo" autoplay="autoplay" height="350" width="350" style="border: 1px solid gray; position: absolute;left: 420px;top:0px; object-fit: fill"></video><hr/>
+                                                    <canvas id="myCanvasForVideo" height="350" width="350" style="border: 1px solid gray; position: absolute;left: 420px;top:0px;"></canvas>
+                                                    <canvas id="myCanvas" height="350" width="350" style="border: 1px solid gray;position: absolute;left: 420px;top:410px;"></canvas>
+                                                </div>
 
-                    </div>
-                </td>
-            </tr>
-        </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
 
-        <div>
-            <a href="#" class="button is-silver is-horizontal" onclick="checkUser();" style="position: absolute;left: 450px;top:400px;">
-                <span class="shadow"></span>
-                <span class="wrapper">
+                                <div>
+                                    <a href="#" class="button is-silver is-horizontal" onclick="checkUser();" style="position: absolute;left: 50px;top:540px;">
+                                        <span class="shadow"></span>
+                                        <span class="wrapper">
                 <span class="bg"></span>
                 <span class="b-title">REGISTER</span>
                 <span class="bg"></span>
                </span>
-            </a>
-        </div>
-    </form>
-                </div>
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </div>
 </body>
 
@@ -214,7 +221,7 @@
         if(positions!= positionInitial)//如果video里有人脸
         {
             //画出摄像头捕捉的图像
-            context2.drawImage(video,0,0,400,400);
+            context2.drawImage(video,0,0,350,350);
             //将获取的图片base64信息封装在info中
             UserUpload = true;
         }
@@ -246,6 +253,7 @@
             $("#imgid").attr('src', imgFile);
         };
         reader.readAsDataURL(file);
+
     }
 
 
@@ -262,9 +270,6 @@
             //alert(navigator.mozGetUserMedia)
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-
-
-
             navigator.getUserMedia({
                 video: true,//开启视频
                 audio: false//先关闭音频，因为会有回响，以后两台电脑通信不会有响声
@@ -278,12 +283,6 @@
         }
     }
 
-            //画出摄像头捕捉的图像
-            context.drawImage(video, 0, 0,300,150);
-            //将获取的图片base64信息封装在info中
-            UserUpload = true;
-        }
-    })
 
     function end_Camera()
     {
@@ -371,6 +370,7 @@
             }
         });
     }
+
 
 </script>
 </html>

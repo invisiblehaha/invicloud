@@ -21,7 +21,7 @@
 <div class ="two">
 
     <div class="out-container">
-        <div class="logo2"><h1>InvisiCLOUD</h1></div>
+        <div class="logo1"><h1>InvisiCLOUD</h1></div>
         <div class="container">
             <div class="web_qr_login" id="web_qr_login" style="display:block;">
                 <div class="web_login" id="web_login">
@@ -124,7 +124,7 @@
                                                     <a href="#" class="btn btn-sm animated-button victoria-two" onclick="closeCatagory();" style="float:left">关闭相册</a>
                                                 </div><br><br><br><br>
 
-                                                <div id="catagory" style="display: none">
+                                                <div id="catagory" style="position: absolute;left: 420px;top:0px;display: none">
                                                     <input id="imgfile" type="file" name="userUploadImg" onchange="changeImg()"/><br><br><br><br>
                                                     <img id="imgid" width="300" src="${pageContext.request.contextPath}/static/images/initial.jpg" alt="userUploadImg"/>
                                                     <br><br><br><br>
@@ -139,9 +139,9 @@
                                                 </div><br><br><br><br>
 
                                                 <div id="video-canvas" style="display: none">
-                                                    <video  id="myVideo" autoplay="autoplay" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 10px;top:800px; object-fit: fill"></video><hr/>
-                                                    <canvas id="myCanvasForVideo" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 10px;top:800px;"></canvas>
-                                                    <canvas id="myCanvas" height="400" width="400" style="border: 1px solid gray;position: absolute;left: 520px;top:800px;"></canvas>
+                                                    <video  id="myVideo" autoplay="autoplay" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 420px;top:0px; object-fit: fill"></video><hr/>
+                                                    <canvas id="myCanvasForVideo" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 420px;top:0px;"></canvas>
+                                                    <canvas id="myCanvas" height="400" width="400" style="border: 1px solid gray;position: absolute;left: 420px;top:410px;"></canvas>
                                                 </div>
 
                                             </div>
@@ -150,7 +150,7 @@
                                 </table>
 
                                 <div>
-                                    <a href="#" class="button is-silver is-horizontal" onclick="checkUser();" style="position: absolute;left: 450px;top:600px;">
+                                    <a href="#" class="button is-silver is-horizontal" onclick="checkUser();" style="position: absolute;left: 50px;top:800px;">
                                         <span class="shadow"></span>
                                         <span class="wrapper">
                 <span class="bg"></span>

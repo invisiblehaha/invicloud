@@ -7,18 +7,18 @@ body{
     font-family: "Microsoft Yahei";
     text-align: center;
     overflow: auto;
-/*    background:url("/static/images/background.png")no-repeat;*/
+    /*    background:url("/static/images/background.png")no-repeat;*/
     background-size:cover;
 }
 
 /*.two::before{*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*right: 0;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*display: block;*/
-    /*content: "";*/
+/*position: absolute;*/
+/*top: 0;*/
+/*right: 0;*/
+/*bottom: 0;*/
+/*left: 0;*/
+/*display: block;*/
+/*content: "";*/
 
 /*}*/
 
@@ -83,30 +83,30 @@ a.animated-button:link, a.animated-button:visited {
     transition: all 1s ease;
 }
 a.animated-button.victoria-one {
-    border: 2px solid #99FFFF;
+    border: 2px solid  #c0c0c0;
 }
 a.animated-button.victoria-one:after {
-    background: #99FFFF;
+    background:  #c0c0c0;
     -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
     -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
     -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
     transform: translateX(-50%) translateY(-50%) rotate(-25deg);
 }
 a.animated-button.victoria-two {
-    border: 2px solid #99FFFF;
+    border: 2px solid  #c0c0c0;
 }
 a.animated-button.victoria-two:after {
-    background: #99FFFF;
+    background:  #c0c0c0;
     -moz-transform: translateX(-50%) translateY(-50%) rotate(25deg);
     -ms-transform: translateX(-50%) translateY(-50%) rotate(25deg);
     -webkit-transform: translateX(-50%) translateY(-50%) rotate(25deg);
     transform: translateX(-50%) translateY(-50%) rotate(25deg);
 }
 a.animated-button.victoria-three {
-    border: 2px solid #99FFFF;
+    border: 2px solid  #c0c0c0;
 }
 a.animated-button.victoria-three:after {
-    background: #99FFFF;
+    background:  #c0c0c0;
     opacity: .5;
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
@@ -118,10 +118,10 @@ a.animated-button.victoria-three:hover:after {
     opacity: 1;
 }
 a.animated-button.victoria-four {
-    border: 2px solid #99FFFF;
+    border: 2px solid  #c0c0c0;
 }
 a.animated-button.victoria-four:after {
-    background: #99FFFF;
+    background: #c0c0c0;
     opacity: .5;
     -moz-transform: translateY(-50%) translateX(-50%) rotate(90deg);
     -ms-transform: translateY(-50%) translateX(-50%) rotate(90deg);
@@ -133,61 +133,126 @@ a.animated-button.victoria-four:hover:after {
     height: 600% !important;
 }
 
-.button_flip {
-    position: relative;
-    height:35px;
-    width: 200px;
-    margin: 0;
-    transform: translate(-50%, -50%);
-    line-height: 60px;
+.button {
+    font-size: 20px;
+    color: #ffffff;
+    letter-spacing: 2px;
     text-align: center;
-    font-family: verdana;
-    text-transform: uppercase;
+    line-height: 40px;
+    min-height: 40px;
+    opacity: 1;
+    -webkit-transform: skewX(-8deg);
+    transform: skewX(-8deg);
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0 15px;
+    border: 2px solid #ffffff;
     text-decoration: none;
-    letter-spacing: 6px;
-    font-size: 24px;
-    background: #ff0;
-    color: transparent;
-    border: 2px solid #ff0;
-    box-shadow: 0 15px 50px rgba(0,0,0,.8);
+    position: relative;
+    width: 200px;
+}
+.button .b-title {
+    -webkit-transform: skewX(8deg);
+    transform: skewX(8deg);
+    display: block;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s linear;
+    transition-delay: 0.25s;
+}
+.button .shadow {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 40px #ffffff;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+.button .wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
     overflow: hidden;
 }
-
-.button_flip:before {
-    content: attr(data-title);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #262626;
-    color: #fff;
-    width: 100%;
+.button .bg {
+    width: 75%;
     height: 100%;
-    transition: .5s;
-}
-
-.button_flip:after {
-    content: attr(data-title);
+    background-color: #ffffff;
     position: absolute;
-    top: 100%;
-    left: -100%;
-    background: #262626;
-    color: #fff;
-    width: 100%;
-    height: 100%;
-    transition: .5s;
-}
-
-.button_flip:hover:before {
-    top: -100%;
-    left: 100%;
-}
-
-.button_flip:hover:after {
+    left: -20%;
     top: 0;
-    left: 0;
+    -webkit-transform: skewX(-32deg) translateY(-100%);
+    transform: skewX(-32deg) translateY(-100%);
+    transition: -webkit-transform 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.25s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.25s cubic-bezier(0.19, 1, 0.22, 1);
 }
-
-
+.button .bg:last-child {
+    left: auto;
+    right: -20%;
+    -webkit-transform: skewX(-32deg) translateY(100%);
+    transform: skewX(-32deg) translateY(100%);
+}
+.button:hover .bg {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+}
+.button:hover .b-title {
+    color: #000;
+    transition-delay: none;
+}
+.button:hover .shadow {
+    opacity: 1;
+}
+.button.is-gold {
+    color: #ffdf00;
+    border-color: #ffdf00;
+}
+.button.is-gold .shadow {
+    box-shadow: 0px 0px 40px #ffdf00;
+}
+.button.is-gold .bg {
+    background-color: #ffdf00;
+}
+.button.is-silver {
+    color: #c0c0c0;
+    border-color: #c0c0c0;
+}
+.button.is-silver .shadow {
+    box-shadow: 0px 0px 40px #c0c0c0;
+}
+.button.is-silver .bg {
+    background-color: #c0c0c0;
+}
+.button.is-horizontal .bg {
+    width: 120%;
+}
+.button.is-horizontal:hover .bg:first-child {
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.button.is-horizontal:hover .bg:last-child {
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+}
+.button.is-vertical .bg {
+    top: 0;
+    -webkit-transform: skewX(-8deg) translateY(0) translateX(-80%);
+    transform: skewX(-8deg) translateY(0) translateX(-80%);
+}
+.button.is-vertical .bg:last-child {
+    -webkit-transform: translateX(80%);
+    transform: translateX(80%);
+}
+.button.is-vertical:hover .bg {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
 .two{
     display: flex;
     display: -webkit-flex; /*兼容问题*/
@@ -204,14 +269,14 @@ a.animated-button.victoria-four:hover:after {
     width:240px;
     height:100px;
     align-content: center;
-    margin-bottom: 70px;
-    color: white;
+    margin-bottom: 20px;
+    color: #c0c0c0;
     align-self: center;
-    font-size: 5em;
+    font-size: 4em;
 }
 .logo2 h1{
     width:240px;
-    height:100px;
+    height:70px;
     align-content: center;
     margin-bottom: 10px;
     color: black;
@@ -250,20 +315,19 @@ p{
     font-weight: lighter;
 }
 .out-container{
-    width:500px;
+    width:1000px;
+    height: 1000px;
     align-self: center;
-    height: 600px;
-    margin-top: 50px;
-    margin-left: 800px;
+    margin-top: 5px;
+    margin-left: 400px;
     /*margin-top: -100px;*/
 }
 .container {
-    width:500px;
+    width:1000px;
     border-radius: 8px;
-    background-color: #FFFFFF;
     opacity: 0.6;
     align-self: center;
-   height: 600px;
+    height: 1000px;
 }
 
 .header {
@@ -368,7 +432,7 @@ p{
 
 }
 .web_login .inputstyle {
-    width:200px;
+    width:250px;
     height:30px;
     padding-left:5px;
     line-height:30px;
@@ -406,8 +470,6 @@ p{
 }
 .web_qr_login {
     position:relative;
-
-    overflow:auto;
 }
 
 .cue {
@@ -420,12 +482,12 @@ p{
     font-family:"Hiragino Sans GB", "Microsoft Yahei";
 }
 .login {
-    background-color:#ffffff;
+    /*background-color:#ffffff;*/
 }
 
 
 .login {border:0;padding:5px 0;
-    background: #fff;
+    /* background: #fff;*/
     margin: 0 auto;
     -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .3);
     box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .3);}

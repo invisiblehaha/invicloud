@@ -3,6 +3,7 @@ package cn.vision.invicloud.support.service;
 import cn.vision.invicloud.support.common.BasePageDTO;
 import cn.vision.invicloud.support.common.PageInfo;
 import cn.vision.invicloud.support.entity.Category;
+import cn.vision.invicloud.support.entity.Product;
 import cn.vision.invicloud.support.entity.ProductCategory;
 import cn.vision.invicloud.support.pojo.vo.ProductVO;
 import com.baomidou.mybatisplus.service.IService;
@@ -33,4 +34,11 @@ public interface IProductCategoryService extends IService<ProductCategory> {
      * @return
      */
     List<Category> listUpperByProductId(Integer productId);
+
+    /**
+     * 根据categoryId列出所有商品
+     * @param id
+     * @return
+     */
+    List<ProductVO> getCateProduct(String id);
 }

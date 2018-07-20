@@ -1,0 +1,57 @@
+body{
+    /*text-align: center;*/
+    width: 100%;
+    height: 100%;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+.person{
+    margin-top: -200px;
+    width:500px;
+    border-radius: 8px;
+    background-color: #fff;
+    opacity: 0.6;
+    align-self: center;
+    height: 500px;
+}
+.container{
+    display: flex;
+    display: -webkit-flex; /*兼容问题*/
+    display: -ms-flexbox;
+    text-align: center;
+    width: 100%;
+    height: 800px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+}
+.container2{
+    display: flex;
+    display: -webkit-flex; /*兼容问题*/
+    display: -ms-flexbox;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+}
+.inp{
+    width: 250px;
+
+}
+.edit{
+    width: 225px;
+    align-items: center;
+    text-align: center;
+}
+#editInfo #sureEdit{
+    background-color: #09a2ff;
+    opacity: 0.75;
+    color: white;
+    border-radius: 5px;
+}
+
+

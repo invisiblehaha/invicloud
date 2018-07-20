@@ -16,6 +16,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 import java.text.SimpleDateFormat;
 import java.math.BigDecimal;
@@ -73,6 +74,12 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         return allProduct;
     }
 
+ @Override
+    public List<ProductVO> getProductBySearch(String search){
+	  List<ProductVO> allProduct=productMapper.getProductBySearch(search);
+     return allProduct;
+    }
+	
     public boolean ifIn(SingProductAnalyVO item, List<SingProductAnalyVO> list){
         boolean flag=false;
         for (SingProductAnalyVO s:list) {
@@ -87,8 +94,14 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         List<SingProductAnalyVO> rawlist = productMapper.analySing(productId);
         List<SingProductAnalyVO> newlist=new ArrayList<SingProductAnalyVO>();
         Date today=new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String curDate=df.format(today)+" 00:00:00";
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+        String date=df.format(today);
+        Date curDate= null;
+        try {
+            curDate = df.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         SingProductAnalyVO sing=new SingProductAnalyVO(curDate,0);
         newlist.add(sing);
         Calendar theCa = Calendar.getInstance();
@@ -96,8 +109,14 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         for(int i=0;i<30;i++){
             theCa.add(theCa.DATE, -1);
             Date item=theCa.getTime();
-            String itemDate=df.format(item)+" 00:00:00";
-            SingProductAnalyVO singProductAnalyVO=new SingProductAnalyVO(itemDate,0);
+            String itemDate=df.format(item);
+            Date itemD=null;
+            try {
+                itemD=df.parse(itemDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            SingProductAnalyVO singProductAnalyVO=new SingProductAnalyVO(itemD,0);
             newlist.add(singProductAnalyVO);
         }
         for (SingProductAnalyVO singProductAnalyVO:rawlist) {

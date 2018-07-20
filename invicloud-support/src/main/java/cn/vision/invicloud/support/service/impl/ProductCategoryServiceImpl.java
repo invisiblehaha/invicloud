@@ -79,4 +79,8 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryMappe
         }
     }
 
+    public List<ProductVO> getCateProduct(String id){
+        List<ProductVO> cateProduct = productCategoryMapper.getCateProduct(id);
+        return cateProduct;
+    }
 }

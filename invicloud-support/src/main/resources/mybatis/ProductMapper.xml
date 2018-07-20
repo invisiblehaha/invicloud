@@ -88,7 +88,7 @@
     SELECT
     product_id AS productId,
     product_name AS productName,
-    product_price AS productPrict,
+    product_price AS productPrice,
     product_introduce AS productIntroduce,
     stock,
     pic_img AS picImg,
@@ -98,9 +98,52 @@
     </select>
 
     <select id="analySing" resultMap="SingAnalyMap">
-        SELECT  o.create_time,p.buy_amount
-         FROM crm_order o, crm_order_product p
-         WHERE o.order_id=p.order_id and p.product_id=#{productId}
-         ORDER BY p.product_id,o.create_time;
+       SELECT
+	t.create_time,
+	SUM( t.buy_amount ) as buy_amount
+FROM
+	(
+	SELECT
+		str_to_date( substr( s.create_time, 1, 10 ), '%Y-%m-%d %h:%i:%s' ) AS create_time,
+		SUM( s.buy_amount ) AS buy_amount
+	FROM
+		(
+		SELECT
+			o.create_time,
+			p.buy_amount
+		FROM
+			crm_order o,
+			crm_order_product p
+		WHERE
+			o.order_id = p.order_id
+			AND p.product_id = 2
+		ORDER BY
+			p.product_id,
+			o.create_time ASC
+		) s
+	GROUP BY
+		s.create_time ASC
+	) t
+GROUP BY
+	t.create_time
+    </select>
+
+
+
+
+
+
+       <select id="getProductBySearch" resultType="cn.vision.invicloud.support.pojo.vo.ProductVO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        crm_product
+        WHERE
+        1=1
+        <if test="search != null">
+            AND (
+            product_name LIKE '%' #{search} '%'
+            )
+        </if>
     </select>
 </mapper>

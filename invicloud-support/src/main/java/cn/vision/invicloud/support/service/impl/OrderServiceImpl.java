@@ -12,6 +12,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -36,5 +37,19 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         List<OrderVO> orderVOs = orderMapper.list(userId, pageInfo, search);
         return new BasePageDTO<OrderVO>(pageInfo, orderVOs);
 
+    }
+	 @Override
+    public Long addOrderToDB(String customerId, String payType, String buyAmount, String payAmount){
+        Order order=new Order();
+        order.setCustomerId(Integer.parseInt(customerId));
+        order.setPayType(1);
+        order.setBuyAmount(Integer.parseInt(buyAmount));
+        order.setPayAmount(new BigDecimal(payAmount));
+
+        int oderId=orderMapper.addOrderToDB(order);
+        System.out.println(oderId);
+        long id=order.getOrderId();
+        System.out.println(id);
+        return id;
     }
 }

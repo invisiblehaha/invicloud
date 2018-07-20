@@ -29,5 +29,5 @@ public interface ProductCategoryMapper extends BaseMapper<ProductCategory> {
     List<ProductVO> listByPage(@Param("categoryIds") List<Integer> categoryIds,
                                @Param("pageInfo") PageInfo pageInfo, RowBounds rowBounds);
 
-
+    List<ProductVO> getCateProduct(@Param("id") String id);
 }

@@ -22,4 +22,5 @@ public interface IOrderProductService extends IService<OrderProduct> {
      */
     List<OrderProduct> listByOrderId(Long orderId);
 
+    Integer addOrderItemToDB(String orderId,String productId,String productNumber,String productPrice);
 }

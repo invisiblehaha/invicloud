@@ -37,7 +37,10 @@ public interface IProductService extends IService<Product> {
     void singProduct(Integer productId);
 
     boolean ifIn(SingProductAnalyVO item, List<SingProductAnalyVO> list);
+
     Integer insertInto ( String productName, BigDecimal productPrice, Integer stock);
 
      Integer deleteByProductId(Integer productId);
+	 
+	 List<ProductVO> getProductBySearch(String search);
 }
