@@ -81,7 +81,7 @@ public class DetectController {
                 e.printStackTrace();
             }
 
-
+            UpdateUtils.updatePic(buff,customerVO.getCustomerId().toString());
             return new WebPageResult(list, 1);
         }
         else{

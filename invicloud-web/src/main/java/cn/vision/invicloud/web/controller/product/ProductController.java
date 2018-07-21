@@ -67,4 +67,12 @@ public class ProductController {
         return i;
     }
 
+    @PostMapping(value="/analy")
+    @ResponseBody
+    public Object analy(@RequestParam("id") String productId) {
+        productService.singProduct(Integer.parseInt(productId));
+        return new WebResult(CommonReturnCode.SUCCESS);
+    }
+
+
 }

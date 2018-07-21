@@ -94,11 +94,11 @@ public class DemoController {
         Map<String, Double> map2= new HashMap<>();
         int total2=0;
         for(EmotionAnalyVO emotionAnalyVO:EList){
-            total+=emotionAnalyVO.getNum();
+            total2+=emotionAnalyVO.getNum();
         }
         for(EmotionAnalyVO emotionAnalyVO:EList){
             percentage = (double)emotionAnalyVO.getNum()/(double)total2;
-            map.put(emotionAnalyVO.getEmotion(),percentage);
+            map2.put(emotionAnalyVO.getEmotion(),percentage);
             model.addAttribute("emap",map2);
         }
         return "/recommend/demo";

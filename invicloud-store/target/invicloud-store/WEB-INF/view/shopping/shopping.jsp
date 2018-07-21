@@ -25,8 +25,9 @@
 <%--    <link rel="stylesheet" href="${ctxsta}/css/css2.css"/>--%>
     <style type="text/css">
         body{
-            height: auto;
-            margin:0;
+           width: 100%;
+            height: 100%;
+            margin: auto;
         }
         .container-right{
             display: flex;
@@ -46,7 +47,7 @@
             display: -webkit-flex; /*兼容问题*/
             display: -ms-flexbox;
             width: 100%;
-            height:15%;
+            height:10%;
             text-align: center;
             align-items: center;
             overflow-y:auto;
@@ -68,60 +69,68 @@
             overflow: hidden;
         }
         .left{
+            border-radius: 5px;
             display: flex;
             display: -webkit-flex; /*兼容问题*/
             display: -ms-flexbox;
             display: inline-block;
             width: 15%;
-            height:100%;
+            height:99%;
             text-align: left;
             align-items: center;
             position: relative;
             overflow-y:auto;
             justify-content: center;
+            border: solid 1px #408EBA;
+
 
         }
         .quarter2{
+            border-radius: 5px;
             display: flex;
             display: -webkit-flex; /*兼容问题*/
             display: -ms-flexbox;
             display: inline-block;
-            width: 41%;
-            height:100%;
+            width: 46%;
+            height:99%;
             text-align: center;
             align-items: center;
             position: relative;
             overflow-y:auto;
             justify-content: center;
+            border: solid 1px #408EBA;
+
         }
         .quarter4{
+            border-radius: 5px;
             display: flex;
             display: -webkit-flex; /*兼容问题*/
             display: -ms-flexbox;
             display: inline-block;
-            width: 41%;
-            height:100%;
+            width: 36%;
+            height:99%;
             text-align: center;
             align-items: center;
             position: relative;
             overflow-y:auto;
             justify-content: center;
+            border: solid 1px #408EBA;
+
         }
         nav{
             height: 5%;
-            background-color: lightgrey;
+            background-color: #408EBA;
             opacity: 0.7;
+            color: #ffffff;
         }
         .columns {
-            width: 10%;
-            height: 10%;
+            width: 20%;
+            height: 20%;
             float: left;
             /*line-height: 24px;*/
             /*padding-top: 10px;*/
 
             text-align: justify;
-            padding-left: 2%;
-            padding-right: 2%;
             margin: 0 auto 15%;
         }
         .thumbnail_align {
@@ -134,7 +143,7 @@
         }
         .bar1 {
             position: relative;
-            width: 500px;
+            width: 40%;
             margin: 0 auto;
             border: none;
             outline: none;
@@ -143,9 +152,9 @@
             width: 100%;
             height: 42px;
             padding-left: 13px;
-            border: 2px solid #0b97c4;
+            border: 2px solid  #408EBA;
             border-radius: 5px;
-            color: white;
+            color: #000000;
         }
         .bar1 button {
             height: 42px;
@@ -154,7 +163,7 @@
             position: absolute;
             top: 0;
             right: 0;
-            background: #0b97c4;
+            background:  #408EBA;
             border-radius: 0 5px 5px 0;
         }
         .bar1 button:before {
@@ -165,19 +174,22 @@
         }
         table {
             border-collapse: collapse;
-            margin: 3px;
             text-align: center;
+            width: 100%;
         }
         table td, table th
         {
-            border: 1px solid #cad9ea;
-            color: #666;
+            border:solid 1px lightblue;
+            color: #000000;
             height: auto;
+           padding-right: 3px;
+            width: 20%;
+
         }
         table thead th
         {
-            background-color: #CCE8EB;
-            width: 100px;
+            background-color: #62afde;
+            opacity: 0.7;
         }
         table tr:nth-child(odd)
         {
@@ -197,20 +209,66 @@
         a {text-decoration:none;}
         a:link {color:#000000;text-decoration:none;}
         a:visited {color:#000000}
-        a:hover {text-decoration:underline;color:red}
+        a:hover {text-decoration:underline;color:#408EBA}
         a:active {color:#000000}
         #createOrder{
-            height: 42px;
-            width: 84px;
-            border-radius:10px 10px 10px 10px;
-            background: #0b97c4;
+            width: 10%;
+            height: 4%;
+            border-radius:5px;
+            background: #408eba;
             color: white;
-            position:fixed;
-            bottom: 10px;
-            right: 10px;
+            align-self: flex-end;
+            margin-right: 2%;
+            margin-bottom: 2%;
+
         }
     </style>
     <script>
+        window.alert = function(str)
+        {
+            var shield = document.createElement("DIV");
+            shield.id = "shield";
+            shield.style.position = "absolute";
+            shield.style.left = "0px";
+            shield.style.top = "0px";
+            shield.style.width = "100%";
+            shield.style.height = document.body.scrollHeight+"px";
+            //弹出对话框时的背景颜色
+            //shield.style.background = "#fff";
+            shield.style.textAlign = "center";
+            shield.style.zIndex = "25";
+            shield.style.opacity="0.95";
+            var alertFram = document.createElement("DIV");
+            alertFram.id="alertFram";
+            alertFram.style.position = "absolute";
+            alertFram.style.left = "50%";
+            alertFram.style.top = "50%";
+            alertFram.style.marginLeft = "-225px";
+            alertFram.style.marginTop = "-75px";
+            alertFram.style.width = "450px";
+            alertFram.style.height = "120px";
+            alertFram.style.background = "#ffffff";
+            alertFram.style.textAlign = "center";
+            alertFram.style.lineHeight = "150px";
+            alertFram.style.zIndex = "300";
+            alertFram.style.opacity="0.95";
+            strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+            strHtml += " <li style=\"background:#fff;text-align:center;font-family:Microsoft YaHei;font-size:20px;height:120px;line-height:120px;border:1px solid #408EBA;border-radius: 5px;\">"+str+"</li>\n";
+            strHtml += "</ul>\n";
+            alertFram.innerHTML = strHtml;
+            document.body.appendChild(alertFram);
+            document.body.appendChild(shield);
+            //var ad = setInterval("doAlpha()",5);
+            alertFram.focus();
+            document.body.onselectstart = function(){return false;};
+        };
+        window.onclick= function(event){
+            var shield=document.getElementById("shield");
+            if (event.target ==shield) {
+                $("#alertFram").remove();
+                $("#shield").remove();
+            }
+        };
         $(function (){
             var storage=window.localStorage;
             var products=JSON.parse(storage.getItem("allProducts"));
@@ -430,7 +488,7 @@
     </div>
     <div class="main">
         <div class="left">
-            <nav>商品分类</nav>
+            <nav style="padding-left: 30%">商品分类</nav>
             <ul id="first-cate">
             </ul>
         </div>
@@ -445,7 +503,7 @@
     </div>
         <div class="quarter4">
             <nav>购物车</nav>
-            <button id="createOrder" onclick="createOrder()">生成订单</button>
+
             <table width="90%" class="table">
                 <thead>
                 <tr>
@@ -470,6 +528,8 @@
 
         </div>
     </div>
+
+    <button id="createOrder" onclick="createOrder()">生成订单</button>
 
 </div>
 </body>

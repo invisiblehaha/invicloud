@@ -14,8 +14,8 @@
 <html>
 <head>
 <title>会员登录</title>
-    <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css"/>
+    <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
     <style>
         video{
             border:1px solid gray;
@@ -33,13 +33,78 @@
         body{
             margin-left:auto;
             margin-right:auto;
+            background: url("${ctxsta}/images/background.png")no-repeat;
+
         }
-        #picture{
+        #upper{
+            align-items: center;
+            align-content: center;
             text-align: center;
+            width: 100%;
         }
+        #upload{
+            background-color: #003bb3;
+            opacity: 0.5;
+            color: white;
+            border-radius: 5px;
+            width: 10%;
+
+        }
+        .header{
+            align-items: center;
+            align-content: center;
+            text-align: center;
+            width: 100%;
+            margin-top:5%;
+            margin-bottom:5%;
+        }
+        .header h3{
+            color: white;
+            font-size: 5em;
+            font-family: 'DejaVu Sans Mono', monospace;
+        }
+
     </style>
 
     <script>
+        window.alert = function(str)
+        {
+            var shield = document.createElement("DIV");
+            shield.id = "shield";
+            shield.style.position = "absolute";
+            shield.style.left = "0px";
+            shield.style.top = "0px";
+            shield.style.width = "100%";
+            shield.style.height = document.body.scrollHeight+"px";
+            //弹出对话框时的背景颜色
+            //shield.style.background = "#fff";
+            shield.style.textAlign = "center";
+            shield.style.zIndex = "25";
+            shield.style.opacity="0.95";
+            var alertFram = document.createElement("DIV");
+            alertFram.id="alertFram";
+            alertFram.style.position = "absolute";
+            alertFram.style.left = "50%";
+            alertFram.style.top = "50%";
+            alertFram.style.marginLeft = "-225px";
+            alertFram.style.marginTop = "-75px";
+            alertFram.style.width = "450px";
+            alertFram.style.height = "120px";
+            alertFram.style.background = "#ffffff";
+            alertFram.style.textAlign = "center";
+            alertFram.style.lineHeight = "150px";
+            alertFram.style.zIndex = "300";
+            alertFram.style.opacity="0.95";
+            strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+            strHtml += " <li style=\"background:#fff;text-align:center;font-family:Microsoft YaHei;font-size:20px;height:120px;line-height:120px;border:1px solid #408EBA;\">"+str+"</li>\n";
+            strHtml += "</ul>\n";
+            alertFram.innerHTML = strHtml;
+            document.body.appendChild(alertFram);
+            document.body.appendChild(shield);
+            //var ad = setInterval("doAlpha()",5);
+            alertFram.focus();
+            document.body.onselectstart = function(){return false;};
+        };
         var img1;
         function btn_upload() {
             $.ajax({
@@ -68,7 +133,7 @@
                         }
                         if(cusInfo["total"]==1)
                         {
-                            alert("识别成功！"+cusInfo.rows[0].customerId+"号会员!")
+                            alert("欢迎光临！"+cusInfo.rows[0].customerId+"号会员!")
                             //doSendUsers("1 "+cusInfo.rows[0].customerId);
                             if (!window.localStorage) {
                                 alert("浏览器不支持localstorage");
@@ -94,66 +159,26 @@
     </script>
     <script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="http://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.js"></script>
-    <%--<script type="text/javascript">
-        var websocket=null;
-        if('WebSocket' in window){
-            websocket=new WebSocket("ws://<%=basePath%>/webSocketServer");
-        }
-        else if('MozWebSocket' in window){
-            websocket=new MozWebSocket("ws://<%=basePath%>/webSocketServer");
-        }
-        else{
-            websocket=new SockJS("http://<%=basePath%>/sockjs/webSocketServer");
-        }
-        websocket.onopen = onOpen;
-        websocket.onmessage = onMessage;
-        websocket.onerror = onError;
-        websocket.onclose = onClose;
-        function onOpen(openEvt) {
-            alert(openEvt.Data);
-        }
-        function onMessage(evt) {
-            alert(evt.data);
-        }
-        function onError() {
-        }
-        function onClose() {
-        }
-        //向服务器发送人脸识别成功会员的id
-        function doSendUsers(msg) {
-            if (websocket.readyState === websocket.OPEN) {
-                //var msg = document.getElementById("inputMsg").value;
-                websocket.send(msg);//调用后台handleTextMessage方法
-            } else {
-                console.log("failed");
-            }
-        }
-        window.close = function () {
-            websocket.onclose();
-        }
-    </script>--%>
+
 </head>
 
 <body>
+<div class="header">
+    <h3>InvisiCloud</h3>
+</div>
 <div id="upper">
-    <video  id="myVideo" autoplay="autoplay" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 400px;top:100px; object-fit: fill"></video><hr/>
-    <canvas id="myCanvasForVideo" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 400px;top:100px;"></canvas>
-    <canvas id="myCanvas" height="400" width="400" style="border: 1px solid gray; position: absolute;left: 820px;top:100px;"></canvas>
-    <%--<div id="emotion_container">--%>
-        <%--<div id="emotion_icons"  style="position: absolute; left:575px; top:600px;">--%>
-            <%--<img class="emotion_icon" id="icon1" src="${pageContext.request.contextPath}/static/images/icon_angry.png">--%>
-            <%--<img class="emotion_icon" id="icon2" src="${pageContext.request.contextPath}/static/images/icon_sad.png">--%>
-            <%--<img class="emotion_icon" id="icon3" src="${pageContext.request.contextPath}/static/images/icon_surprised.png">--%>
-            <%--<img class="emotion_icon" id="icon4" src="${pageContext.request.contextPath}/static/images/icon_happy.png">--%>
-        <%--</div>--%>
-        <%--<div id='emotion_chart'  style="position: absolute; left:610px; top:660px;"></div>--%>
-    <%--</div>--%>
+    <video  id="myVideo" autoplay="autoplay" height="400" width="400" style="border: 1px solid #408eba; position: absolute;left: 230px;top:300px; object-fit: fill;border-radius: 5px"></video>
+    <canvas id="myCanvasForVideo" height="400" width="400" style="border: 1px solid #408eba; position: absolute;left: 230px;top:300px;border-radius: 5px"></canvas>
+    <canvas id="myCanvas" height="400" width="400" style="border: 1px solid #408eba; position: absolute;left: 650px;top:300px;border-radius: 5px"></canvas>
+
+</div>
+<div class="header">
     <div id="controls">
-        <button type="button" id="upload" style="position: absolute;left: 820px;top:550px;">登录</button>
+        <button type="button" id="upload">登录</button>
     </div>
 </div>
-<%--<div id="lower">--%>
-<%--</div>--%>
+
+
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/utils.js"></script>
@@ -208,73 +233,13 @@
 
     var canvasInput = document.getElementById('myCanvasForVideo');
     var contextInput = canvasInput.getContext('2d');
-//    function drawLoop()
-//    {
-//        requestAnimationFrame(drawLoop);
-//        contextInput.clearRect(0,0,canvasInput.width,canvasInput.height);
-//        ctracker.draw(canvasInput);
-//
-//        var cp = ctracker.getCurrentParameters();
-//        var er = ec.meanPredict(cp);
-//        var emo = null;
-//        var angry;
-//        var sad;
-//        var surprised;
-//        var happy;
-//        if(er)
-//        {
-//            updateData(er);
-//            for(var i=0;i<er.length;i++)
-//            {
-//                if(i == 0)
-//                {
-//                    angry = er[0].value;
-//                }
-//                else if(i == 1)
-//                {
-//                    sad = er[1].value;
-//                }
-//                else if(i == 2)
-//                {
-//                    surprised = er[2].value;
-//                }
-//                else if(i == 3)
-//                {
-//                    happy = er[3].value;
-//                }
-//            }
-//            var max = Math.max(angry,sad,surprised,happy)
-//            if(angry > 0.4 && angry == max)
-//            {
-//                emo = 'angry';
-//                document.getElementById('icon1').style.visibility = 'visible';
-//            }else if(sad > 0.4 && sad == max)
-//            {
-//                emo = 'sad';
-//                document.getElementById('icon2').style.visibility = 'visible';
-//            }else if(surprised > 0.4 && surprised == max)
-//            {
-//                emo = 'surprised';
-//                document.getElementById('icon3').style.visibility = 'visible';
-//            }else if(happy > 0.4 && happy == max)
-//            {
-//                emo = 'happy';
-//                document.getElementById('icon4').style.visibility = 'visible';
-//            }
-//
-//            else
-//            {
-//                emo = 'peaceful';
-//                document.getElementById('icon1').style.visibility = 'hidden';
-//                document.getElementById('icon2').style.visibility = 'hidden';
-//                document.getElementById('icon3').style.visibility = 'hidden';
-//                document.getElementById('icon4').style.visibility = 'hidden';
-//            }
-//            info['emotion']=emo;
-//
-//        }
-//    }
-//    drawLoop();
+    function drawLoop()
+    {
+        requestAnimationFrame(drawLoop);
+        contextInput.clearRect(0,0,canvasInput.width,canvasInput.height);
+        ctracker.draw(canvasInput);
+    }
+    drawLoop();
 
 
 

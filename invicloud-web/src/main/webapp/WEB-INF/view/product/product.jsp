@@ -177,7 +177,8 @@
 //                {field: 'productIntroduce', title: '商品介绍', align: 'center',  halign: 'center'},
                 {field: 'stock', title: '库存', align: 'center',  halign: 'center'},
 //                {field: 'remarks', title: '备注', align: 'center', halign: 'center'},
-                {field: 'analy', title: '分析预测', formatter: 'operateFormatter', events:'operateEvents'},
+                {field: 'analy', title: '分析', formatter: 'operateFormatter', events:'operateEvents'},
+                {field: 'predict', title: '预测', formatter: 'predictFormatter', events:'predictEvents'},
 		 {field: 'operation', title: '操作', formatter: 'actionFormatter', events:'actionEvents'}
             ]
         });
@@ -232,11 +233,29 @@ function actionFormatter(value, row, index)
 
     function operateFormatter(value, row, index)
     {
-        return '<button class="analy" type="button" >分析预测</button> ';
+        return '<a class="analy" type="button" >分析</a>';
     }
     window.operateEvents =
         { 'click .analy' :  function(e, value, row, index){
         var pid=row.productId;
+                $.ajax({
+                    type: 'post',
+                    url: "/product/product/analy?id="+pid,
+                    success : function(){
+                    }
+                });
+            }
+
+
+        };
+    function predictFormatter(value, row, index)
+    {
+        return '<a class="predict" type="button" >预测</a> ';
+    }
+    window.predictEvents=
+        {
+            'click .predict':function (e, value, row, index){
+                var pid=row.productId;
                 $.ajax({
                     type: 'get',
                     url: "/product/productPredict/view?id="+pid,
@@ -245,7 +264,6 @@ function actionFormatter(value, row, index)
                     }
                 });
             }
-
         };
 
 

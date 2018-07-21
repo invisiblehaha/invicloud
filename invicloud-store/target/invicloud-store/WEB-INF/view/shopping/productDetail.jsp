@@ -20,80 +20,16 @@
 <head>
     <title>商品详情</title>
     <style type="text/css">
-        .container{
-            display: flex;
-            display: -webkit-flex; /*兼容问题*/
-            display: -ms-flexbox;
-            flex-direction: column;
-            text-align: center;
+        body{
             width: 100%;
             height: 100%;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            justify-content: center;
-        }
-        .header{
-            display: flex;
-            display: -webkit-flex; /*兼容问题*/
-            display: -ms-flexbox;
-            flex-direction: row;
-            text-align: center;
-            width: 100%;
-            height: 15%;
-            align-items: center;
-            position: relative;
-            justify-content: center;
-            background: #69c6e1 ;
-        }
-        .header div{
-            font-family: STHeiti;
-            font-size: 30px;
-            color: #ffffff;
         }
         .main{
-            display: flex;
-            display: -webkit-flex; /*兼容问题*/
-            display: -ms-flexbox;
-            flex-direction: row;
-            text-align: center;
-            width: 100%;
-            height: 85%;
-            align-items: center;
-            position: relative;
-            justify-content: center;
-        }
-        .left{
-            display: flex;
-            display: -webkit-flex; /*兼容问题*/
-            display: -ms-flexbox;
-            display: inline-block;
-            flex-direction: column;
-            width: 35%;
-            height:100%;
-            text-align: center;
-            align-items: center;
-
-        }
-        .right{
-            display: flex;
-            display: -webkit-flex; /*兼容问题*/
-            display: -ms-flexbox;
-            display: inline-block;
-            flex-direction: column;
-            width: 50%;
-            height:100%;
-            text-align: center;
-            align-items: center;
-        }
-        .image{
-            width: 100%;
-            height:75%;
-
+        width:100%;
+        margin-top: 10%;
         }
         #theImage{
             width: 100%;
-            height:100%;
         }
         .theButton{
             display: flex;
@@ -103,9 +39,16 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            height:22%;
+
         }
+        .image{
+            width: 80%;
+            margin-bottom: 20%;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 10%;
+        }
+
         .button{
             display: flex;
             display: -webkit-flex; /*兼容问题*/
@@ -114,33 +57,99 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            margin-bottom: 10%;
+            color: white;
+
         }
-        .description{
-            width: 100%;
-            height:22%;
-        }
-        .price{
-            width: 100%;
-            height:22%;
+        .name{
+
+            margin-top: 20%;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
+            margin-bottom: 10%;
+        }
+        .description{
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10%;
+        }
+        .price{
+            /*width: 100%;*/
+            /*height:22%;*/
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10%;
+        }
+        .remain{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20%;
         }
         #nowPrice{
-            color:red;
+            color:#408eba;
             font-size: 30px;
         }
         .amount{
-            width: 100%;
-            height:22%;
+
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 10%;
+
         }
+
     </style>
     <script src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css"/>
+    <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
     <script>
+        window.alert = function(str)
+        {
+            var shield = document.createElement("DIV");
+            shield.id = "shield";
+            shield.style.position = "absolute";
+            shield.style.left = "0px";
+            shield.style.top = "0px";
+            shield.style.width = "100%";
+            shield.style.height = document.body.scrollHeight+"px";
+            //弹出对话框时的背景颜色
+            //shield.style.background = "#fff";
+            shield.style.textAlign = "center";
+            shield.style.zIndex = "25";
+            shield.style.opacity="0.95";
+            var alertFram = document.createElement("DIV");
+            alertFram.id="alertFram";
+            alertFram.style.position = "absolute";
+            alertFram.style.left = "50%";
+            alertFram.style.top = "50%";
+            alertFram.style.marginLeft = "-225px";
+            alertFram.style.marginTop = "-75px";
+            alertFram.style.width = "450px";
+            alertFram.style.height = "120px";
+            alertFram.style.background = "#ffffff";
+            alertFram.style.textAlign = "center";
+            alertFram.style.lineHeight = "150px";
+            alertFram.style.zIndex = "300";
+            alertFram.style.opacity="0.95";
+            strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+            strHtml += " <li style=\"background:#fff;text-align:center;font-family:Microsoft YaHei;font-size:20px;height:120px;line-height:120px;border:1px solid #408EBA;border-radius: 5px;\">"+str+"</li>\n";
+            strHtml += "</ul>\n";
+            alertFram.innerHTML = strHtml;
+            document.body.appendChild(alertFram);
+            document.body.appendChild(shield);
+            //var ad = setInterval("doAlpha()",5);
+            alertFram.focus();
+            document.body.onselectstart = function(){return false;};
+        };
         $(function(){
             var storage=window.localStorage;
             var products=JSON.parse(storage.getItem("allProducts"));
@@ -183,33 +192,43 @@
         }
     </script>
 </head>
-<body>
-<div class="container">
-    <div class="header">
-        <div>${product.productName}</div>
-    </div>
-    <div class="main">
-        <div class="left">
+<body style="background-color:#CEE8FA">
+<div class="container main">
+    <div class="row" style="align-content: center;text-align: center;justify-content: center;height: 90%">
+        <div class="col-md-5 col-md-offset-1" style="opacity: 0.7;background-color: white;height: 80%;border-radius: 5px;">
+        <div class="row">
             <div class="image">
                 <img id="theImage" src="${product.picImg}"/>
             </div>
-
+            <div class="leftFoot">
+                <div class="amount">
+                    <label for="productNumber" class="left">购买数：</label>
+                    <div><input type="text" id="productNumber" value="1"/></div>
+                </div>
+                <div class="theButton">
+                    <div class="button"><button style="background-color: #408eba; border-radius: 5px;" type="button" onclick="addToOrder()"}>添加进购物车</button></div>
+                    <div class="button"><button style="background-color: #408eba; border-radius: 5px;" type="button" onclick="back()">狠心离开</button></div>
+                </div>
+            </div>
         </div>
-        <div class="right">
+        </div>
+        <div class="col-md-4 col-md-offset-1" style="opacity: 0.7;background-color: white;height: 80%;border-radius: 5px;">
+            <div class="name">
+                <div><h4>${product.productName}</h4></div>
+            </div>
             <div class="description">
-                <div><p>${product.productIntroduce}</p></div>
+            <div><p>${product.productIntroduce}</p></div>
+            </div>
+            <div class="description">
+                <div><p>${product.remarks}</p></div>
+            </div>
+            <div class="remain">
+                <div class="left">剩余数量：</div><div id="nowRemain">${product.stock}</div>
             </div>
             <div class="price">
-                <div>价格：</div><div id="nowPrice">￥${product.productPrice}</div>
+                <div class="left">价格：</div><div id="nowPrice">￥${product.productPrice}</div>
             </div>
-            <div class="amount">
-                <div><p>请输入购买件数:</p> </div>
-                <div><input type="text" id="productNumber" value="1"/></div>
-            </div>
-            <div class="theButton">
-                <div class="button"><button type="button" onclick="addToOrder()"}>添加进购物车</button></div>
-                <div class="button"><button type="button" onclick="back()">狠心离开</button></div>
-            </div>
+
         </div>
     </div>
 </div>

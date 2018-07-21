@@ -28,9 +28,8 @@
     <select id="getEList" resultMap="EmotionAnalyMap">
 SELECT e.emotion,COUNT(e.emotion) as num
 FROM crm_emotion_records e
-WHERE e.customer_id={#customerId}
-GROUP BY e.emotion
-ORDER BY e.emotion;
+WHERE e.customer_id=#{customerId}
+GROUP BY e.emotion;
     </select>
 
 </mapper>

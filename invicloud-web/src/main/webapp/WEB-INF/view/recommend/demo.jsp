@@ -17,7 +17,14 @@
     <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
     <link rel="stylesheet" href="${ctxsta}/css/css2.css"/>
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+    <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 </head>
 
 <body style="width: 100%">
@@ -35,6 +42,7 @@
 <section class="content container-fluid">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
+    <div>
     <div class="container-left">
         <div class="quarter1">
             <table class="person">
@@ -78,9 +86,13 @@
         </div>
     </div>
     <div class="container-right" >
-        <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        <div id="container1" style="min-width: 310px; height: 380px; max-width: 600px; margin: 10% auto 0"></div>
         <%--添加饼图--%>
-        <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        <c:if test="${emap.size() ne 0}">
+            <div id="container2" style="min-width: 310px; height: 380px; max-width: 600px; margin: 10% auto 0"></div>
+        </c:if>
+
+    </div>
     </div>
 </section>
 
@@ -117,14 +129,14 @@
             data: [
                 <c:forEach var="catitem" items="${catmap}" >
                 {
-                    name: <c:out value="${catitem.name}" />,
-                    y: <c:out value="${catitem.percentage}" />
+                    name: "<c:out value="${catitem.key}" />",
+                    y: <c:out value="${catitem.value}" />
                 },
                 </c:forEach>
             ]
         }]
     });
-    Highcharts.chart('container2', {
+    Highcharts.chart('container2',{
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
@@ -154,10 +166,10 @@
             name: 'Brands',
             colorByPoint: true,
             data: [
-                <c:forEach var="catitem" items="${emap}" >
+                <c:forEach var="eitem" items="${emap}" >
                 {
-                    name: <c:out value="${catitem.name}" />,
-                    y: <c:out value="${catitem.percentage}" />
+                    name: "<c:out value="${eitem.key}" />",
+                    y: <c:out value="${eitem.value}" />
                 },
                 </c:forEach>
             ]

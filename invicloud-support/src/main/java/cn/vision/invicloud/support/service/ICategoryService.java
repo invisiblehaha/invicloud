@@ -39,4 +39,5 @@ public interface ICategoryService extends IService<Category> {
      */
     BasePageDTO<Category> listParentByPage(PageInfo pageInfo, String search, Integer parentId);
 
+    List<Category> listLower(Integer categoryId);
 }

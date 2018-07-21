@@ -14,14 +14,14 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/clmtrackr.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/Stats.js"></script>
-    <link href="${pageContext.request.contextPath}/static/css/cssReg.css" rel="stylesheet" type="text/css" />
+    <link href="${ctxsta}/css/cssReg.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
 <div class ="two">
 
     <div class="out-container">
-        <div class="logo1"><h1>InvisiCLOUD</h1></div>
+        <div><h1>InvisiCLOUD</h1></div>
         <div class="container">
             <div class="web_qr_login" id="web_qr_login" style="display:block;">
                 <div class="web_login" id="web_login">
@@ -152,53 +152,7 @@
         }
         obj.options[obj.options.length-81].selected = 1;
 
-        /*//tracking.js face tracking: dropped because of its constancy
-        //tracking face
-        var canvas = document.getElementById('myCanvasForVideo');
-        var context = canvas.getContext('2d');
 
-        var videoTracker = new tracking.ObjectTracker(['face']);
-        videoTracker.setInitialScale(4);
-        videoTracker.setStepSize(1.7);
-        videoTracker.setEdgesDensity(0.1);
-        tracking.track('#myVideo',videoTracker);
-
-
-        videoTracker.on('track',function(event){
-            canvas.width = canvas.width;
-            event.data.forEach(function(rect) {
-                context.strokeStyle = '#c0c0c0';
-                context.moveTo(rect.x,rect.y+10);
-                context.lineTo(rect.x,rect.y);
-                context.lineTo(rect.x+rect.width,rect.y);
-                context.lineTo(rect.x+rect.width, rect.y+10);//上半部分
-                context.moveTo(rect.x,rect.y+rect.height-10);
-                context.lineTo(rect.x,rect.y+rect.height);
-                context.lineTo(rect.x+rect.width,rect.y+rect.height);
-                context.lineTo(rect.x+rect.width,rect.y+rect.height-10);
-                context.stroke();//画线
-                context.font = '11px Helvetica';
-                context.fillStyle = "#fff";
-                context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-                context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
-            });
-
-            var canvas2 = document.getElementById('myCanvas');
-            var context2 = canvas2.getContext('2d');
-            img1 = canvas2.toDataURL("image/png");
-            context2.fillStyle="#ffffff";
-            context2.beginPath();
-            context2.fillRect(0,0,canvas2.width,canvas2.height);
-            context2.closePath();
-            if(event.data.length != 0 )
-            {
-                context2.drawImage(video,0,0,400,400);
-
-                UserUpload = true;//放到search里面没什么用
-            }
-
-
-        });*/
     };
 
     //tracking

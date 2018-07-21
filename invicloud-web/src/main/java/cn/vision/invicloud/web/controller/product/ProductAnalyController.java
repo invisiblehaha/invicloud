@@ -19,7 +19,7 @@ public class ProductAnalyController {
 
     @GetMapping(value = "/view")
     public String list(@ModelAttribute("menus")List<RoleMenuVO> menus, @ModelAttribute("user") UserVO user,@RequestParam("id") String productId, Model model ){
-        productService.singProduct(Integer.parseInt(productId));
+        String file=System.getProperty("user.dir")+"/predict_single_product_data.txt";
 
         return "/product/productPredict";
     }

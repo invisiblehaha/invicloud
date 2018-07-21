@@ -72,12 +72,11 @@ public class ShoppingController {
     {
         System.out.println("!");
         JSONObject obj=new JSONObject();
-        List<Category> categoryList=categoryService.listLowerCategories(0);
+        List<Category> categoryList=categoryService.listLower(0);
         obj.put("0",categoryList);
         for(Category o:categoryList)
         {
-            o.getCategoryId();
-            List<Category> categoryList1=categoryService.listLowerCategories(o.getCategoryId());
+            List<Category> categoryList1=categoryService.listLower(o.getCategoryId());
             obj.put(o.getCategoryId().toString(),categoryList1);
         }
         return obj;
@@ -88,8 +87,8 @@ public class ShoppingController {
     public Object getCateProduct(String id,Integer flag)
     {
         if(flag==0) {
-            List<ProductVO> productVOList = productCategoryService.getCateProduct(id);
-            return productVOList;
+
+            return productCategoryService.getCateProduct(id);
         }
         else{
             List<ProductVO> productVOList=new ArrayList<ProductVO>();
@@ -97,7 +96,7 @@ public class ShoppingController {
             for(ProductVO o:productVOList1){
                 productVOList.add(o);
             }
-            List<Category> categoryList=categoryService.listLowerCategories(Integer.parseInt(id));
+            List<Category> categoryList=categoryService.listLower(Integer.parseInt(id));
             for(Category o:categoryList){
                 List<ProductVO> tmpList = productCategoryService.getCateProduct(o.getCategoryId().toString());
                 for(ProductVO v:tmpList){

@@ -14,12 +14,98 @@
 <head>
     <title>客户详情</title>
     <script type="text/javascript">baselocation="${ctx}"</script>
-    <link rel="stylesheet" href="${ctxsta}/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${ctxsta}/bootstrap-table/dist/bootstrap-table.min.css"/>
-    <link rel="stylesheet" href="${ctxsta}/css/css2.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css"/>
+    <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width:100%;
+            margin-top: 10%;
+        }
+        #theImage{
+            width: 100%;
+        }
+        .theButton{
+            display: flex;
+            display: -webkit-flex; /*兼容问题*/
+            display: -ms-flexbox;
+            display: inline-block;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .image{
+            width: 80%;
+            margin-bottom: 20%;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 10%;
+        }
+
+        .button{
+            display: flex;
+            display: -webkit-flex; /*兼容问题*/
+            display: -ms-flexbox;
+            display: inline-block;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10%;
+            color: white;
+
+        }
+        .name{
+
+            margin-top: 20%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10%;
+        }
+        .description{
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10%;
+        }
+        .price{
+            /*width: 100%;*/
+            /*height:22%;*/
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10%;
+        }
+        .remain{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20%;
+        }
+        #nowPrice{
+            color:#408eba;
+            font-size: 30px;
+        }
+
+
+    </style>
+    <script>
+        function back() {
+            window.location.href="/store/shopping/shopping/view";
+        }
+    </script>
 </head>
 
-<body style="width: 100%">
+<body>
 <section class="content-header">
     <h1>
         InvisiCloud
@@ -34,54 +120,40 @@
 <section class="content container-fluid">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <script src="${ctxsta}/bootstrap/js/bootstrap.js"></script>
-    <div class="container-left">
-        <img src="${product.picImg}" class="showImg">
+    <div class="container main">
+        <div class="row" style="align-content: center;text-align: center;justify-content: center;height: 90%">
+            <div class="col-md-5 col-md-offset-1" style="opacity: 0.7;background-color: white;height: 80%;border-radius: 5px;">
+                <div class="row">
+                    <div class="image">
+                        <img id="theImage" src="${product.picImg}"/>
+                    </div>
+                    <div class="leftFoot">
+                        <div class="theButton">
+                            <div class="button"><button style="background-color: #408eba; border-radius: 5px;" type="button" onclick="back()">返回</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-1" style="opacity: 0.7;background-color: white;height: 80%;border-radius: 5px;">
+                <div class="name">
+                    <div><h4>${product.productName}</h4></div>
+                </div>
+                <div class="description">
+                    <div><p>${product.productIntroduce}</p></div>
+                </div>
+                <div class="description">
+                    <div><p>${product.remarks}</p></div>
+                </div>
+                <div class="remain">
+                    <div class="left">剩余数量：</div><div id="nowRemain">${product.stock}</div>
+                </div>
+                <div class="price">
+                    <div class="left">价格：</div><div id="nowPrice">￥${product.productPrice}</div>
+                </div>
 
-        <table class="bottom-detail">
-            <tr>
-                <td class="lefttd">商品ID：</td>
-                <td>${product.productId}</td>
-            <tr>
-                <td class="lefttd">输入数量：</td>
-                <td><input type="text" name="buyAmount" value="1" class="buyNum"/></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <button id="addToOrder">加入订单</button>
-                </td>
-
-            </tr>
-        </table>
-    </div>
-    <div class="container-right">
-
-        <table class="right-detail">
-            <tr>
-                <td class="lefttd">商品名称：</td>
-                <td>${product.productName}</td>
-            </tr>
-            <tr>
-                <td class="lefttd">商品价格</td>
-
-                <td>
-                    ${product.productPrice}
-                </td>
-            </tr>
-            <tr>
-                <td class="lefttd">剩余数量：</td>
-                <td>${product.stock}</td>
-            </tr>
-            <tr>
-                <td class="lefttd">商品介绍：</td>
-                <td>${product.productIntroduce}</td>
-            </tr>
-            <tr>
-                <td class="lefttd">商品描述：</td>
-                <td>${product.remarks}</td>
-            </tr>
-        </table>
+            </div>
         </div>
+    </div>
 
 </section>
 </body>

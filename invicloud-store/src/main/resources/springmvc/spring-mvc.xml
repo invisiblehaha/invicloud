@@ -38,7 +38,8 @@
     <!-- 允许访问静态文件-->
     <mvc:default-servlet-handler/>
 
-
+    <!-- 主页映射 -->
+    <!--<mvc:view-controller path="/" view-name="shopping/shopping/login"/>-->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view" />

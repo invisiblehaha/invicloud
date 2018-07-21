@@ -48,7 +48,7 @@
                 var customerdom = $("<div class=\"md-trigger\" data-modal=\"modal-1\" id=\"" + customer + "\">" +
                     "<div class=\"container-small\">" +
                     "<div class=\"row\"> " +
-                    "<div class=\"col-sm-4\"><img src=\"/static/images/recommend/" + customer + ".jpg\" class=\"head\"> " +
+                    "<div class=\"col-sm-4\"><img src=\"http://pb0wlb5h5.bkt.clouddn.com/" + customer + "\" class=\"head\"> " +
                     "</div> " +
                     "<div class=\"col-sm-8\"> " +
                     "<div class=\"row\" style=\"color: #000;font-size: small;margin-top: 5px;\">cumtomer_id</div> " +
@@ -216,7 +216,7 @@
         <div class="md-trigger" data-modal="modal-1">
             <div class="container-small">
                 <div class="row">
-                    <div class="col-sm-4"><img src="/static/images/recommend/505.jpg" class="head">
+                    <div class="col-sm-4"><img src="http://pb0wlb5h5.bkt.clouddn.com/123" class="head">
                     </div>
                     <div class="col-sm-8">
                         <div class="row" style="color: #000;font-size: small;margin-top: 5px;">cumtomerId</div>

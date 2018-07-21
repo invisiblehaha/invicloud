@@ -48,11 +48,19 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         return lowerCategories;
     }
 
+
+
     @Override
     public BasePageDTO<Category> listParentByPage(PageInfo pageInfo, String search, Integer parentId) {
         Page<Category> page = new Page<>(pageInfo.getCurrent(), pageInfo.getLimit());
         List<Category> categories = categoryMapper.listParentByPage(parentId, pageInfo, search, page);
         pageInfo.setTotal((int)page.getTotal());
         return new BasePageDTO<Category>(pageInfo, categories);
+    }
+    @Override
+    public List<Category> listLower(Integer categoryId){
+        // 查找子级分类
+
+        return categoryMapper.listLower(categoryId);
     }
 }

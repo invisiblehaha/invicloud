@@ -1,5 +1,7 @@
 package cn.vision.invicloud.support.utils;
 
+import org.springframework.util.FileCopyUtils;
+
 import java.io.File;
 
 /**
@@ -10,7 +12,6 @@ import java.io.File;
 public class MoveFileUtils {
     public static void moveFile(String oldFile, String newFilePath) {
         try {
-
             File afile = new File(oldFile);
             if (afile.renameTo(new File(newFilePath+afile.getName()))) {
                 System.out.println("File is moved successful!");
